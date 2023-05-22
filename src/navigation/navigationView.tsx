@@ -1,5 +1,12 @@
 import React, { RefObject } from "react";
-import { Button, Text, StyleSheet, View, TouchableOpacity } from "react-native";
+import {
+  Button,
+  Text,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import { DrawerLayoutAndroid } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -16,7 +23,11 @@ const NavigationView: React.FC<NavigationViewProps> = ({ drawer }) => {
   };
 
   return (
-    <View style={[styles.container, styles.navigationContainer]}>
+    <ImageBackground
+      source={require("../assets/buttons/expo.png")}
+      style={[styles.container, styles.navigationContainer]}
+      resizeMode="contain"
+    >
       <Text style={styles.paragraph}>Quizzes Menu</Text>
 
       <TouchableOpacity
@@ -67,7 +78,7 @@ const NavigationView: React.FC<NavigationViewProps> = ({ drawer }) => {
       <TouchableOpacity onPress={closeDrawer} style={styles.buttonClose}>
         <Text style={styles.drawerTouchableText}>Close drawer</Text>
       </TouchableOpacity>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -75,16 +86,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    // justifyContent: "center",
+
     paddingVertical: 16,
-    paddingTop: 100,
+    paddingTop: 80,
+    overflow: "hidden",
+    width: "100%",
   },
   navigationContainer: {
     backgroundColor: "#ecf0f1",
   },
   paragraph: {
-    padding: 16,
-    fontSize: 15,
+    padding: 12,
+    fontSize: 28,
     textAlign: "center",
   },
   drawerTouchable: {
