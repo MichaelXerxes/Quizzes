@@ -30,14 +30,22 @@ const NavigationView: React.FC<NavigationViewProps> = ({ drawer }) => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Detail");
+          navigation.navigate("Select");
           closeDrawer();
         }}
         style={styles.drawerTouchable}
       >
-        <Text style={styles.drawerTouchableText}>Detail</Text>
+        <Text style={styles.drawerTouchableText}>Select</Text>
       </TouchableOpacity>
-
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Game");
+          closeDrawer();
+        }}
+        style={styles.drawerTouchable}
+      >
+        <Text style={styles.drawerTouchableText}>Game</Text>
+      </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("Scores");

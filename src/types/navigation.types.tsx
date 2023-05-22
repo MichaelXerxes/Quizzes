@@ -2,9 +2,10 @@ import { StackNavigationProp } from "@react-navigation/stack";
 
 export type RootStackParamList = {
   Home: undefined;
-  Detail: undefined;
+  Select: undefined;
   Settings: undefined;
   Scores: undefined;
+  Game: undefined;
 
   // Other screens go here
 };
@@ -14,9 +15,9 @@ export type HomeScreenNavigationProp = StackNavigationProp<
   "Home"
 >;
 
-export type DetailScreenNavigationProp = StackNavigationProp<
+export type SelectScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  "Detail"
+  "Select"
 >;
 
 export type SettingsScreenNavigationProp = StackNavigationProp<
@@ -28,9 +29,14 @@ export type ScoreScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   "Scores"
 >;
+export type GameScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "Game"
+>;
 
 export type UniversalNavigationProps =
   | HomeScreenNavigationProp
-  | DetailScreenNavigationProp
+  | SelectScreenNavigationProp
   | SettingsScreenNavigationProp
-  | ScoreScreenNavigationProp;
+  | ScoreScreenNavigationProp
+  | GameScreenNavigationProp;

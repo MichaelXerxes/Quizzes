@@ -19,19 +19,26 @@ const TopBarComponent: React.FC<Props> = ({ navigation, title }) => {
   const handleBackPress = () => {
     navigation.goBack();
   };
+
   return (
     <View style={styles.container}>
       {drawerPosition === "left" ? (
-        <View style={styles.arrowCallBack}>
+        <View
+          style={
+            drawerPosition === "left"
+              ? styles.paddingIconLeft
+              : styles.paddingIconRight
+          }
+        >
           <TouchableOpacity onPress={handleBackPress}>
             <Icon name="long-arrow-alt-left" size={DIMENSIONS.iconSize} />
           </TouchableOpacity>
         </View>
       ) : (
-        <View style={styles.drawerOpenTouchableIconView}>
+        <View style={styles.paddingIconLeft}>
           <TouchableOpacity
             onPress={openDrawer}
-            style={styles.drawerOpenTouchable}
+            style={styles.paddingIconRight}
           >
             <Icon name="indent" size={DIMENSIONS.iconSize} />
           </TouchableOpacity>
@@ -39,18 +46,24 @@ const TopBarComponent: React.FC<Props> = ({ navigation, title }) => {
       )}
       <Text style={styles.title}>{title}</Text>
       {drawerPosition === "left" ? (
-        <View style={styles.drawerOpenTouchableIconView}>
+        <View style={styles.paddingIconLeft}>
           <TouchableOpacity
             onPress={openDrawer}
-            style={styles.drawerOpenTouchable}
+            style={styles.paddingIconRight}
           >
             <Icon name="indent" size={DIMENSIONS.iconSize} />
           </TouchableOpacity>
         </View>
       ) : (
-        <View style={styles.arrowCallBack}>
+        <View
+          style={
+            drawerPosition === "right"
+              ? styles.paddingIconRight
+              : styles.paddingIconLeft
+          }
+        >
           <TouchableOpacity onPress={handleBackPress}>
-            <Icon name="long-arrow-alt-left" size={DIMENSIONS.iconSize} />
+            <Icon name="long-arrow-alt-right" size={DIMENSIONS.iconSize} />
           </TouchableOpacity>
         </View>
       )}
@@ -64,30 +77,18 @@ const styles = StyleSheet.create({
     height: 70,
     paddingTop: 30,
     backgroundColor: "green",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
-  arrowCallBack: {
-    flex: 1,
-    fontSize: 20,
-
-    //paddingTop: 25,
-    paddingLeft: 15,
-  },
-  drawerOpenTouchable: {
-    // marginTop: 25,
-  },
-  drawerOpenTouchableIconView: {
-    flex: 1,
-
-    alignItems: "flex-end",
-    paddingRight: 15,
+  paddingIconRight: {
+    paddingRight: 16,
   },
   title: {
-    flex: 2,
-    textAlign: "center",
     fontSize: 22,
     fontWeight: "bold",
-
-    // paddingTop: 25,
+  },
+  paddingIconLeft: {
+    paddingLeft: 16,
   },
 });
 

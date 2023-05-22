@@ -1,10 +1,11 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
-import Detail from "../screens/Details";
+import Select from "../screens/Select";
 import Home from "../screens/Home";
 import Settings from "../screens/Settings";
 import Scores from "../screens/Scores";
+import Game from "../screens/Game";
 import { Button } from "react-native";
 import drawerStore from "../mobx/DrawerStore";
 import TopBarComponent from "../components/TopBarComponent";
@@ -31,9 +32,13 @@ const MainStackNavigator: React.FC = () => {
         }}
       />
       <Stack.Screen
-        name="Detail"
-        component={Detail}
-        options={{ headerShown: false }}
+        name="Select"
+        component={Select}
+        options={{
+          header: () => (
+            <TopBarComponent navigation={navigationSettings} title="Select" />
+          ),
+        }}
       />
       <Stack.Screen
         name="Settings"
@@ -48,17 +53,25 @@ const MainStackNavigator: React.FC = () => {
           headerTitleStyle: { fontSize: 24 },
         }}
       >
-        {(props) => (
-          <Settings
-            {...props}
-            //openDrawer={DrawerStore.openDrawer}
-          />
-        )}
+        {(props) => <Settings {...props} />}
       </Stack.Screen>
       <Stack.Screen
         name="Scores"
         component={Scores}
-        options={{ headerShown: false }}
+        options={{
+          header: () => (
+            <TopBarComponent navigation={navigationSettings} title="Scores" />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Game"
+        component={Game}
+        options={{
+          header: () => (
+            <TopBarComponent navigation={navigationSettings} title="Game" />
+          ),
+        }}
       />
     </Stack.Navigator>
   );

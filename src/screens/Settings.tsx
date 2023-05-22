@@ -2,11 +2,11 @@ import React, { Component, useContext } from "react";
 import { RouteProp } from "@react-navigation/native";
 import { View, Text, StyleSheet, SafeAreaView, Button } from "react-native";
 import Icon from "react-native-vector-icons";
-import { DetailScreenNavigationProp } from "../types/navigation.types";
+import { SelectScreenNavigationProp } from "../types/navigation.types";
 import drawerStore from "../mobx/DrawerStore";
 import { observer } from "mobx-react-lite";
 interface Props {
-  navigation: DetailScreenNavigationProp;
+  navigation: SelectScreenNavigationProp;
   // openDrawer: () => void;
 }
 interface State {}

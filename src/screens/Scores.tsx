@@ -2,17 +2,17 @@ import React, { Component } from "react";
 import { RouteProp } from "@react-navigation/native";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import Icon from "react-native-vector-icons";
-import { DetailScreenNavigationProp } from "../types/navigation.types";
+import { SelectScreenNavigationProp } from "../types/navigation.types";
 
 interface Props {
-  navigation: DetailScreenNavigationProp;
+  navigation: SelectScreenNavigationProp;
 }
 interface State {}
 
 const Scores: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Settings Screen </Text>
+      <Text style={styles.title}>Scores Screen </Text>
     </View>
   );
 };

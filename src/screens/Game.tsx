@@ -1,22 +1,18 @@
 import React, { Component } from "react";
 import { RouteProp } from "@react-navigation/native";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
-
 import Icon from "react-native-vector-icons";
-import { DetailScreenNavigationProp } from "../types/navigation.types";
-import { RootStackParamList } from "../types/navigation.types";
-interface DetailRouteParams {
-  itemId: number;
-}
+import { GameScreenNavigationProp } from "../types/navigation.types";
+
 interface Props {
-  navigation: DetailScreenNavigationProp;
+  navigation: GameScreenNavigationProp;
 }
 interface State {}
 
-const Detail: React.FC<Props> = ({ navigation }) => {
+const Game: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Detail Screen </Text>
+      <Text style={styles.title}>Game Screen </Text>
     </View>
   );
 };
@@ -27,9 +23,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    color: "white",
+    color: "black",
     marginTop: 50,
     fontSize: 28,
   },
 });
-export default Detail;
+export default Game;

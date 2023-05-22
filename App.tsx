@@ -12,7 +12,7 @@ import MainStackNavigator from "./src/navigation/Stack";
 
 const Drawer = createDrawerNavigator();
 
-function App() {
+const App = () => {
   const drawer = useRef<DrawerLayoutAndroid>(null);
   const { drawerPosition, setDrawerRef } = drawerStore;
   useEffect(() => {
@@ -26,23 +26,11 @@ function App() {
         drawerPosition={drawerPosition}
         renderNavigationView={() => <NavigationView drawer={drawer} />}
       >
-        {/* <View style={{ flex: 1 }}>
-          <View style={styles.container}>
-            <Text style={styles.paragraph}>
-              Drawer on the {drawerPosition}!
-            </Text>
-
-            <Button
-              title="Open drawer"
-              onPress={() => drawer.current?.openDrawer()}
-            />
-          </View> */}
         <MainStackNavigator />
-        {/* </View> */}
       </DrawerLayoutAndroid>
     </NavigationContainer>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
