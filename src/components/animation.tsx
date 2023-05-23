@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Text,
   Animated,
@@ -7,16 +7,42 @@ import {
   StyleSheet,
 } from "react-native";
 
-const AnimatedComponent = () => {
+type AnimatedComponentProps = {
+  x: number;
+  y: number;
+  triggerAnimation: boolean;
+  timing: number;
+  id: string;
+  onPress: (id: string) => void;
+};
+const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
+  x,
+  y,
+  triggerAnimation,
+  timing,
+  onPress,
+  id,
+}) => {
   const [isClicked, setIsClicked] = useState(false);
   const position = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
 
   const handleClick = () => {
     setIsClicked(true);
-
+    onPress(id);
+    triggerAnimationAction();
+  };
+  useEffect(() => {
+    if (triggerAnimation) {
+      triggerAnimationAction();
+    }
+  }, [triggerAnimation]);
+  const triggerAnimationAction = () => {
     Animated.timing(position, {
-      toValue: { x: 0, y: -Dimensions.get("window").height },
-      duration: 500,
+      toValue: {
+        x: x,
+        y: y,
+      },
+      duration: timing,
       useNativeDriver: true,
     }).start();
   };
@@ -26,7 +52,8 @@ const AnimatedComponent = () => {
       style={[
         { transform: position.getTranslateTransform() },
         {
-          flex: 1,
+          width: 200,
+          height: 100,
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "yellow",
