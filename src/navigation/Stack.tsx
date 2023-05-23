@@ -6,6 +6,7 @@ import Home from "../screens/Home";
 import Settings from "../screens/Settings";
 import Scores from "../screens/Scores";
 import Game from "../screens/Game";
+import Quiz from "../screens/Quiz";
 import { Button } from "react-native";
 import drawerStore from "../mobx/DrawerStore";
 import TopBarComponent from "../components/TopBarComponent";
@@ -70,6 +71,15 @@ const MainStackNavigator: React.FC = () => {
         options={{
           header: () => (
             <TopBarComponent navigation={navigationSettings} title="Game" />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Quiz"
+        component={Quiz}
+        options={{
+          header: () => (
+            <TopBarComponent navigation={navigationSettings} title="Quiz" />
           ),
         }}
       />

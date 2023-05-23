@@ -11,14 +11,15 @@ import {
 } from "react-native";
 
 import Icon from "react-native-vector-icons";
-import { SelectScreenNavigationProp } from "../types/navigation.types";
+import {
+  SelectScreenNavigationProp,
+  SelectcreenRouteProp,
+} from "../types/navigation.types";
 import { COLORS } from "../consts/COLORS";
 
-interface DetailRouteParams {
-  itemId: number;
-}
 interface Props {
-  navigation: SelectScreenNavigationProp;
+  navigation?: SelectScreenNavigationProp;
+  route?: SelectcreenRouteProp;
 }
 interface State {
   selectedValue: number;
@@ -31,8 +32,8 @@ const ItemView = ({ item }: { item: number }) => {
     </View>
   );
 };
-const Select: React.FC<Props> = () => {
-  const [selectedValue, setSelectedValue] = useState(5);
+const Select: React.FC<Props> = ({ navigation, route }) => {
+  const [selectedValue, setSelectedValue] = useState(1);
   const handlePress = (item: number) => {
     setSelectedValue(item);
   };
@@ -44,6 +45,21 @@ const Select: React.FC<Props> = () => {
     { label: "50", value: 50 },
   ];
 
+  if (!route || !route.params) {
+    return (
+      <View>
+        <Text>Error: No route params provided!</Text>
+      </View>
+    );
+  }
+  const { quizType } = route.params;
+  const [quiz, setQuiz] = useState(quizType);
+  const onPress = () => {
+    navigation?.navigate("Quiz", {
+      quizType: quiz,
+      numberQuestions: selectedValue,
+    });
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -72,20 +88,12 @@ const Select: React.FC<Props> = () => {
             ))}
           </ScrollView>
         </View>
-        <Text style={styles.title}>Selected: {selectedValue}</Text>
+        <Text style={styles.selected}>Selected: {selectedValue}</Text>
       </View>
 
-      <Picker
-        selectedValue={selectedValue}
-        style={{ height: 50, width: 150, backgroundColor: "yellow" }}
-        onValueChange={(itemValue) => setSelectedValue(itemValue)}
-      >
-        <Picker.Item label="5" value="5" />
-        <Picker.Item label="10" value="10" />
-        <Picker.Item label="15" value="15" />
-        <Picker.Item label="20" value="20" />
-        <Picker.Item label="50" value="50" />
-      </Picker>
+      <TouchableOpacity onPress={onPress} style={styles.buttonAccept}>
+        <Text style={styles.buttonAcceptText}>Accept {quizType}</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -95,11 +103,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    padding: 16,
   },
   title: {
     fontSize: 24,
-    marginBottom: 20,
+    marginBottom: 40,
   },
+  selected: { fontSize: 24, marginTop: 40 },
   scrollViewContainer: {
     height: 80,
 
@@ -128,6 +138,19 @@ const styles = StyleSheet.create({
   },
   selectedItem: {
     color: "red",
+  },
+  buttonAcceptText: {
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+  buttonAccept: {
+    width: "100%",
+    height: 50,
+    borderWidth: 3,
+    borderColor: COLORS.dark,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 export default Select;
