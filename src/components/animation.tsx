@@ -6,6 +6,7 @@ import {
   Dimensions,
   StyleSheet,
 } from "react-native";
+import { COLORS } from "../consts/COLORS";
 
 type AnimatedComponentProps = {
   x: number;
@@ -14,6 +15,8 @@ type AnimatedComponentProps = {
   timing: number;
   id: string;
   onPress: (id: string) => void;
+  question: string;
+  onAnimationEnd?: () => void;
 };
 const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
   x,
@@ -22,20 +25,22 @@ const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
   timing,
   onPress,
   id,
+  question,
+  onAnimationEnd,
 }) => {
-  const [isClicked, setIsClicked] = useState(false);
-  const position = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
+  const position = useState(new Animated.ValueXY({ x: 0, y: 0 }))[0];
 
   const handleClick = () => {
-    setIsClicked(true);
     onPress(id);
     triggerAnimationAction();
   };
+
   useEffect(() => {
     if (triggerAnimation) {
       triggerAnimationAction();
     }
   }, [triggerAnimation]);
+
   const triggerAnimationAction = () => {
     Animated.timing(position, {
       toValue: {
@@ -44,32 +49,36 @@ const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
       },
       duration: timing,
       useNativeDriver: true,
-    }).start();
+    }).start(() => {
+      onAnimationEnd && onAnimationEnd();
+    });
   };
 
   return (
     <Animated.View
       style={[
         { transform: position.getTranslateTransform() },
-        {
-          width: 200,
-          height: 100,
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "yellow",
-        },
+        styles.animatedView,
       ]}
     >
-      <TouchableOpacity
-        onPress={handleClick}
-        style={{ backgroundColor: "red" }}
-      >
-        <Text style={{ fontSize: 24 }}>
-          {isClicked ? "Answer1" : "Click Me"} LoL
-        </Text>
+      <TouchableOpacity onPress={handleClick} style={styles.touchableOpacity}>
+        <Text style={styles.text}>{question}</Text>
       </TouchableOpacity>
     </Animated.View>
   );
 };
-const styles = StyleSheet.create({});
+
+const styles = StyleSheet.create({
+  animatedView: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "yellow",
+    borderWidth: 2,
+    borderColor: COLORS.dark,
+    borderRadius: 10,
+    marginBottom: 5,
+  },
+  touchableOpacity: { width: 300, height: 80, padding: 3 },
+  text: { fontSize: 18, textAlign: "center" },
+});
 export default AnimatedComponent;
