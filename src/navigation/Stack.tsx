@@ -94,7 +94,7 @@ const MainStackNavigator: React.FC = () => {
         component={EndGame as React.ComponentType<EndGameProps>}
         options={{
           header: () => (
-            <TopBarComponent navigation={navigationEndGame} title="End Game" />
+            <TopBarComponent navigation={navigationEndGame} title="Game Over" />
           ),
         }}
       />

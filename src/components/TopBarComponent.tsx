@@ -1,11 +1,16 @@
-import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ImageBackground,
+} from "react-native";
 import { observer } from "mobx-react-lite";
 import drawerStore from "../mobx/DrawerStore";
-import { Feather } from "@expo/vector-icons";
 import { UniversalNavigationProps } from "../types/navigation.types";
-//import { Icon } from "react-native-vector-icons/Icon";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import { COLORS } from "../consts/COLORS";
 
 interface Props {
   navigation: UniversalNavigationProps;
@@ -16,12 +21,28 @@ const DIMENSIONS = {
 };
 const TopBarComponent: React.FC<Props> = ({ navigation, title }) => {
   const { openDrawer, drawerPosition } = drawerStore;
+  const colors = ["red", "blue", "green", "yellow"];
+  const [colorIndex, setColorIndex] = useState(0);
   const handleBackPress = () => {
-    navigation.goBack();
+    if (title === "Game Over") {
+      navigation.navigate("Home");
+    } else {
+      navigation.goBack();
+    }
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setColorIndex((colorIndex + 1) % colors.length);
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, [colorIndex]);
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require("../assets/ai-images/tab2.png")}
+      style={styles.container}
+    >
       {drawerPosition === "left" ? (
         <View
           style={
@@ -44,7 +65,15 @@ const TopBarComponent: React.FC<Props> = ({ navigation, title }) => {
           </TouchableOpacity>
         </View>
       )}
-      <Text style={styles.title}>{title}</Text>
+      <Text
+        style={
+          title === "Quizzes"
+            ? [styles.title, { color: colors[colorIndex] }]
+            : styles.title
+        }
+      >
+        {title}
+      </Text>
       {drawerPosition === "left" ? (
         <View style={styles.paddingIconLeft}>
           <TouchableOpacity
@@ -67,16 +96,16 @@ const TopBarComponent: React.FC<Props> = ({ navigation, title }) => {
           </TouchableOpacity>
         </View>
       )}
-    </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    height: 70,
+    height: 75,
+    width: "100%",
     paddingTop: 30,
-    backgroundColor: "green",
     alignItems: "center",
     justifyContent: "space-between",
   },
@@ -84,8 +113,9 @@ const styles = StyleSheet.create({
     paddingRight: 16,
   },
   title: {
-    fontSize: 22,
+    fontSize: 26,
     fontWeight: "bold",
+    color: COLORS.dark,
   },
   paddingIconLeft: {
     paddingLeft: 16,

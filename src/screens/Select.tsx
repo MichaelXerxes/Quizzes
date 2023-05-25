@@ -1,16 +1,12 @@
-import React, { Component, useState } from "react";
-import { Picker } from "@react-native-picker/picker";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
-  FlatList,
+  ImageBackground,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-
-import Icon from "react-native-vector-icons";
 import {
   SelectScreenNavigationProp,
   SelectcreenRouteProp,
@@ -25,15 +21,19 @@ interface State {
   selectedValue: number;
 }
 const data = [1, 3, 5, 10, 15, 20, 25, 50];
-const ItemView = ({ item }: { item: number }) => {
-  return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{item}</Text>
-    </View>
-  );
-};
+
 const Select: React.FC<Props> = ({ navigation, route }) => {
   const [selectedValue, setSelectedValue] = useState(1);
+  const colors = [
+    "white",
+    "#E0D88F",
+    "#D88D2F",
+    "#9F9F9F",
+    "#12db47",
+    "#ebeae6",
+    "#7efcf2",
+  ];
+  const [colorIndex, setColorIndex] = useState(0);
   const handlePress = (item: number) => {
     setSelectedValue(item);
   };
@@ -60,13 +60,28 @@ const Select: React.FC<Props> = ({ navigation, route }) => {
       numberQuestions: selectedValue,
     });
   };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setColorIndex((colorIndex + 1) % colors.length);
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, [colorIndex]);
   return (
-    <SafeAreaView style={styles.container}>
+    <ImageBackground
+      source={require("../assets/ai-images/marksq.png")}
+      style={styles.container}
+    >
       <View style={styles.container}>
-        <Text style={styles.title}>Select number of Questions!</Text>
+        <Text style={[styles.title, { color: colors[colorIndex] }]}>
+          Select number of
+        </Text>
+        <Text style={[styles.title, { color: colors[colorIndex] }]}>
+          {" "}
+          Questions!
+        </Text>
         <View style={styles.scrollViewContainer}>
           <ScrollView
-            //horizontal={true}
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.scrollViewContent}
           >
@@ -94,7 +109,7 @@ const Select: React.FC<Props> = ({ navigation, route }) => {
       <TouchableOpacity onPress={onPress} style={styles.buttonAccept}>
         <Text style={styles.buttonAcceptText}>Accept {quizType}</Text>
       </TouchableOpacity>
-    </SafeAreaView>
+    </ImageBackground>
   );
 };
 
@@ -106,14 +121,15 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   title: {
-    fontSize: 24,
-    marginBottom: 40,
+    fontSize: 35,
+    marginBottom: 10,
+    color: COLORS.white,
   },
-  selected: { fontSize: 24, marginTop: 40 },
+  selected: { fontSize: 28, marginTop: 40, color: COLORS.white },
   scrollViewContainer: {
-    height: 80,
+    height: 180,
 
-    width: 100,
+    width: 180,
     marginBottom: 20,
   },
   scrollViewContent: {
@@ -121,27 +137,28 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   item: {
-    fontSize: 30,
+    fontSize: 70,
     marginRight: 20,
     fontWeight: "bold",
   },
   touchableItem: {
-    width: 75,
-    height: 75,
+    width: 175,
+    height: 175,
     borderColor: COLORS.dark,
-    borderRadius: 7,
-    borderWidth: 2,
+    borderRadius: 25,
+    borderWidth: 5,
     margin: 5,
     justifyContent: "center",
     alignItems: "center",
     paddingLeft: 15,
   },
   selectedItem: {
-    color: "red",
+    color: COLORS.red,
   },
   buttonAcceptText: {
     fontSize: 24,
     fontWeight: "bold",
+    color: COLORS.white,
   },
   buttonAccept: {
     width: "100%",

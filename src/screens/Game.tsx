@@ -20,13 +20,16 @@ interface State {}
 
 const Game: React.FC<Props> = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require("../assets/ai-images/marksq.png")}
+      style={styles.container}
+    >
       <Text style={styles.title}>Game Screen </Text>
 
       <Category sourceLink="image1" quizType="ReactJS" />
       <Category sourceLink="image2" quizType="ReactNative" />
       <Category sourceLink="image3" quizType="Typescript" />
-    </View>
+    </ImageBackground>
   );
 };
 
