@@ -12,6 +12,8 @@ import {
 } from "../types/navigation.types";
 import AnimatedComponent from "../components/AnimatedComponent";
 import { questionsReactJSsetOne } from "../allQuestions/react-js/react_js_set_one";
+import { questionsReactNativeSsetOne } from "../allQuestions/react-native/react_native_set_one";
+import { questionsTypeScriptSsetOne } from "../allQuestions/typescript/typescript_set_one";
 import ShakingQuestion from "../animated/shaking";
 import { Question } from "../interfaces/question";
 import { COLORS } from "../consts/COLORS";
@@ -73,7 +75,19 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
   }
 
   useEffect(() => {
-    setQuestions(getRandomElements(questionsReactJSsetOne, numberQuestions));
+    if (quizType === "React JS") {
+      setQuestions(getRandomElements(questionsReactJSsetOne, numberQuestions));
+    }
+    if (quizType === "React Native") {
+      setQuestions(
+        getRandomElements(questionsReactNativeSsetOne, numberQuestions)
+      );
+    }
+    if (quizType === "TypeScript") {
+      setQuestions(
+        getRandomElements(questionsTypeScriptSsetOne, numberQuestions)
+      );
+    }
   }, []);
 
   const handleAnimatedPress = (id: string, answer: string) => {

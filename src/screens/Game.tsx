@@ -26,9 +26,9 @@ const Game: React.FC<Props> = ({ navigation }) => {
     >
       <Text style={styles.title}>Game Screen </Text>
 
-      <Category sourceLink="image1" quizType="ReactJS" />
-      <Category sourceLink="image2" quizType="ReactNative" />
-      <Category sourceLink="image3" quizType="Typescript" />
+      <Category sourceLink="image1" quizType="React JS" />
+      <Category sourceLink="image2" quizType="React Native" />
+      <Category sourceLink="image3" quizType="TypeScript" />
     </ImageBackground>
   );
 };
