@@ -27,13 +27,13 @@ export const questionsReactJSsetOne: Question[] = [
     id: 3,
     question: "What are React hooks?",
     goodAnswer:
-      "React hooks are functions that allow you to use state and other React features without writing a class.",
+      "React hooks are functions that allow you to use state and React features without writing a class.",
     answerOne: "React hooks are React's built-in components for form handling.",
     answerTwo: "React hooks are external libraries used in React applications.",
     answerThree:
       "React hooks are JavaScript design patterns used in React applications.",
     answerFour:
-      "React hooks are functions that allow you to use state and other React features without writing a class.",
+      "React hooks are functions that allow you to use state and React features without writing a class.",
     isAnswerCorrect: false,
   },
   {

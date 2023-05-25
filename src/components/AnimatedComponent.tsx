@@ -14,7 +14,7 @@ type AnimatedComponentProps = {
   triggerAnimation: boolean;
   timing: number;
   id: string;
-  onPress: (id: string) => void;
+  onPress: (id: string, answer: string) => void;
   question: string;
   onAnimationEnd?: () => void;
 };
@@ -30,9 +30,10 @@ const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
 }) => {
   const position = useState(new Animated.ValueXY({ x: 0, y: 0 }))[0];
 
-  const handleClick = () => {
-    onPress(id);
+  const handleClick = (question: string) => {
+    onPress(id, question);
     triggerAnimationAction();
+    console.log("ID :", id, "     question :", question);
   };
 
   useEffect(() => {
@@ -61,7 +62,10 @@ const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
         styles.animatedView,
       ]}
     >
-      <TouchableOpacity onPress={handleClick} style={styles.touchableOpacity}>
+      <TouchableOpacity
+        onPress={() => handleClick(question)}
+        style={styles.touchableOpacity}
+      >
         <Text style={styles.text}>{question}</Text>
       </TouchableOpacity>
     </Animated.View>
@@ -72,7 +76,7 @@ const styles = StyleSheet.create({
   animatedView: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "yellow",
+    backgroundColor: COLORS.yellow,
     borderWidth: 2,
     borderColor: COLORS.dark,
     borderRadius: 10,

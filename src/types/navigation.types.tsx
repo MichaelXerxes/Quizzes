@@ -7,6 +7,7 @@ export type RootStackParamList = {
   Scores: undefined;
   Game: undefined;
   Quiz: { quizType: string; numberQuestions: number };
+  EndGame: undefined;
 
   // Other screens go here
 };
@@ -38,7 +39,24 @@ export type QuizScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   "Quiz"
 >;
+export type EndGameScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "EndGame"
+> & {
+  navigate: (
+    screen: "EndGame",
+    params: {
+      quizType: string;
+      numberQuestions: number;
+      goodAnswers: string;
+      totalTime: number;
+    }
+  ) => void;
+};
+
 export type QuizScreenRouteProp = RouteProp<RootStackParamList, "Quiz">;
+
+export type EndGameScreenRouteProp = RouteProp<RootStackParamList, "EndGame">;
 
 export type UniversalNavigationProps =
   | HomeScreenNavigationProp
@@ -46,4 +64,5 @@ export type UniversalNavigationProps =
   | SettingsScreenNavigationProp
   | ScoreScreenNavigationProp
   | GameScreenNavigationProp
-  | QuizScreenNavigationProp;
+  | QuizScreenNavigationProp
+  | EndGameScreenNavigationProp;

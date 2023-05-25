@@ -7,14 +7,20 @@ import Settings from "../screens/Settings";
 import Scores from "../screens/Scores";
 import Game from "../screens/Game";
 import Quiz from "../screens/Quiz";
+import EndGame, { EndGameProps } from "../screens/EndQuiz";
 import { Button } from "react-native";
 import drawerStore from "../mobx/DrawerStore";
 import TopBarComponent from "../components/TopBarComponent";
-import { SettingsScreenNavigationProp } from "../types/navigation.types";
+import {
+  EndGameScreenNavigationProp,
+  SettingsScreenNavigationProp,
+  UniversalNavigationProps,
+} from "../types/navigation.types";
 const Stack = createStackNavigator();
 
 const MainStackNavigator: React.FC = () => {
-  const navigationSettings: SettingsScreenNavigationProp = useNavigation();
+  const navigationSettings = useNavigation<SettingsScreenNavigationProp>();
+  const navigationEndGame = useNavigation<UniversalNavigationProps>();
   const { openDrawer } = drawerStore;
   return (
     <Stack.Navigator>
@@ -80,6 +86,15 @@ const MainStackNavigator: React.FC = () => {
         options={{
           header: () => (
             <TopBarComponent navigation={navigationSettings} title="Quiz" />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="EndGame"
+        component={EndGame as React.ComponentType<EndGameProps>}
+        options={{
+          header: () => (
+            <TopBarComponent navigation={navigationEndGame} title="End Game" />
           ),
         }}
       />

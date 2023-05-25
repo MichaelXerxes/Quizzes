@@ -5,13 +5,12 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-  ScrollView,
 } from "react-native";
 import {
-  QuizScreenNavigationProp,
+  EndGameScreenNavigationProp,
   QuizScreenRouteProp,
 } from "../types/navigation.types";
-import AnimatedComponent from "../components/animation";
+import AnimatedComponent from "../components/AnimatedComponent";
 import { questionsReactJSsetOne } from "../allQuestions/react-js/react_js_set_one";
 import ShakingQuestion from "../animated/shaking";
 import { Question } from "../interfaces/question";
@@ -22,21 +21,27 @@ import { observer } from "mobx-react-lite";
 const { height } = Dimensions.get("window");
 
 interface Props {
-  navigation?: QuizScreenNavigationProp;
+  navigation?: EndGameScreenNavigationProp;
   route?: QuizScreenRouteProp;
 }
 
 interface State {
-  time: number;
+  totalTime: number;
+  correctAnswers: number;
 }
 
 const timingsArray = [1000, 1500, 2000];
 
 const Quiz: React.FC<Props> = ({ navigation, route }) => {
-  if (!route) {
+  if (
+    !route ||
+    !route.params ||
+    !route.params.quizType ||
+    !route.params.numberQuestions
+  ) {
     return (
       <View>
-        <Text>Error: No route provided!</Text>
+        <Text>Error: Invalid route or missing parameters!</Text>
       </View>
     );
   }
@@ -46,10 +51,17 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
   const [answersSelected, setAnswersSelected] = useState(false);
   const [selectedId, setSelectedId] = useState("");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
+  const [correctAnswers, setCorrectAnswers] = useState(0);
   const [newMixedQuestions, setNewMixedQuestions] = useState<string[]>([]);
-  const [timeGame, setTimeGame] = useState<State>({ time: 0 });
+  const [gameState, setGameState] = useState<State>({
+    totalTime: 0,
+    correctAnswers: 0,
+  });
+  const [time, setTime] = useState<number>(0);
   const [questions, setQuestions] = useState<Question[]>([]);
+
+  const [selectedAnswer, setSelectedAnswer] = useState<string>("");
+
   function getRandomElements<T>(arr: T[], n: number): T[] {
     if (n > arr.length) {
       throw new Error("n cannot be greater than the length of the array");
@@ -59,33 +71,63 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
 
     return shuffledArray.slice(0, n);
   }
+
   useEffect(() => {
     setQuestions(getRandomElements(questionsReactJSsetOne, numberQuestions));
   }, []);
-  const handleAnimatedPress = (id: string) => {
+
+  const handleAnimatedPress = (id: string, answer: string) => {
     if (!selectedId) {
       setSelectedId(id);
       setAnswersSelected(true);
+      setSelectedAnswer(answer);
     }
   };
 
+  const handleAnswerCheck = (): boolean => {
+    const currentQuestion = questions[currentQuestionIndex];
+    const trimmedSelectedAnswer = selectedAnswer.trim();
+    const trimmedGoodAnswer = currentQuestion.goodAnswer.trim();
+    console.log(`Selected answer: ${selectedAnswer}`);
+    console.log(`Good answer: ${currentQuestion.goodAnswer}`);
+    console.log(
+      `Answer is correct: ${currentQuestion.goodAnswer === selectedAnswer}`
+    );
+    if (trimmedGoodAnswer === trimmedSelectedAnswer) {
+      return true;
+    }
+    return false;
+  };
+
   const handleNextQuestion = async () => {
+    const isAnswerCorrect = handleAnswerCheck();
+    if (isAnswerCorrect) {
+      setCorrectAnswers((prevCorrectAnswers) => prevCorrectAnswers + 1);
+    }
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
       setSelectedId("");
       setAnswersSelected(false);
     } else {
       // End Screen
-      userQuizStore.setNumberGoodQuestions(
-        userQuizStore.numberGoodQuestions + 1
-      );
 
-      userQuizStore.setNumberOfAllQuestions(
-        userQuizStore.numberOfAllQuestions + 1
+      userQuizStore.setTime(time);
+      console.log(
+        "Time : ",
+        time,
+        "   Lenght : ",
+        questions.length,
+        "   numbGood Answers : ",
+        correctAnswers
       );
-
-      userQuizStore.setTime(timeGame.time);
       await userQuizStore.storeQuizData();
+      const number = correctAnswers.toString();
+      navigation?.navigate("EndGame", {
+        quizType: quizType,
+        numberQuestions: questions.length,
+        goodAnswers: number,
+        totalTime: time,
+      });
     }
   };
 
@@ -104,7 +146,7 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
   };
   useEffect(() => {
     const timerId = setInterval(() => {
-      setTimeGame((prevState) => ({ time: prevState.time + 1 }));
+      setTime((prevTime) => prevTime + 1);
     }, 1000);
 
     return () => {
