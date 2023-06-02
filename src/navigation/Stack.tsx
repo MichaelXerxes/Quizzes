@@ -8,7 +8,6 @@ import Scores from "../screens/Scores";
 import Game from "../screens/Game";
 import Quiz from "../screens/Quiz";
 import EndGame, { EndGameProps } from "../screens/EndQuiz";
-import { Button } from "react-native";
 import drawerStore from "../mobx/DrawerStore";
 import TopBarComponent from "../components/TopBarComponent";
 import {

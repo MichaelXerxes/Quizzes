@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, SafeAreaView, Button } from "react-native";
 import Icon from "react-native-vector-icons";
 import { SelectScreenNavigationProp } from "../types/navigation.types";
 import drawerStore from "../mobx/DrawerStore";
+import userQuizStore from "../user-store/UserStore";
 import { observer } from "mobx-react-lite";
 interface Props {
   navigation: SelectScreenNavigationProp;
@@ -18,6 +19,7 @@ const Settings: React.FC<Props> = ({ navigation }) => {
       <Text style={styles.title}>Settings Screen </Text>
       <Button title="Change Drawer Position" onPress={changeDrawerPosition} />
       <Button title="Open Drawer" onPress={openDrawer} />
+      <Button title="Reset all Data" onPress={userQuizStore.resetAllData} />
     </View>
   );
 };

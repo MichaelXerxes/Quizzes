@@ -79,16 +79,16 @@ export class UserStore {
   async loadQuizData() {
     try {
       const value = await AsyncStorage.getItem("@quizData");
-      console.log("Retrieved Value:", value); // Check the retrieved value
+
       if (value !== null) {
         const quizDataList = JSON.parse(value);
-        console.log("Quiz Data List:", quizDataList); // Check the parsed quiz data list
+
         if (quizDataList.length === 0) {
           console.log("No quiz data found");
           return;
         }
         const latestQuizData = quizDataList[quizDataList.length - 1];
-        console.log("Latest Quiz Data:", latestQuizData); // Check the latest quiz data
+
         runInAction(() => {
           this.time = latestQuizData.time;
           this.numberGoodQuestions = latestQuizData.numberGoodQuestions;
@@ -110,6 +110,16 @@ export class UserStore {
   subscribe(listener: () => void): () => void {
     this.unsubscribe = autorun(listener);
     return this.unsubscribe;
+  }
+
+  ///For Data reset
+  async resetAllData() {
+    this.resetQuizData();
+    try {
+      await AsyncStorage.removeItem("@quizData");
+    } catch (e) {
+      console.error("Failed to remove the data from AsyncStorage:", e);
+    }
   }
 }
 

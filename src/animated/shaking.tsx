@@ -98,10 +98,8 @@ const ShakingQuestion: React.FC<ShakeAnimationProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: COLORS.white,
     marginBottom: 30,
   },
   box: {

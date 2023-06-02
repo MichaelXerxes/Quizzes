@@ -33,6 +33,8 @@ interface State {
 }
 
 const timingsArray = [1000, 1500, 2000];
+const greenColors = ["#A7D88C", "#8CCB76", "#76BF62"];
+const redColors = ["#F29B91", "#E57373", "#E53935"];
 
 const Quiz: React.FC<Props> = ({ navigation, route }) => {
   if (
@@ -51,6 +53,7 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
   const { quizType, numberQuestions } = route.params;
 
   const [answersSelected, setAnswersSelected] = useState(false);
+  const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
   const [selectedId, setSelectedId] = useState("");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
@@ -64,6 +67,8 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
 
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
 
+  const [bgColor, setBgColor] = useState(COLORS.white);
+
   function getRandomElements<T>(arr: T[], n: number): T[] {
     if (n > arr.length) {
       throw new Error("n cannot be greater than the length of the array");
@@ -73,6 +78,18 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
 
     return shuffledArray.slice(0, n);
   }
+
+  const flashBackground = (colors: string[]) => {
+    let i = 0;
+    const interval = setInterval(() => {
+      setBgColor(colors[i]);
+      i += 1;
+      if (i === colors.length) {
+        clearInterval(interval);
+        setBgColor(COLORS.green);
+      }
+    }, 700);
+  };
 
   useEffect(() => {
     if (quizType === "React JS") {
@@ -96,6 +113,7 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
       setAnswersSelected(true);
       setSelectedAnswer(answer);
     }
+    setIsAnswerCorrect(handleAnswerCheck());
   };
 
   const handleAnswerCheck = (): boolean => {
@@ -104,13 +122,19 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
     const trimmedGoodAnswer = currentQuestion.goodAnswer.trim();
 
     if (trimmedGoodAnswer === trimmedSelectedAnswer) {
+      // flashBackground(greenColors);
+      setBgColor(COLORS.green);
+      console.log("GoooooooooooooooooooooooooooooooooooooD");
       return true;
     }
+    //flashBackground(redColors);
+    setBgColor(COLORS.red);
+    console.log("BaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaD");
     return false;
   };
 
   const handleNextQuestion = async () => {
-    const isAnswerCorrect = handleAnswerCheck();
+    //const isAnswerCorrect = handleAnswerCheck();
     if (isAnswerCorrect) {
       setCorrectAnswers((prevCorrectAnswers) => prevCorrectAnswers + 1);
     }
@@ -169,7 +193,7 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
   const mixedAnswers = newMixedQuestions;
 
   return (
-    <View style={styles.container}>
+    <View style={{ ...styles.container, backgroundColor: bgColor }}>
       {questions.length > 0 ? (
         <View>
           <Text style={styles.head}>
@@ -242,12 +266,16 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
               onPress={handleAnimatedPress}
               question={mixedAnswers[3]}
             />
-            <TouchableOpacity
-              onPress={handleNextQuestion}
-              style={styles.buttonNext}
-            >
-              <Text style={styles.buttonNextText}>Next Question</Text>
-            </TouchableOpacity>
+            {answersSelected === true ? (
+              <TouchableOpacity
+                onPress={handleNextQuestion}
+                style={styles.buttonNext}
+              >
+                <Text style={styles.buttonNextText}>Next Question</Text>
+              </TouchableOpacity>
+            ) : (
+              <View></View>
+            )}
           </View>
         </View>
       ) : (
@@ -265,7 +293,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   buttonNext: {
-    width: 300,
+    width: "100%",
     height: 50,
     borderWidth: 3,
     borderRadius: 10,
@@ -283,6 +311,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontSize: 22,
     fontWeight: "bold",
+  },
+  goodAnswer: {
+    backgroundColor: COLORS.green,
+  },
+  badNaswer: {
+    backgroundColor: COLORS.red,
   },
 });
 
