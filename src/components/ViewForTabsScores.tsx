@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { RouteProp } from "@react-navigation/native";
-import { View, Text, StyleSheet, SafeAreaView, Button } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  ImageBackground,
+} from "react-native";
 
 import { SelectScreenNavigationProp } from "../types/navigation.types";
 import { NavigationContainer } from "@react-navigation/native";
@@ -9,6 +15,8 @@ import Icon from "react-native-vector-icons/Entypo";
 import { Tab, TabView } from "@rneui/themed";
 import userQuizStore from "../user-store/UserStore";
 import { observer } from "mobx-react-lite";
+import { COLORS } from "../consts/COLORS";
+import { WIDTH_USER_SCREEN } from "../consts/DIMENSSIONS";
 
 interface QuizData {
   time: number;
@@ -49,19 +57,29 @@ const ViewForTabsScores: React.FC<Props> = ({ data }) => {
         }
         return b.numberGoodQuestions - a.numberGoodQuestions;
       });
-    console.log("sectionData:", sectionData);
+
     const top5Quizzes = filteredData.slice(0, 5);
+    const changeTime = (time: number) => {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+
+      return `${minutes.toString().padStart(2, "0")}:${seconds
+        .toString()
+        .padStart(2, "0")}`;
+    };
     return (
-      <View style={{ justifyContent: "center", alignItems: "center" }}>
-        <Text style={{ fontSize: 18, fontWeight: "bold" }}>{sectionTitle}</Text>
+      <View style={styles.itemMainContainer}>
+        <Text style={styles.title}>{sectionTitle}</Text>
         {top5Quizzes.map((quiz, index) => {
           return (
-            <View key={index} style={{ flexDirection: "row" }}>
-              <Text>
-                Number of Good Questions: {quiz.numberGoodQuestions}/
-                {quiz.numberOfAllQuestions}
+            <View key={index} style={styles.itemContainer}>
+              <Text style={styles.textItemlongPart}>
+                You answered : {quiz.numberGoodQuestions}/
+                {quiz.numberOfAllQuestions} questions.
               </Text>
-              <Text>Time: {quiz.time}</Text>
+              <Text style={styles.textItemshortPart}>
+                Time: {changeTime(quiz.time)}
+              </Text>
             </View>
           );
         })}
@@ -70,12 +88,10 @@ const ViewForTabsScores: React.FC<Props> = ({ data }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <DisplaySectionColumn
-        sectionData={quizDataList}
-        x={0}
-        sectionTitle="0 Good Questions"
-      />
+    <ImageBackground
+      source={require("../assets/ai-images/scoresB.jpg")}
+      style={styles.container}
+    >
       <DisplaySectionColumn
         sectionData={quizDataList}
         x={1}
@@ -116,7 +132,7 @@ const ViewForTabsScores: React.FC<Props> = ({ data }) => {
         x={50}
         sectionTitle="50 Question"
       />
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -124,11 +140,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    width: WIDTH_USER_SCREEN,
   },
   title: {
-    color: "black",
-    marginTop: 50,
-    fontSize: 28,
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 5,
+    color: COLORS.cream,
+  },
+  itemMainContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  itemContainer: {
+    marginBottom: 3,
+    flexDirection: "row",
+    height: 30,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.red,
+    borderTopColor: COLORS.yellow,
+    borderTopWidth: 0.5,
+
+    alignItems: "center",
+  },
+  textItemlongPart: {
+    flex: 2,
+    fontSize: 15,
+    color: COLORS.white,
+    marginLeft: 16,
+  },
+  textItemshortPart: {
+    flex: 1,
+    marginLeft: 30,
+    fontSize: 15,
+    color: COLORS.white,
   },
 });
 export default observer(ViewForTabsScores);

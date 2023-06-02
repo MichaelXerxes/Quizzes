@@ -102,11 +102,7 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
     const currentQuestion = questions[currentQuestionIndex];
     const trimmedSelectedAnswer = selectedAnswer.trim();
     const trimmedGoodAnswer = currentQuestion.goodAnswer.trim();
-    // console.log(`Selected answer: ${selectedAnswer}`);
-    // console.log(`Good answer: ${currentQuestion.goodAnswer}`);
-    // console.log(
-    //   `Answer is correct: ${currentQuestion.goodAnswer === selectedAnswer}`
-    // );
+
     if (trimmedGoodAnswer === trimmedSelectedAnswer) {
       return true;
     }
@@ -128,14 +124,8 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
       userQuizStore.setTime(time);
       userQuizStore.setNumberGoodQuestions(correctAnswers);
       userQuizStore.setNumberOfAllQuestions(questions.length);
-      // console.log(
-      //   "Time : ",
-      //   time,
-      //   "   Lenght : ",
-      //   questions.length,
-      //   "   numbGood Answers : ",
-      //   correctAnswers
-      // );
+      userQuizStore.setQuizzType(quizType);
+
       await userQuizStore.storeQuizData();
       const number = correctAnswers.toString();
       navigation?.navigate("EndGame", {

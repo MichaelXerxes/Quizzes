@@ -5,10 +5,12 @@ export class UserStore {
   @observable time = 0;
   numberGoodQuestions = 0;
   numberOfAllQuestions = 0;
+  quizzType = "";
   quizDataList: {
     time: number;
     numberGoodQuestions: number;
     numberOfAllQuestions: number;
+    quizzType: string;
   }[] = [];
   unsubscribe: () => void = () => {};
 
@@ -28,11 +30,15 @@ export class UserStore {
   setNumberOfAllQuestions(number: number) {
     this.numberOfAllQuestions = number;
   }
+  setQuizzType(quizzType: string) {
+    this.quizzType = quizzType;
+  }
 
   resetQuizData() {
     this.time = 0;
     this.numberGoodQuestions = 0;
     this.numberOfAllQuestions = 0;
+    this.quizzType = "";
   }
 
   async storeQuizData() {
@@ -40,6 +46,7 @@ export class UserStore {
       time: this.time,
       numberGoodQuestions: this.numberGoodQuestions,
       numberOfAllQuestions: this.numberOfAllQuestions,
+      quizzType: this.quizzType,
     };
 
     try {
@@ -48,6 +55,7 @@ export class UserStore {
         time: number;
         numberGoodQuestions: number;
         numberOfAllQuestions: number;
+        quizzType: string;
       }[] = [];
       if (existingQuizData !== null) {
         quizDataList = JSON.parse(existingQuizData);
@@ -60,7 +68,7 @@ export class UserStore {
 
       await AsyncStorage.setItem("@quizData", JSON.stringify(quizDataList));
       runInAction(() => {
-        this.quizDataList = quizDataList; // Update the quizDataList property
+        this.quizDataList = quizDataList;
       });
       console.log("Quiz Data Stored:", quizDataList);
     } catch (e) {

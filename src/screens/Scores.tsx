@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, SafeAreaView, Button } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, ImageBackground } from "react-native";
 import Icon from "react-native-vector-icons";
 import { SelectScreenNavigationProp } from "../types/navigation.types";
 import { Tab, TabView } from "@rneui/themed";
 import ViewForTabsScores from "../components/ViewForTabsScores";
 import userQuizStore from "../user-store/UserStore";
 import { observer } from "mobx-react-lite";
+import { COLORS } from "../consts/COLORS";
 interface Props {
   navigation: SelectScreenNavigationProp;
 }
@@ -44,11 +45,17 @@ const Scores: React.FC<Props> = ({ navigation }) => {
         onChange={setOuterTabIndex}
         animationType="spring"
       >
-        {outerTabItems.map((_, outerIndex) => (
-          <TabView.Item key={outerIndex} style={styles.container}>
-            <ViewForTabsScores navigation={navigation} data={quizDataList} />
-          </TabView.Item>
-        ))}
+        {outerTabItems.map((quizType, outerIndex) => {
+          const filteredData = quizDataList.filter(
+            (quiz) => quiz.quizzType === quizType
+          );
+
+          return (
+            <TabView.Item key={outerIndex} style={styles.container}>
+              <ViewForTabsScores navigation={navigation} data={filteredData} />
+            </TabView.Item>
+          );
+        })}
       </TabView>
     </>
   );
@@ -83,14 +90,6 @@ const styles = StyleSheet.create({
     backgroundColor: "yellow",
     width: "100%",
   },
-  resultText: {
-    fontSize: 16,
-    color: "black",
-  },
-  resultValue: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "blue",
-  },
 });
+
 export default observer(Scores);
