@@ -86,7 +86,7 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
       i += 1;
       if (i === colors.length) {
         clearInterval(interval);
-        setBgColor(COLORS.green);
+        setBgColor(COLORS.lightBlue);
       }
     }, 700);
   };
@@ -122,19 +122,18 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
     const trimmedGoodAnswer = currentQuestion.goodAnswer.trim();
 
     if (trimmedGoodAnswer === trimmedSelectedAnswer) {
-      // flashBackground(greenColors);
-      setBgColor(COLORS.green);
+      flashBackground(greenColors);
+      //setBgColor(COLORS.green);
       console.log("GoooooooooooooooooooooooooooooooooooooD");
       return true;
     }
-    //flashBackground(redColors);
-    setBgColor(COLORS.red);
+    flashBackground(redColors);
+    // setBgColor(COLORS.red);
     console.log("BaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaD");
     return false;
   };
 
   const handleNextQuestion = async () => {
-    //const isAnswerCorrect = handleAnswerCheck();
     if (isAnswerCorrect) {
       setCorrectAnswers((prevCorrectAnswers) => prevCorrectAnswers + 1);
     }
