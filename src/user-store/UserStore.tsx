@@ -17,6 +17,7 @@ export class UserStore {
   constructor() {
     makeObservable(this);
     this.loadQuizData();
+    this.resetAllData = this.resetAllData.bind(this);
   }
 
   setTime(time: number) {

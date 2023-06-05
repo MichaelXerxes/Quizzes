@@ -110,21 +110,25 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
   const handleAnimatedPress = (id: string, answer: string) => {
     if (!selectedId) {
       setSelectedId(id);
-      setAnswersSelected(true);
       setSelectedAnswer(answer);
+      setAnswersSelected(true);
+      setIsAnswerCorrect(handleAnswerCheck(answer));
     }
-    setIsAnswerCorrect(handleAnswerCheck());
   };
 
-  const handleAnswerCheck = (): boolean => {
+  const handleAnswerCheck = (selectedAnswer: string): boolean => {
     const currentQuestion = questions[currentQuestionIndex];
+
     const trimmedSelectedAnswer = selectedAnswer.trim();
     const trimmedGoodAnswer = currentQuestion.goodAnswer.trim();
+    console.log("1 trimmedSelectedAnswer  is:", trimmedSelectedAnswer);
+    console.log("1.1 selectedAnswer  is:", selectedAnswer);
+    console.log("2  trimmedGoodAnswer:", trimmedGoodAnswer);
 
     if (trimmedGoodAnswer === trimmedSelectedAnswer) {
       flashBackground(greenColors);
       //setBgColor(COLORS.green);
-      console.log("GoooooooooooooooooooooooooooooooooooooD");
+      console.log("3 GoooooooooooooooooooooooooooooooooooooD");
       return true;
     }
     flashBackground(redColors);
@@ -182,8 +186,9 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
       clearInterval(timerId);
     };
   }, []);
+
   useEffect(() => {
-    if (questions.length > 0) {
+    if (questions.length > 0 && currentQuestionIndex < questions.length) {
       const mixedAnswers = mixQuestions(questions[currentQuestionIndex]);
       setNewMixedQuestions(mixedAnswers);
     }
@@ -217,8 +222,9 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
                     ]
               }
               id="id1"
-              onPress={handleAnimatedPress}
+              onPress={() => handleAnimatedPress("id1", mixedAnswers[0])}
               question={mixedAnswers[0]}
+              //  selectedAnswer={selectedAnswer}
             />
             <AnimatedComponent
               x={600}
@@ -232,8 +238,9 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
                     ]
               }
               id="id2"
-              onPress={handleAnimatedPress}
+              onPress={() => handleAnimatedPress("id2", mixedAnswers[1])}
               question={mixedAnswers[1]}
+              //  selectedAnswer={selectedAnswer}
             />
             <AnimatedComponent
               x={-600}
@@ -247,8 +254,9 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
                     ]
               }
               id="id3"
-              onPress={handleAnimatedPress}
+              onPress={() => handleAnimatedPress("id3", mixedAnswers[2])}
               question={mixedAnswers[2]}
+              //  selectedAnswer={selectedAnswer}
             />
             <AnimatedComponent
               x={600}
@@ -262,8 +270,9 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
                     ]
               }
               id="id4"
-              onPress={handleAnimatedPress}
+              onPress={() => handleAnimatedPress("id4", mixedAnswers[3])}
               question={mixedAnswers[3]}
+              //  selectedAnswer={selectedAnswer}
             />
             {answersSelected === true ? (
               <TouchableOpacity

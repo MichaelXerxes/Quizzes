@@ -8,6 +8,7 @@ export const COLORS={
     lightBlue:'#C9DEEE',
     red:"#A33027",
     cream:"#F7F0AB",
-    green:"green"
+    green:"green",
+    silver:"#C0C0C0"
 
 };

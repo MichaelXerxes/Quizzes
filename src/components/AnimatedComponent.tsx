@@ -17,6 +17,7 @@ type AnimatedComponentProps = {
   onPress: (id: string, answer: string) => void;
   question: string;
   onAnimationEnd?: () => void;
+  // selectedAnswer: string;
 };
 const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
   x,
@@ -27,6 +28,7 @@ const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
   id,
   question,
   onAnimationEnd,
+  // selectedAnswer,
 }) => {
   const position = useState(new Animated.ValueXY({ x: 0, y: 0 }))[0];
 
@@ -34,6 +36,7 @@ const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
     onPress(id, question);
     triggerAnimationAction();
     console.log("ID :", id, "     question :", question);
+    // setSelectedAnswer(question);
   };
 
   useEffect(() => {
@@ -83,6 +86,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   touchableOpacity: { width: 300, height: 80, padding: 3 },
-  text: { fontSize: 18, textAlign: "center" },
+  text: { fontSize: 16, textAlign: "center" },
 });
 export default AnimatedComponent;
