@@ -68,7 +68,7 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
 
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
 
-  const [bgColor, setBgColor] = useState(colors.white);
+  const [bgColor, setBgColor] = useState(colors.lightBlue);
 
   function getRandomElements<T>(arr: T[], n: number): T[] {
     if (n > arr.length) {
@@ -133,15 +133,12 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
       return true;
     }
     flashBackground(redColors);
-    // setBgColor(COLORS.red);
+
     console.log("BaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaD");
     return false;
   };
 
   const handleNextQuestion = async () => {
-    // if (isAnswerCorrect) {
-    //   setCorrectAnswers((prevCorrectAnswers) => prevCorrectAnswers + 1);
-    // }
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
       setSelectedId("");

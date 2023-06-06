@@ -1,6 +1,6 @@
 export const DEFAULT_COLORS={
-    primary:'#D4901D',
-    secondary:'#939393',
+    primary:'#939393',
+    secondary:'#D4901D',
     white:'#fff',
     dark:'#010101',
     yellow:'#F5E65E',
@@ -9,21 +9,23 @@ export const DEFAULT_COLORS={
     red:"#A33027",
     cream:"#F7F0AB",
     green:"green",
-    silver:"#C0C0C0"
+    silver:"#C0C0C0",
+    darkBlack:'#010101'
 
 };
 export const BLACK_WHITE_COLORS={
-    primary:'#fff',
-    secondary:'#010101',
-    white:'#fff',
-    dark:'#010101',
+    primary:'#010101',
+    secondary:'#fff',
+    white:'#010101',
+    dark:'#fff',
     yellow:'#fff',
     grey:'#010101',
     lightBlue:'#fff',
     red:"#010101",
     cream:"#fff",
     green:"#fff",
-    silver:"#C0C0C0"
+    silver:"#C0C0C0",
+    darkBlack:'#010101'
 
 };
 function randomColor() {
@@ -42,6 +44,7 @@ export const getRandomColors=()=>{
         red: randomColor(),
         cream: randomColor(),
         green: randomColor(),
-        silver: randomColor()
+        silver: randomColor(),
+        darkBlack:randomColor(),
     };
 }; 

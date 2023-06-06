@@ -36,7 +36,8 @@ const Settings: React.FC<Props> = ({ navigation }) => {
       [
         { text: "Cancel", style: "cancel" },
         { text: "Reset", style: "destructive", onPress: handleReset },
-      ]
+      ],
+      { cancelable: true }
     );
   };
 
@@ -109,21 +110,19 @@ const Settings: React.FC<Props> = ({ navigation }) => {
       >
         <Text style={styles.touchableText}>Change Drawer Position </Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={handleColorChange}
+        style={styles.touchableContainer}
+      >
+        <FlashingText text="Change Colors" />
+      </TouchableOpacity>
       <TouchableOpacity
         onPress={resetAllData}
         style={styles.touchableContainer}
       >
         <Text style={styles.touchableText}>Reset all Data </Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={handleColorChange}
-        style={styles.touchableContainer}
-      >
-        <FlashingText />
-      </TouchableOpacity>
-      {/* <Button title="Change Drawer Position" onPress={changeDrawerPosition} />*/}
-      {/* <Button title="Open Drawer" onPress={openDrawer} /> */}
-      {/* <Button title="Reset all Data" onPress={userQuizStore.resetAllData} /> */}
     </ImageBackground>
   );
 };

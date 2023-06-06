@@ -1,7 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { View, StyleSheet, Animated } from "react-native";
+interface Props {
+  text: string;
+}
 
-const FlashingText = () => {
+const FlashingText: React.FC<Props> = ({ text }) => {
   const colorAnimation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -35,14 +38,14 @@ const FlashingText = () => {
 
   return (
     <View>
-      <Animated.Text style={textStyle}>Change Colors</Animated.Text>
+      <Animated.Text style={textStyle}>{text}</Animated.Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   touchableText: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
     textAlign: "center",
   },

@@ -56,7 +56,7 @@ const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
       justifyContent: "center",
       backgroundColor: colors.yellow,
       borderWidth: 2,
-      borderColor: colors.dark,
+      borderColor: colors.darkBlack,
       borderRadius: 10,
       marginBottom: 5,
     },

@@ -6,6 +6,7 @@ import { Tab, TabView } from "@rneui/themed";
 import ViewForTabsScores from "../components/ViewForTabsScores";
 import userQuizStore from "../user-store/UserStore";
 import { observer } from "mobx-react-lite";
+import { useColorContext } from "../mobx/ColorsStore";
 
 interface Props {
   navigation: SelectScreenNavigationProp;
@@ -14,12 +15,14 @@ interface State {}
 
 const Scores: React.FC<Props> = ({ navigation }) => {
   const [outerTabIndex, setOuterTabIndex] = useState(0);
-  const [innerTabIndex, setInnerTabIndex] = useState(0);
+
+  const { colors } = useColorContext();
+
   const [quizDataList, setQuizDataList] = React.useState(
     userQuizStore.quizDataList
   );
   const outerTabItems = ["React JS", "React Native", "TypeScript"];
-  const innerTabItems = [1, 3, 5, 10, 15, 20, 25, 50];
+
   React.useEffect(() => {
     const updateQuizData = () => {
       const data = userQuizStore.quizDataList.slice();
@@ -32,11 +35,39 @@ const Scores: React.FC<Props> = ({ navigation }) => {
       unsubscribe();
     };
   }, []);
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: colors.dark,
+      width: "100%",
+    },
+    item: {
+      color: colors.white,
+    },
+    tabContainer: {
+      backgroundColor: colors.dark,
+    },
+    indicator: {
+      backgroundColor: colors.white,
+    },
+  });
+
   return (
     <>
-      <Tab value={outerTabIndex} onChange={setOuterTabIndex} dense>
+      <Tab
+        value={outerTabIndex}
+        onChange={setOuterTabIndex}
+        style={styles.tabContainer}
+        indicatorStyle={styles.indicator}
+        dense
+      >
         {outerTabItems.map((item, index) => (
-          <Tab.Item key={index}>{item}</Tab.Item>
+          <Tab.Item key={index} titleStyle={styles.item}>
+            {item}
+          </Tab.Item>
         ))}
       </Tab>
 
@@ -60,36 +91,5 @@ const Scores: React.FC<Props> = ({ navigation }) => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  title: {
-    color: "black",
-    marginTop: 50,
-    fontSize: 28,
-  },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white",
-    width: "100%",
-  },
-  containerLeft: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "yellow",
-    width: "100%",
-  },
-  containerRight: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "yellow",
-    width: "100%",
-  },
-});
 
 export default observer(Scores);
