@@ -9,7 +9,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import drawerStore from "./src/mobx/DrawerStore";
 import { observer } from "mobx-react-lite";
 import MainStackNavigator from "./src/navigation/Stack";
-
+import { ColorProvider } from "./src/mobx/ColorsStore";
 const Drawer = createDrawerNavigator();
 
 const App = () => {
@@ -19,16 +19,18 @@ const App = () => {
     drawerStore.setDrawerRef(drawer);
   }, []);
   return (
-    <NavigationContainer>
-      <DrawerLayoutAndroid
-        ref={drawer}
-        drawerWidth={300}
-        drawerPosition={drawerPosition}
-        renderNavigationView={() => <NavigationView drawer={drawer} />}
-      >
-        <MainStackNavigator />
-      </DrawerLayoutAndroid>
-    </NavigationContainer>
+    <ColorProvider>
+      <NavigationContainer>
+        <DrawerLayoutAndroid
+          ref={drawer}
+          drawerWidth={300}
+          drawerPosition={drawerPosition}
+          renderNavigationView={() => <NavigationView drawer={drawer} />}
+        >
+          <MainStackNavigator />
+        </DrawerLayoutAndroid>
+      </NavigationContainer>
+    </ColorProvider>
   );
 };
 

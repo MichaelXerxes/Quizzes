@@ -128,7 +128,7 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
 
     if (trimmedGoodAnswer === trimmedSelectedAnswer) {
       flashBackground(greenColors);
-      //setBgColor(COLORS.green);
+      setCorrectAnswers((prevCorrectAnswers) => prevCorrectAnswers + 1);
       console.log("3 GoooooooooooooooooooooooooooooooooooooD");
       return true;
     }
@@ -139,9 +139,9 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
   };
 
   const handleNextQuestion = async () => {
-    if (isAnswerCorrect) {
-      setCorrectAnswers((prevCorrectAnswers) => prevCorrectAnswers + 1);
-    }
+    // if (isAnswerCorrect) {
+    //   setCorrectAnswers((prevCorrectAnswers) => prevCorrectAnswers + 1);
+    // }
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
       setSelectedId("");
