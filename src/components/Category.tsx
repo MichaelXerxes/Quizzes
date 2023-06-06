@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { COLORS } from "../consts/COLORS";
+import { useColorContext } from "../mobx/ColorsStore";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SelectScreenNavigationProp } from "../types/navigation.types";
 interface CategoryProps {
@@ -16,12 +16,31 @@ const imageMapper = {
 };
 
 const Category: React.FC<CategoryProps> = ({ sourceLink, quizType }) => {
+  const { colors, setColors } = useColorContext();
   const imageSource = imageMapper[sourceLink];
   const navigation: SelectScreenNavigationProp = useNavigation();
   const onPress = () => {
     console.log(quizType);
     navigation.navigate("Select", { quizType: quizType });
   };
+
+  const styles = StyleSheet.create({
+    categoryContainer: {
+      width: 150,
+      height: 150,
+      margin: 15,
+      borderColor: colors.dark,
+      borderWidth: 5,
+      borderRadius: 10,
+      overflow: "hidden",
+    },
+    categoryItem: {
+      width: "100%",
+      height: "100%",
+      overflow: "hidden",
+    },
+  });
+
   return (
     <View style={styles.categoryContainer}>
       <TouchableOpacity onPress={onPress}>
@@ -35,20 +54,4 @@ const Category: React.FC<CategoryProps> = ({ sourceLink, quizType }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  categoryContainer: {
-    width: 150,
-    height: 150,
-    margin: 15,
-    borderColor: COLORS.dark,
-    borderWidth: 5,
-    borderRadius: 10,
-    overflow: "hidden",
-  },
-  categoryItem: {
-    width: "100%",
-    height: "100%",
-    overflow: "hidden",
-  },
-});
 export default Category;

@@ -16,7 +16,7 @@ import { questionsReactNativeSsetOne } from "../allQuestions/react-native/react_
 import { questionsTypeScriptSsetOne } from "../allQuestions/typescript/typescript_set_one";
 import ShakingQuestion from "../animated/shaking";
 import { Question } from "../interfaces/question";
-import { COLORS } from "../consts/COLORS";
+import { useColorContext } from "../mobx/ColorsStore";
 import userQuizStore from "../user-store/UserStore";
 import { observer } from "mobx-react-lite";
 
@@ -51,6 +51,7 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
   }
 
   const { quizType, numberQuestions } = route.params;
+  const { colors, setColors } = useColorContext();
 
   const [answersSelected, setAnswersSelected] = useState(false);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
@@ -67,7 +68,7 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
 
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
 
-  const [bgColor, setBgColor] = useState(COLORS.white);
+  const [bgColor, setBgColor] = useState(colors.white);
 
   function getRandomElements<T>(arr: T[], n: number): T[] {
     if (n > arr.length) {
@@ -79,14 +80,14 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
     return shuffledArray.slice(0, n);
   }
 
-  const flashBackground = (colors: string[]) => {
+  const flashBackground = (colorsProp: string[]) => {
     let i = 0;
     const interval = setInterval(() => {
-      setBgColor(colors[i]);
+      setBgColor(colorsProp[i]);
       i += 1;
-      if (i === colors.length) {
+      if (i === colorsProp.length) {
         clearInterval(interval);
-        setBgColor(COLORS.lightBlue);
+        setBgColor(colors.lightBlue);
       }
     }, 700);
   };
@@ -196,6 +197,41 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
 
   const mixedAnswers = newMixedQuestions;
 
+  const styles = StyleSheet.create({
+    container: {
+      flexGrow: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      paddingVertical: 20,
+    },
+    buttonNext: {
+      width: "100%",
+      height: 50,
+      borderWidth: 3,
+      borderRadius: 10,
+      borderColor: colors.primary,
+      alignItems: "center",
+      marginTop: 10,
+      marginBottom: 10,
+      justifyContent: "center",
+    },
+    buttonNextText: {
+      fontSize: 24,
+      fontWeight: "bold",
+    },
+    head: {
+      marginBottom: 10,
+      fontSize: 22,
+      fontWeight: "bold",
+    },
+    goodAnswer: {
+      backgroundColor: colors.green,
+    },
+    badNaswer: {
+      backgroundColor: colors.red,
+    },
+  });
+
   return (
     <View style={{ ...styles.container, backgroundColor: bgColor }}>
       {questions.length > 0 ? (
@@ -224,7 +260,6 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
               id="id1"
               onPress={() => handleAnimatedPress("id1", mixedAnswers[0])}
               question={mixedAnswers[0]}
-              //  selectedAnswer={selectedAnswer}
             />
             <AnimatedComponent
               x={600}
@@ -240,7 +275,6 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
               id="id2"
               onPress={() => handleAnimatedPress("id2", mixedAnswers[1])}
               question={mixedAnswers[1]}
-              //  selectedAnswer={selectedAnswer}
             />
             <AnimatedComponent
               x={-600}
@@ -256,7 +290,6 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
               id="id3"
               onPress={() => handleAnimatedPress("id3", mixedAnswers[2])}
               question={mixedAnswers[2]}
-              //  selectedAnswer={selectedAnswer}
             />
             <AnimatedComponent
               x={600}
@@ -272,7 +305,6 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
               id="id4"
               onPress={() => handleAnimatedPress("id4", mixedAnswers[3])}
               question={mixedAnswers[3]}
-              //  selectedAnswer={selectedAnswer}
             />
             {answersSelected === true ? (
               <TouchableOpacity
@@ -292,40 +324,5 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 20,
-  },
-  buttonNext: {
-    width: "100%",
-    height: 50,
-    borderWidth: 3,
-    borderRadius: 10,
-    borderColor: COLORS.primary,
-    alignItems: "center",
-    marginTop: 10,
-    marginBottom: 10,
-    justifyContent: "center",
-  },
-  buttonNextText: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  head: {
-    marginBottom: 10,
-    fontSize: 22,
-    fontWeight: "bold",
-  },
-  goodAnswer: {
-    backgroundColor: COLORS.green,
-  },
-  badNaswer: {
-    backgroundColor: COLORS.red,
-  },
-});
 
 export default observer(Quiz);

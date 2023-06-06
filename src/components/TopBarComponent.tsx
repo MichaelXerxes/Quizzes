@@ -10,7 +10,7 @@ import { observer } from "mobx-react-lite";
 import drawerStore from "../mobx/DrawerStore";
 import { UniversalNavigationProps } from "../types/navigation.types";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import { COLORS } from "../consts/COLORS";
+import { useColorContext } from "../mobx/ColorsStore";
 
 interface Props {
   navigation: UniversalNavigationProps;
@@ -20,8 +20,9 @@ const DIMENSIONS = {
   iconSize: 26,
 };
 const TopBarComponent: React.FC<Props> = ({ navigation, title }) => {
+  const { colors, setColors } = useColorContext();
   const { openDrawer, drawerPosition } = drawerStore;
-  const colors = ["red", "blue", "green", "yellow"];
+  const colorsArray = ["red", "blue", "green", "yellow"];
   const [colorIndex, setColorIndex] = useState(0);
   const handleBackPress = () => {
     if (title === "Game Over") {
@@ -33,11 +34,34 @@ const TopBarComponent: React.FC<Props> = ({ navigation, title }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setColorIndex((colorIndex + 1) % colors.length);
+      setColorIndex((colorIndex + 1) % colorsArray.length);
     }, 500);
 
     return () => clearInterval(interval);
   }, [colorIndex]);
+
+  const styles = StyleSheet.create({
+    container: {
+      flexDirection: "row",
+      height: 75,
+      width: "100%",
+      paddingTop: 30,
+      alignItems: "center",
+      justifyContent: "space-between",
+    },
+    paddingIconRight: {
+      paddingRight: 16,
+    },
+    title: {
+      fontSize: 26,
+      fontWeight: "bold",
+      color: colors.dark,
+    },
+    paddingIconLeft: {
+      paddingLeft: 16,
+    },
+  });
+
   return (
     <ImageBackground
       source={require("../assets/ai-images/tab2.png")}
@@ -68,7 +92,7 @@ const TopBarComponent: React.FC<Props> = ({ navigation, title }) => {
       <Text
         style={
           title === "Quizzes"
-            ? [styles.title, { color: colors[colorIndex] }]
+            ? [styles.title, { color: colorsArray[colorIndex] }]
             : styles.title
         }
       >
@@ -99,27 +123,5 @@ const TopBarComponent: React.FC<Props> = ({ navigation, title }) => {
     </ImageBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    height: 75,
-    width: "100%",
-    paddingTop: 30,
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  paddingIconRight: {
-    paddingRight: 16,
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: "bold",
-    color: COLORS.dark,
-  },
-  paddingIconLeft: {
-    paddingLeft: 16,
-  },
-});
 
 export default observer(TopBarComponent);

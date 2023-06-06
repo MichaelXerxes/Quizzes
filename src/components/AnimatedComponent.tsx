@@ -1,12 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
-import {
-  Text,
-  Animated,
-  TouchableOpacity,
-  Dimensions,
-  StyleSheet,
-} from "react-native";
-import { COLORS } from "../consts/COLORS";
+import React, { useState, useEffect } from "react";
+import { Text, Animated, TouchableOpacity, StyleSheet } from "react-native";
+import { useColorContext } from "../mobx/ColorsStore";
 
 type AnimatedComponentProps = {
   x: number;
@@ -28,15 +22,13 @@ const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
   id,
   question,
   onAnimationEnd,
-  // selectedAnswer,
 }) => {
   const position = useState(new Animated.ValueXY({ x: 0, y: 0 }))[0];
-
+  const { colors, setColors } = useColorContext();
   const handleClick = (question: string) => {
     onPress(id, question);
     triggerAnimationAction();
     console.log("ID :", id, "     question :", question);
-    // setSelectedAnswer(question);
   };
 
   useEffect(() => {
@@ -58,6 +50,20 @@ const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
     });
   };
 
+  const styles = StyleSheet.create({
+    animatedView: {
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: colors.yellow,
+      borderWidth: 2,
+      borderColor: colors.dark,
+      borderRadius: 10,
+      marginBottom: 5,
+    },
+    touchableOpacity: { width: 300, height: 80, padding: 3 },
+    text: { fontSize: 16, textAlign: "center" },
+  });
+
   return (
     <Animated.View
       style={[
@@ -75,17 +81,4 @@ const AnimatedComponent: React.FC<AnimatedComponentProps> = ({
   );
 };
 
-const styles = StyleSheet.create({
-  animatedView: {
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: COLORS.yellow,
-    borderWidth: 2,
-    borderColor: COLORS.dark,
-    borderRadius: 10,
-    marginBottom: 5,
-  },
-  touchableOpacity: { width: 300, height: 80, padding: 3 },
-  text: { fontSize: 16, textAlign: "center" },
-});
 export default AnimatedComponent;
