@@ -1,13 +1,13 @@
 import { createContext, useContext, useState, ReactNode } from "react";
-import { COLORS } from "../consts/COLORS";
+import { DEFAULT_COLORS } from "../consts/COLORS";
 
 interface ColorContextProps {
-  colors: typeof COLORS;
-  setColors: (newColors: typeof COLORS) => void;
+  colors: typeof DEFAULT_COLORS;
+  setColors: (newColors: typeof DEFAULT_COLORS) => void;
 }
 
 const ColorContext = createContext<ColorContextProps>({
-  colors: COLORS,
+  colors: DEFAULT_COLORS,
   setColors: () => {},
 });
 
@@ -16,9 +16,9 @@ interface ColorProviderProps {
   children: ReactNode;
 }
 export const ColorProvider: React.FC<ColorProviderProps> = ({ children }) => {
-  const [colors, setColors] = useState<typeof COLORS>(COLORS);
+  const [colors, setColors] = useState<typeof DEFAULT_COLORS>(DEFAULT_COLORS);
 
-  const updateColors = (newColors: typeof COLORS) => {
+  const updateColors = (newColors: typeof DEFAULT_COLORS) => {
     setColors({ ...colors, ...newColors });
   };
 

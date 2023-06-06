@@ -9,7 +9,7 @@ import {
   Animated,
 } from "react-native";
 import { HomeScreenNavigationProp } from "../types/navigation.types";
-import { COLORS } from "../consts/COLORS";
+import { useColorContext } from "../mobx/ColorsStore";
 
 const { height } = Dimensions.get("window");
 
@@ -22,6 +22,7 @@ interface State {}
 const Home: React.FC<Props> = ({ navigation }) => {
   const animLR = useRef(new Animated.Value(-500)).current;
   const animBT = useRef(new Animated.Value(height)).current;
+  const { colors, setColors } = useColorContext();
 
   const story = [
     "A long time ago, in a galaxy far, far away...",
@@ -74,12 +75,44 @@ const Home: React.FC<Props> = ({ navigation }) => {
     return () => clearTimeout(startTimer);
   }, []);
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: "center",
+      paddingHorizontal: 16,
+    },
+    title: {
+      fontSize: 28,
+      fontWeight: "bold",
+      color: colors.white,
+      textShadowColor: "rgba(0, 0, 0, 0.75)",
+      textShadowOffset: { width: -1, height: 1 },
+      textShadowRadius: 10,
+    },
+    text: {
+      fontSize: 16,
+      color: colors.white,
+      position: "absolute",
+      bottom: 80,
+      textAlign: "justify",
+      lineHeight: 24,
+      letterSpacing: 0.5,
+      textShadowColor: "rgba(0, 0, 0, 0.75)",
+      textShadowOffset: { width: -1, height: 1 },
+      textShadowRadius: 10,
+    },
+    animatedView: {
+      backgroundColor: "transparent",
+      height: 500,
+      width: "100%",
+    },
+  });
+
   return (
     <ImageBackground
       source={require("../assets/ai-images/space.png")}
       style={styles.container}
     >
-      {/* <View style={styles.animatedView}> */}
       {lines.map((animation, index) => (
         <Animated.Text
           style={[
@@ -93,40 +126,8 @@ const Home: React.FC<Props> = ({ navigation }) => {
           {story[index]}
         </Animated.Text>
       ))}
-      {/* </View> */}
     </ImageBackground>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    paddingHorizontal: 16,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: COLORS.white,
-    textShadowColor: "rgba(0, 0, 0, 0.75)",
-    textShadowOffset: { width: -1, height: 1 },
-    textShadowRadius: 10,
-  },
-  text: {
-    fontSize: 16,
-    color: COLORS.white,
-    position: "absolute",
-    bottom: 80,
-    textAlign: "justify",
-    lineHeight: 24,
-    letterSpacing: 0.5,
-    textShadowColor: "rgba(0, 0, 0, 0.75)",
-    textShadowOffset: { width: -1, height: 1 },
-    textShadowRadius: 10,
-  },
-  animatedView: {
-    backgroundColor: "transparent",
-    height: 500,
-    width: "100%",
-  },
-});
+
 export default Home;

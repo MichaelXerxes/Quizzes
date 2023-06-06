@@ -12,7 +12,7 @@ import {
   EndGameScreenNavigationProp,
   EndGameScreenRouteProp,
 } from "../types/navigation.types";
-import { COLORS } from "../consts/COLORS";
+import { useColorContext } from "../mobx/ColorsStore";
 
 export interface EndGameProps {
   navigation?: EndGameScreenNavigationProp;
@@ -30,12 +30,50 @@ const EndGame: React.FC<EndGameProps> = ({ navigation, route }) => {
   }
 
   const { quizType, numberQuestions, goodAnswers, totalTime } = route.params;
+  const { colors } = useColorContext();
 
   const formatTime = (seconds: number): string => {
     let minutes = Math.floor(seconds / 60);
     let remainingSeconds = seconds % 60;
     return `${minutes} min ${remainingSeconds} sec`;
   };
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      paddingTop: 50,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: colors.secondary,
+    },
+    title: {
+      color: "black",
+      fontSize: 32,
+      marginBottom: 20,
+      textShadowColor: "rgba(0, 0, 0, 0.3)",
+      textShadowOffset: { width: 2, height: 2 },
+      textShadowRadius: 4,
+    },
+    resultContainer: {
+      backgroundColor: "white",
+      padding: 20,
+      borderRadius: 10,
+      shadowColor: "rgba(0, 0, 0, 0.3)",
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.4,
+      shadowRadius: 10,
+      width: "90%",
+      alignItems: "center",
+    },
+    resultText: {
+      fontSize: 18,
+      marginBottom: 10,
+    },
+    resultValue: {
+      fontWeight: "bold",
+    },
+  });
+
   return (
     <ImageBackground
       source={require("../assets/ai-images/endfireworks.png")}
@@ -62,39 +100,4 @@ const EndGame: React.FC<EndGameProps> = ({ navigation, route }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: COLORS.secondary,
-  },
-  title: {
-    color: "black",
-    fontSize: 32,
-    marginBottom: 20,
-    textShadowColor: "rgba(0, 0, 0, 0.3)",
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 4,
-  },
-  resultContainer: {
-    backgroundColor: "white",
-    padding: 20,
-    borderRadius: 10,
-    shadowColor: "rgba(0, 0, 0, 0.3)",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.4,
-    shadowRadius: 10,
-    width: "90%",
-    alignItems: "center",
-  },
-  resultText: {
-    fontSize: 18,
-    marginBottom: 10,
-  },
-  resultValue: {
-    fontWeight: "bold",
-  },
-});
 export default EndGame;

@@ -1,4 +1,4 @@
-export const COLORS={
+export const DEFAULT_COLORS={
     primary:'#D4901D',
     secondary:'#939393',
     white:'#fff',
@@ -12,3 +12,36 @@ export const COLORS={
     silver:"#C0C0C0"
 
 };
+export const BLACK_WHITE_COLORS={
+    primary:'#fff',
+    secondary:'#010101',
+    white:'#fff',
+    dark:'#010101',
+    yellow:'#fff',
+    grey:'#010101',
+    lightBlue:'#fff',
+    red:"#010101",
+    cream:"#fff",
+    green:"#fff",
+    silver:"#C0C0C0"
+
+};
+function randomColor() {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
+
+export const getRandomColors=()=>{
+    return {
+        primary: randomColor(),
+        secondary: randomColor(),
+        white: randomColor(),
+        dark: randomColor(),
+        yellow: randomColor(),
+        grey: randomColor(),
+        lightBlue: randomColor(),
+        red: randomColor(),
+        cream: randomColor(),
+        green: randomColor(),
+        silver: randomColor()
+    };
+}; 

@@ -14,6 +14,11 @@ import userQuizStore from "../user-store/UserStore";
 import { observer } from "mobx-react-lite";
 import { useColorContext } from "../mobx/ColorsStore";
 import FlashingText from "../components/FlashingText";
+import {
+  DEFAULT_COLORS,
+  BLACK_WHITE_COLORS,
+  getRandomColors,
+} from "../consts/COLORS";
 
 interface Props {
   navigation: SelectScreenNavigationProp;
@@ -40,21 +45,24 @@ const Settings: React.FC<Props> = ({ navigation }) => {
   };
 
   const handleColorChange = () => {
-    const newColors = {
-      primary: "#D4901D",
-      secondary: "#939393",
-      white: "#fff",
-      dark: "#010101",
-      yellow: "#F5E65E",
-      grey: "#959595",
-      lightBlue: "#C9DEEE",
-      red: "#A33027",
-      cream: "#F7F0AB",
-      green: "green",
-      silver: "#C0C0C0",
-    };
-
-    setColors(newColors);
+    Alert.alert(
+      "Change Theme",
+      "Choose according to your preferences",
+      [
+        { text: "Default", onPress: () => setColors(DEFAULT_COLORS) },
+        {
+          text: "Black/White",
+          style: "destructive",
+          onPress: () => setColors(BLACK_WHITE_COLORS),
+        },
+        {
+          text: "Random",
+          style: "destructive",
+          onPress: () => setColors(getRandomColors()),
+        },
+      ],
+      { cancelable: true }
+    );
   };
 
   const styles = StyleSheet.create({

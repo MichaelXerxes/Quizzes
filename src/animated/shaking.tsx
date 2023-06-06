@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { View, Animated, Easing, StyleSheet, Text } from "react-native";
-import { COLORS } from "../consts/COLORS";
+import { useColorContext } from "../mobx/ColorsStore";
 type ShakeAnimationProps = {
   makeShake: boolean;
   question: string;
@@ -10,6 +10,7 @@ const ShakingQuestion: React.FC<ShakeAnimationProps> = ({
   question,
 }) => {
   const animatedValue = useRef(new Animated.Value(0)).current;
+  const { colors, setColors } = useColorContext();
 
   useEffect(() => {
     if (makeShake) {
@@ -85,6 +86,34 @@ const ShakingQuestion: React.FC<ShakeAnimationProps> = ({
     outputRange: [1, 0],
   });
 
+  const styles = StyleSheet.create({
+    container: {
+      alignItems: "center",
+      justifyContent: "center",
+      marginBottom: 30,
+    },
+    box: {
+      width: 300,
+      height: 120,
+      backgroundColor: colors.primary,
+      borderRadius: 10,
+      justifyContent: "center",
+      alignItems: "center",
+      shadowColor: colors.grey,
+      shadowOpacity: 0.3,
+      shadowOffset: { width: 0, height: 2 },
+      shadowRadius: 4,
+      elevation: 5,
+    },
+    question: {
+      fontSize: 18,
+      textAlign: "center",
+      color: colors.dark,
+      fontWeight: "bold",
+      paddingHorizontal: 10,
+    },
+  });
+
   return (
     <View style={styles.container}>
       <Animated.View
@@ -95,33 +124,5 @@ const ShakingQuestion: React.FC<ShakeAnimationProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 30,
-  },
-  box: {
-    width: 300,
-    height: 120,
-    backgroundColor: COLORS.primary,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: COLORS.grey,
-    shadowOpacity: 0.3,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  question: {
-    fontSize: 18,
-    textAlign: "center",
-    color: COLORS.dark,
-    fontWeight: "bold",
-    paddingHorizontal: 10,
-  },
-});
 
 export default ShakingQuestion;

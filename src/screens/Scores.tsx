@@ -6,7 +6,7 @@ import { Tab, TabView } from "@rneui/themed";
 import ViewForTabsScores from "../components/ViewForTabsScores";
 import userQuizStore from "../user-store/UserStore";
 import { observer } from "mobx-react-lite";
-import { COLORS } from "../consts/COLORS";
+
 interface Props {
   navigation: SelectScreenNavigationProp;
 }

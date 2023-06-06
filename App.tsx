@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { Button, Text, StyleSheet, View } from "react-native";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { COLORS } from "./src/consts/COLORS";
 import NavigationView from "./src/navigation/navigationView";
 import { DrawerLayoutAndroid } from "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
