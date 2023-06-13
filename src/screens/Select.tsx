@@ -12,6 +12,7 @@ import {
   SelectcreenRouteProp,
 } from "../types/navigation.types";
 import { useColorContext } from "../mobx/ColorsStore";
+import FlashingText from "../components/FlashingText";
 
 interface Props {
   navigation?: SelectScreenNavigationProp;
@@ -28,12 +29,16 @@ const Select: React.FC<Props> = ({ navigation, route }) => {
   const [selectedValue, setSelectedValue] = useState(1);
   const colorsArray = [
     "white",
-    "#E0D88F",
-    "#D88D2F",
-    "#9F9F9F",
-    "#12db47",
-    "#ebeae6",
-    "#7efcf2",
+    // "#E0D88F",
+    // "#D88D2F",
+    // "#9F9F9F",
+    // "#12db47",
+    // "#ebeae6",
+    // "#7efcf2",
+    "#FEFCFB",
+    "#F1F1F1",
+    "#EFF3F6",
+    "#EDF1E8",
   ];
   const [colorIndex, setColorIndex] = useState(0);
   const handlePress = (item: number) => {
@@ -75,19 +80,24 @@ const Select: React.FC<Props> = ({ navigation, route }) => {
       marginBottom: 10,
       color: colors.white,
     },
-    selected: { fontSize: 28, marginTop: 40, color: colors.white },
+    selected: {
+      fontSize: 45,
+      marginTop: 20,
+      color: colors.white,
+      fontWeight: "600",
+    },
     scrollViewContainer: {
       height: 180,
 
       width: 180,
-      marginBottom: 20,
+      marginBottom: 50,
     },
     scrollViewContent: {
       alignItems: "center",
       justifyContent: "center",
     },
     item: {
-      fontSize: 70,
+      fontSize: 90,
       marginRight: 20,
       fontWeight: "bold",
     },
@@ -157,7 +167,9 @@ const Select: React.FC<Props> = ({ navigation, route }) => {
             ))}
           </ScrollView>
         </View>
-        <Text style={styles.selected}>Selected: {selectedValue}</Text>
+        <Text style={styles.selected}>
+          <FlashingText text={`Selected: ${selectedValue}`} fontSize={45} />
+        </Text>
       </View>
 
       <TouchableOpacity onPress={onPress} style={styles.buttonAccept}>

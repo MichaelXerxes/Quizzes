@@ -1,6 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import { RouteProp } from "@react-navigation/native";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  ScrollView,
+} from "react-native";
 import { useColorContext } from "../mobx/ColorsStore";
 import { SelectScreenNavigationProp } from "../types/navigation.types";
 
@@ -108,7 +114,7 @@ const ViewForTabsScores: React.FC<Props> = ({ data }) => {
     },
     textItemlongPart: {
       flex: 2,
-      fontSize: 15,
+      fontSize: 14,
       color: colors.white,
       marginLeft: 16,
     },
@@ -125,46 +131,48 @@ const ViewForTabsScores: React.FC<Props> = ({ data }) => {
       source={require("../assets/ai-images/scoresB.jpg")}
       style={styles.container}
     >
-      <DisplaySectionColumn
-        sectionData={quizDataList}
-        x={1}
-        sectionTitle="1 Question"
-      />
-      <DisplaySectionColumn
-        sectionData={quizDataList}
-        x={3}
-        sectionTitle="3 Question"
-      />
-      <DisplaySectionColumn
-        sectionData={quizDataList}
-        x={5}
-        sectionTitle="5 Question"
-      />
-      <DisplaySectionColumn
-        sectionData={quizDataList}
-        x={10}
-        sectionTitle="10 Question"
-      />
-      <DisplaySectionColumn
-        sectionData={quizDataList}
-        x={15}
-        sectionTitle="15 Question"
-      />
-      <DisplaySectionColumn
-        sectionData={quizDataList}
-        x={20}
-        sectionTitle="20 Question"
-      />
-      <DisplaySectionColumn
-        sectionData={quizDataList}
-        x={25}
-        sectionTitle="25 Question"
-      />
-      <DisplaySectionColumn
-        sectionData={quizDataList}
-        x={50}
-        sectionTitle="50 Question"
-      />
+      <ScrollView style={{ flex: 1, marginBottom: 60, marginTop: 100 }}>
+        <DisplaySectionColumn
+          sectionData={quizDataList}
+          x={1}
+          sectionTitle="1 Question"
+        />
+        <DisplaySectionColumn
+          sectionData={quizDataList}
+          x={3}
+          sectionTitle="3 Question"
+        />
+        <DisplaySectionColumn
+          sectionData={quizDataList}
+          x={5}
+          sectionTitle="5 Question"
+        />
+        <DisplaySectionColumn
+          sectionData={quizDataList}
+          x={10}
+          sectionTitle="10 Question"
+        />
+        <DisplaySectionColumn
+          sectionData={quizDataList}
+          x={15}
+          sectionTitle="15 Question"
+        />
+        <DisplaySectionColumn
+          sectionData={quizDataList}
+          x={20}
+          sectionTitle="20 Question"
+        />
+        <DisplaySectionColumn
+          sectionData={quizDataList}
+          x={25}
+          sectionTitle="25 Question"
+        />
+        <DisplaySectionColumn
+          sectionData={quizDataList}
+          x={50}
+          sectionTitle="50 Question"
+        />
+      </ScrollView>
     </ImageBackground>
   );
 };

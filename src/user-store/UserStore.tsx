@@ -7,6 +7,7 @@ export class UserStore {
   numberOfAllQuestions = 0;
   quizzType = "";
   quizDataList: {
+    id: string;
     time: number;
     numberGoodQuestions: number;
     numberOfAllQuestions: number;
@@ -40,10 +41,12 @@ export class UserStore {
     this.numberGoodQuestions = 0;
     this.numberOfAllQuestions = 0;
     this.quizzType = "";
+    this.quizDataList = [];
   }
 
   async storeQuizData() {
     const newQuizData = {
+      id: Math.random().toString(36).substr(2, 9),
       time: this.time,
       numberGoodQuestions: this.numberGoodQuestions,
       numberOfAllQuestions: this.numberOfAllQuestions,
@@ -53,6 +56,7 @@ export class UserStore {
     try {
       const existingQuizData = await AsyncStorage.getItem("@quizData");
       let quizDataList: {
+        id: string;
         time: number;
         numberGoodQuestions: number;
         numberOfAllQuestions: number;
@@ -64,14 +68,34 @@ export class UserStore {
           quizDataList = [quizDataList];
         }
       }
+      const duplicateQuiz = quizDataList.find(
+        (item) =>
+          item.time === newQuizData.time &&
+          item.numberGoodQuestions === newQuizData.numberGoodQuestions &&
+          item.numberOfAllQuestions === newQuizData.numberOfAllQuestions &&
+          item.quizzType === newQuizData.quizzType
+      );
+      if (!duplicateQuiz) {
+        quizDataList.push(newQuizData);
+        await AsyncStorage.setItem("@quizData", JSON.stringify(quizDataList));
+        runInAction(() => {
+          this.quizDataList = quizDataList;
+        });
+        console.log("Quiz Data Stored:", quizDataList);
+      } else {
+        console.log("An identical quiz already exists. Skipping storage.");
+      }
+      // if (!quizDataList.find((item) => item.id === newQuizData.id)) {
+      //   quizDataList.push(newQuizData);
 
-      quizDataList.push(newQuizData);
-
-      await AsyncStorage.setItem("@quizData", JSON.stringify(quizDataList));
-      runInAction(() => {
-        this.quizDataList = quizDataList;
-      });
-      console.log("Quiz Data Stored:", quizDataList);
+      //   await AsyncStorage.setItem("@quizData", JSON.stringify(quizDataList));
+      //   runInAction(() => {
+      //     this.quizDataList = quizDataList;
+      //   });
+      //   console.log("Quiz Data Stored:", quizDataList);
+      // } else {
+      //   console.log("Quiz data already exists with this id. Skipping storage.");
+      // }
     } catch (e) {
       console.error(e);
     }
@@ -115,9 +139,9 @@ export class UserStore {
 
   ///For Data reset
   async resetAllData() {
-    this.resetQuizData();
     try {
       await AsyncStorage.removeItem("@quizData");
+      this.resetQuizData();
     } catch (e) {
       console.error("Failed to remove the data from AsyncStorage:", e);
     }

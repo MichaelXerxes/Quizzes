@@ -2,9 +2,10 @@ import React, { useRef, useEffect } from "react";
 import { View, StyleSheet, Animated } from "react-native";
 interface Props {
   text: string;
+  fontSize: number;
 }
 
-const FlashingText: React.FC<Props> = ({ text }) => {
+const FlashingText: React.FC<Props> = ({ text, fontSize }) => {
   const colorAnimation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -31,6 +32,13 @@ const FlashingText: React.FC<Props> = ({ text }) => {
     outputRange: ["red", "blue", "green", "yellow", "purple"],
   });
 
+  const styles = StyleSheet.create({
+    touchableText: {
+      fontSize: fontSize,
+      fontWeight: "bold",
+      textAlign: "center",
+    },
+  });
   const textStyle = {
     ...styles.touchableText,
     color: interpolatedColor,
@@ -42,13 +50,5 @@ const FlashingText: React.FC<Props> = ({ text }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  touchableText: {
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-});
 
 export default FlashingText;

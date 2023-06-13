@@ -115,7 +115,7 @@ const Settings: React.FC<Props> = ({ navigation }) => {
         onPress={handleColorChange}
         style={styles.touchableContainer}
       >
-        <FlashingText text="Change Colors" />
+        <FlashingText text="Change Colors" fontSize={18} />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={resetAllData}

@@ -29,7 +29,7 @@ export const BLACK_WHITE_COLORS={
 
 };
 function randomColor() {
-    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+    return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
 }
 
 export const getRandomColors=()=>{

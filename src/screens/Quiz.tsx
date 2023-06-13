@@ -33,8 +33,22 @@ interface State {
 }
 
 const timingsArray = [1000, 1500, 2000];
-const greenColors = ["#A7D88C", "#8CCB76", "#76BF62"];
-const redColors = ["#F29B91", "#E57373", "#E53935"];
+const greenColors = [
+  "#A7D88C",
+  "#8CCB76",
+  "#76BF62",
+  "#608A3C",
+  "#8CBD52",
+  "#91AF6F",
+];
+const redColors = [
+  "#F29B91",
+  "#E57373",
+  "#E53935",
+  "#D44A3F",
+  "#C56F6F",
+  "#D4562E",
+];
 
 const Quiz: React.FC<Props> = ({ navigation, route }) => {
   if (
@@ -122,19 +136,19 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
 
     const trimmedSelectedAnswer = selectedAnswer.trim();
     const trimmedGoodAnswer = currentQuestion.goodAnswer.trim();
-    console.log("1 trimmedSelectedAnswer  is:", trimmedSelectedAnswer);
-    console.log("1.1 selectedAnswer  is:", selectedAnswer);
-    console.log("2  trimmedGoodAnswer:", trimmedGoodAnswer);
+    // console.log("1 trimmedSelectedAnswer  is:", trimmedSelectedAnswer);
+    // console.log("1.1 selectedAnswer  is:", selectedAnswer);
+    // console.log("2  trimmedGoodAnswer:", trimmedGoodAnswer);
 
     if (trimmedGoodAnswer === trimmedSelectedAnswer) {
       flashBackground(greenColors);
       setCorrectAnswers((prevCorrectAnswers) => prevCorrectAnswers + 1);
-      console.log("3 GoooooooooooooooooooooooooooooooooooooD");
+      // console.log("3 GoooooooooooooooooooooooooooooooooooooD");
       return true;
     }
     flashBackground(redColors);
 
-    console.log("BaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaD");
+    // console.log("BaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaD");
     return false;
   };
 
@@ -198,28 +212,36 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
     container: {
       flexGrow: 1,
       alignItems: "center",
-      justifyContent: "center",
-      paddingVertical: 20,
+      //  justifyContent: "center",
+      // alignContent: "center",
+      //flex: 1,
+
+      // paddingVertical: 20,
     },
     buttonNext: {
-      width: "100%",
-      height: 50,
-      borderWidth: 3,
-      borderRadius: 10,
-      borderColor: colors.primary,
+      //position: "absolute",
+      bottom: 330,
+      //right: 1,
+      width: 330,
+      height: 330,
+      borderWidth: 10,
+      borderRadius: 330,
+      borderColor: colors.secondary,
       alignItems: "center",
       marginTop: 10,
       marginBottom: 10,
       justifyContent: "center",
     },
     buttonNextText: {
-      fontSize: 24,
+      fontSize: 34,
       fontWeight: "bold",
     },
     head: {
+      marginTop: 20,
       marginBottom: 10,
       fontSize: 22,
       fontWeight: "bold",
+      textAlign: "center",
     },
     goodAnswer: {
       backgroundColor: colors.green,
@@ -234,7 +256,8 @@ const Quiz: React.FC<Props> = ({ navigation, route }) => {
       {questions.length > 0 ? (
         <View>
           <Text style={styles.head}>
-            Quiz {quizType} question No: {questions[currentQuestionIndex].id}
+            Quiz {quizType}
+            {/* question No: {questions[currentQuestionIndex].id} */}
           </Text>
 
           <View key={questions[currentQuestionIndex].id}>
