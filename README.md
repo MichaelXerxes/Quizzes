@@ -15,11 +15,11 @@ This is my project. Here are some images and descriptions.
 <p align="center">
   <em>Description of image 2</em>
   <br>
-  <img alt="image2" src="image-url-2" width="30%">
+  <img alt="image2" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/c551e8a9-4a7f-4096-a802-6f4034f0f2ff" width="200" height="400">
 </p>
 
 <p align="center">
-  <img alt="image3" src="image-url-3" width="30%">
+  <img alt="image3" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/38bf5db5-144b-4566-b5b4-5ee29b027130"  width="200" height="400">
   <br>
   <em>Description of image 3</em>
 </p>
