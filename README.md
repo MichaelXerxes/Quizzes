@@ -29,7 +29,7 @@
   <img alt="image4" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/d64b644f-9ea4-4a18-81de-6a227192e3064"  width="200" height="400">
     <img alt="image4" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/9423357d-32ca-4cd5-84f9-93afaa7f24cc"  width="200" height="400">
       <br>
-     <em>Description of image 4</em>
+     <em>Each question has 4 answers and only one is good :) </em>
 
 </p>
 
@@ -40,7 +40,7 @@
   <img alt="image5" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/ea93347e-58e1-4169-9209-f7aca0ac2ffd"  width="200" height="400">
    <img alt="image5" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/43e6fec5-ee6b-4882-98c8-347e82778f0f"  width="200" height="400">
   <br>
-  <em>Description of image 5</em>
+  <em>At the end, the user receives information that is saved in local memory and then can compare the results in the Scores tab</em>
 </p>
 
 ---
@@ -49,7 +49,7 @@
   <img alt="image5" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/21a6e25f-7a0e-4a79-82b9-f5a98ee63275"  width="200" height="400">
  <img alt="image5" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/09bd6297-6e6f-48f6-be44-2c03d91743a5"  width="200" height="400">
   <br>
-  <em>Description of image 5</em>
+  <em>Settings screen where we can change themes colors, drawer arrangement and reset the results saved in local storage</em>
 </p>
 
 ---
