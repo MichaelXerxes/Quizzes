@@ -3,9 +3,9 @@
 
 ---
 
-## Image Gallery
+<h2 align="center" color="black">## Image Gallery</h2>
 
-Here are some images related to the quizzes:
+<p align="center">Here are some images related to the quizzes:</p>
 
 <p align="center">
   <img alt="image1" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/c5f2d82f-f32d-45ea-bc68-0a71f19f4894"   width="200" height="400">
