@@ -5,9 +5,9 @@
 # My Project
 
 This is my project. Here are some images and descriptions.
-  <img src=https://user-images.githubusercontent.com/81194285/150002071-35d6f8e6-0815-4b26-8d74-b6c67da5a391.jpg width="200" height="400">
+
 <p align="center">
-  <img alt="image1" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/c5f2d82f-f32d-45ea-bc68-0a71f19f4894" width="30%">
+  <img alt="image1" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/c5f2d82f-f32d-45ea-bc68-0a71f19f4894" width="30%"  width="200" height="400">
   <br>
   <em>Description of image 1</em>
 </p>
