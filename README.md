@@ -5,9 +5,10 @@
 # My Project
 
 This is my project. Here are some images and descriptions.
-(https://github.com/MichaelXerxes/Quizzes/assets/81194285/ff10ad37-2d98-41f7-95ee-dfa906259fe9
+
 <p align="center">
   <img alt="image1" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/c5f2d82f-f32d-45ea-bc68-0a71f19f4894"   width="200" height="400">
+  <img alt="image1" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/ff10ad37-2d98-41f7-95ee-dfa906259fe9"  width="200" height="400">
   <br>
   <em>Description of image 1</em>
 </p>
@@ -27,11 +28,7 @@ This is my project. Here are some images and descriptions.
     <img alt="image4" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/9423357d-32ca-4cd5-84f9-93afaa7f24cc"  width="200" height="400">
 </p>
 
-<p align="center">
-  <img alt="image5" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/ea93347e-58e1-4169-9209-f7aca0ac2ffd"  width="200" height="400">
-  <br>
-  <em>Description of image 5</em>
-</p>
+
 <p align="center">
   <img alt="image5" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/ea93347e-58e1-4169-9209-f7aca0ac2ffd"  width="200" height="400">
    <img alt="image5" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/43e6fec5-ee6b-4882-98c8-347e82778f0f"  width="200" height="400">
