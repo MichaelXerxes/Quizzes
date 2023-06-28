@@ -12,11 +12,6 @@ This is my project. Here are some images and descriptions.
   <em>Description of image 1</em>
 </p>
 
-<p align="center">
-  <em>Description of image 2</em>
-  <br>
-  <img alt="image2" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/c551e8a9-4a7f-4096-a802-6f4034f0f2ff" width="200" height="400">
-</p>
 
 <p align="center">
   <img alt="image3" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/f953d7b5-e1e8-4233-8663-48a6dd6529ea"  width="200" height="400">
