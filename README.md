@@ -54,6 +54,6 @@
 
 ---
 
-## More About My Project
+## Quizzes version 2.0 is being planned
 
-Here you can write more about your project.
+
