@@ -7,7 +7,7 @@
 This is my project. Here are some images and descriptions.
 
 <p align="center">
-  <img alt="image1" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/c5f2d82f-f32d-45ea-bc68-0a71f19f4894" width="30%"  width="200" height="400">
+  <img alt="image1" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/c5f2d82f-f32d-45ea-bc68-0a71f19f4894"   width="200" height="400">
   <br>
   <em>Description of image 1</em>
 </p>
