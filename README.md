@@ -38,12 +38,14 @@
   <br>
   <em>Description of image 5</em>
 </p>
+---
 <p align="center">
   <img alt="image5" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/21a6e25f-7a0e-4a79-82b9-f5a98ee63275"  width="200" height="400">
  <img alt="image5" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/09bd6297-6e6f-48f6-be44-2c03d91743a5"  width="200" height="400">
   <br>
   <em>Description of image 5</em>
 </p>
+---
 ## More About My Project
 
 Here you can write more about your project.
