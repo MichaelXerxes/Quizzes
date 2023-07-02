@@ -169,14 +169,13 @@ const Home = () => {
       lines.forEach(({ animation }) => {
         setTimeout(() => {
           animation.value = withSequence(
-            withTiming(-height, { duration: 40000 }), // 20 seconds to reach the top
-            withDelay(3000, withTiming(height * 1.5, { duration: 0 })) // wait for 2 seconds, then reset to bottom instantly
+            withTiming(-height, { duration: 40000 }),
+            withDelay(3000, withTiming(height * 1.5, { duration: 0 }))
           );
         }, timeOffset);
-        timeOffset += 3000; // 2 seconds delay for each line
+        timeOffset += 3000;
       });
 
-      // Wait for all animations to finish, plus an additional second, then start the whole animation again
       const totalAnimationDelay = (lines.length - 1) * 3000 + 40000;
       setTimeout(animateLines, totalAnimationDelay);
     };
@@ -192,7 +191,7 @@ const Home = () => {
       flex: 1,
       alignItems: "center",
       justifyContent: "center",
-      perspective: 1000, // This enables 3D transform
+      perspective: 1000,
 
       transform: [{ rotateX: "45deg" }],
       paddingHorizontal: 10,
@@ -217,7 +216,7 @@ const Home = () => {
             return {
               transform: [
                 { translateY: animation.value },
-                // { rotateX: "25deg" }, // Rotate the text along the X-axis
+                // { rotateX: "25deg" },
               ],
             };
           });
