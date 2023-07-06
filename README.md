@@ -25,7 +25,6 @@
 ---
 
 <p align="center">
- 
     <img alt="image4" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/d64b644f-9ea4-4a18-81de-6a227192e3064"  width="200" height="400">
     <img alt="image5" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/9423357d-32ca-4cd5-84f9-93afaa7f24cc"  width="200" height="400">
     <img alt="image8" src="https://github.com/MichaelXerxes/Quizzes/assets/81194285/dca1bf3f-31cf-44ba-90af-ff483c02634f"  width="200" height="400">
