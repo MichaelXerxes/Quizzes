@@ -29,7 +29,7 @@ const Popup = () => {
           }}
           onClick={exampleThemeStorage.toggle}
         >
-          Toggle theme: [{theme}]
+          Micahel Toggle theme: [{theme}]
         </button>
       </header>
     </div>
