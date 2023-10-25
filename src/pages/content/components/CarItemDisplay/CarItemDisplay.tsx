@@ -13,7 +13,7 @@ const CarItemDisplay = ({
   priceRange,
   carImage,
   oryginalSize = true,
-  isSold = true,
+  isSold = false,
 }: Props): ReactElement => {
   const dynamicContainer = {
     height: oryginalSize ? "104.87px;" : "auto",

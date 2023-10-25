@@ -4,7 +4,8 @@
     align-items: flex-start; 
     justify-content: flex-start;  
    margin-top: 20px;
-   margin-left: 30px;
+   margin-left: 10px;
+   
    /* margin top and left may need to be removed */
 }
 .displayItemTitleBox-first-text-div{

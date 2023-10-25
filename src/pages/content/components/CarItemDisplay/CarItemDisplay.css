@@ -4,7 +4,11 @@
     justify-content: center;
     width: 98px;
     position: relative;
-    background-color: rgb(123, 226, 53);
+    border: 0.62px solid #EFEFEF;
+    border-radius: 4.96px;
+    overflow: hidden;
+    margin-right: 10px;
+    display: flex;
 }
 .carItemDisplay-image{
     width: 88px;
