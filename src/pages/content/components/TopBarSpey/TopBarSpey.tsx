@@ -1,7 +1,6 @@
 import React, { ReactElement, useState } from "react";
-import logoSpey from "./speyLogo.svg";
-import x from "./x.svg";
-
+import speyLogo from "../../../../assets/icons/speyLogo.svg";
+import x from "../../../../assets/icons/x.svg";
 import "@pages/content/components/TopBarSpey/TopBarSpey.css";
 interface Props {
   onClose: () => void;
@@ -17,11 +16,11 @@ const TopBarSpey = ({
     setOryginal((prevValue) => !prevValue);
   };
   const dynamicStyleMainDiv = {
-    width: oryginal ? "342.38px" : "100%",
-    height: oryginal ? "55.74px" : "55.74px",
+    width: oryginal ? "342px" : "100%",
+    height: oryginal ? "56px" : "56px",
   };
   const dynamicStyleInnerDiv = {
-    width: oryginal ? "304.16px" : "100%",
+    width: oryginal ? "304px" : "100%",
     height: oryginal ? "21px" : "100%",
     marginLeft: oryginal ? "0px" : "20px",
     marginRight: oryginal ? "0px" : "20px",
@@ -32,7 +31,7 @@ const TopBarSpey = ({
     <div className="topbarspey-container" style={dynamicStyleMainDiv}>
       <div className="topbarspey-container-inner" style={dynamicStyleInnerDiv}>
         <div className="topbarspey-logo-div">
-          <img src={logoSpey} className="topbarspey-logo" alt="logo" />
+          <img src={speyLogo} className="topbarspey-logo" alt="logo" />
           <div className="topbarspey-text">Spey</div>
         </div>
         <button onClick={toggleSize}>

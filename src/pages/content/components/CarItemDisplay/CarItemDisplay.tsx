@@ -16,24 +16,37 @@ const CarItemDisplay = ({
   isSold = false,
 }: Props): ReactElement => {
   const priceRangeRef = useRef(null);
+  const carTypeRef = useRef(null);
   const dynamicContainer = {
     height: oryginalSize ? "104.87px;" : "auto",
   };
   function adjustFontSize(element) {
-    let fontSize = parseFloat(
+    let minFontSize = 4;
+    let maxFontSize = parseFloat(
       window.getComputedStyle(element, null).getPropertyValue("font-size")
     );
+    let fontSize = maxFontSize;
 
-    while (element.scrollWidth > element.offsetWidth && fontSize > 0) {
-      fontSize -= 0.5;
+    while (maxFontSize - minFontSize > 0.3) {
+      fontSize = (maxFontSize + minFontSize) / 2;
       element.style.fontSize = fontSize + "px";
+
+      if (element.scrollWidth > element.offsetWidth) {
+        maxFontSize = fontSize;
+      } else {
+        minFontSize = fontSize;
+      }
     }
   }
+
   useEffect(() => {
     if (priceRangeRef.current) {
       adjustFontSize(priceRangeRef.current);
     }
-  }, [priceRange]);
+    if (carTypeRef.current) {
+      adjustFontSize(carTypeRef.current);
+    }
+  }, [priceRange, carType]);
   return (
     <div className="carItemDisplay-container" style={dynamicContainer}>
       {isSold ? (
@@ -45,7 +58,12 @@ const CarItemDisplay = ({
       )}
       <img src={carImage} className="carItemDisplay-image" alt={carType} />
       <div className="carItemDisplay-info-div">
-        <div className="carItemDisplay-car-type">{carType}</div>
+        <div
+          className="carItemDisplay-car-type"
+          //ref={carTypeRef}
+        >
+          {carType}
+        </div>
         <div className="carItemDisplay-price-range" ref={priceRangeRef}>
           {priceRange}
         </div>

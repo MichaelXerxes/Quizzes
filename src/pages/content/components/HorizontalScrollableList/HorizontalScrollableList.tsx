@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import "./HorizontalScrollableList.css";
 import CarItemDisplay from "../CarItemDisplay/CarItemDisplay";
 import vectorLeft from "../../../../assets/icons/VectorLeft.svg";
@@ -9,6 +9,9 @@ interface Props {
 
 const HorizontalScrollableList = ({ itemsData }: Props): ReactElement => {
   const scrollContainerRef = React.useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
   const SCROLL_AMOUNT = 100;
   const handleLeftClick = () => {
     if (scrollContainerRef.current) {
@@ -20,6 +23,26 @@ const HorizontalScrollableList = ({ itemsData }: Props): ReactElement => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft += SCROLL_AMOUNT;
     }
+  };
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = x - startX;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
   return (
     <div className="horizontalScrollableList-container">
@@ -48,7 +71,14 @@ const HorizontalScrollableList = ({ itemsData }: Props): ReactElement => {
           </div>
         </div>
       </div>
-      <div className="horizontalScrollableList-scroll" ref={scrollContainerRef}>
+      <div
+        className="horizontalScrollableList-scroll"
+        ref={scrollContainerRef}
+        onMouseDown={handleMouseDown}
+        onMouseLeave={handleMouseLeave}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+      >
         {itemsData.map((car, index) => (
           <CarItemDisplay
             key={index}
