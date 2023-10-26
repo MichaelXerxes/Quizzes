@@ -1,10 +1,9 @@
 .topbarspey-container{
     display: flex;
     align-items: center;
-    padding: "5px";
+    padding: 5px;
     justify-content: center;
     background-color:#EEF0F6;
-    ;   
 }
 .topbarspey-container-inner{
     align-items: center;

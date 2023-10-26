@@ -20,11 +20,13 @@ const Popup = () => {
       <div className="test">
         <TopBarSpey onClose={() => {}} />
 
-        <DisplayItemTitleBox />
+        <div className="properdivsettings">
+          <DisplayItemTitleBox />
 
-        <HorizontalScrollableList itemsData={cars} />
+          <HorizontalScrollableList itemsData={cars} />
 
-        <HorizontalScrollableList itemsData={cars2} />
+          <HorizontalScrollableList itemsData={cars2} />
+        </div>
       </div>
       {/* <header className="App-header">
       

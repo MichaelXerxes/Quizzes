@@ -21,7 +21,7 @@ const CarItemDisplay = ({
     height: oryginalSize ? "104.87px;" : "auto",
   };
   function adjustFontSize(element) {
-    let minFontSize = 4;
+    let minFontSize = 5;
     let maxFontSize = parseFloat(
       window.getComputedStyle(element, null).getPropertyValue("font-size")
     );
@@ -58,10 +58,7 @@ const CarItemDisplay = ({
       )}
       <img src={carImage} className="carItemDisplay-image" alt={carType} />
       <div className="carItemDisplay-info-div">
-        <div
-          className="carItemDisplay-car-type"
-          //ref={carTypeRef}
-        >
+        <div className="carItemDisplay-car-type" ref={carTypeRef}>
           {carType}
         </div>
         <div className="carItemDisplay-price-range" ref={priceRangeRef}>

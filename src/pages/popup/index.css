@@ -17,7 +17,6 @@ code {
 @font-face {
   font-family: 'Satoshi';
   font-style: normal;
-  /* font-weight: 500;  Regular */
   src: url('/fonts/Satoshi/Satoshi-Regular.woff') format('woff');
 }
 

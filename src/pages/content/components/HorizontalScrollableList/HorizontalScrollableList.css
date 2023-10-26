@@ -9,7 +9,7 @@
     display: flex;
     overflow: hidden; 
     margin-top: 3px;
-    margin-left: 20px;
+   
 }
 .horizontalScrollableList-toprow{
     flex-direction: row;
@@ -53,5 +53,5 @@
 .horizontalScrollableList-vector{
     width: 8px;
     height: 8px;
-    border: 1.24px rgba(3, 14, 49, 0.54) ;
+    border: 1px rgba(3, 14, 49, 0.54) ;
 }
