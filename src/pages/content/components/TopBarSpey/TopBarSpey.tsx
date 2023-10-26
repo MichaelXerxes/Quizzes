@@ -11,21 +11,17 @@ const TopBarSpey = ({
   onClose,
   isOryginalSize = true,
 }: Props): ReactElement => {
-  const [oryginal, setOryginal] = useState(isOryginalSize);
-  const toggleSize = () => {
-    setOryginal((prevValue) => !prevValue);
-  };
   const dynamicStyleMainDiv = {
-    width: oryginal ? "342px" : "100%",
-    height: oryginal ? "56px" : "56px",
+    width: isOryginalSize ? "342px" : "100%",
+    height: isOryginalSize ? "56px" : "56px",
   };
   const dynamicStyleInnerDiv = {
-    width: oryginal ? "304px" : "100%",
-    height: oryginal ? "21px" : "100%",
-    marginLeft: oryginal ? "0px" : "20px",
-    marginRight: oryginal ? "0px" : "20px",
-    marginTop: oryginal ? "0px" : "20px",
-    marginBottom: oryginal ? "0px" : "20px",
+    width: isOryginalSize ? "304px" : "100%",
+    height: isOryginalSize ? "21px" : "100%",
+    marginLeft: isOryginalSize ? "0px" : "20px",
+    marginRight: isOryginalSize ? "0px" : "20px",
+    marginTop: isOryginalSize ? "0px" : "20px",
+    marginBottom: isOryginalSize ? "0px" : "20px",
   };
   return (
     <div className="topbarspey-container" style={dynamicStyleMainDiv}>
@@ -34,7 +30,7 @@ const TopBarSpey = ({
           <img src={speyLogo} className="topbarspey-logo" alt="logo" />
           <div className="topbarspey-text">Spey</div>
         </div>
-        <button onClick={toggleSize}>
+        <button onClick={onClose}>
           <img src={x} className="topbarspey-back" alt="x" />
         </button>
       </div>

@@ -50,7 +50,7 @@ export const cars = [
 ];
 export const cars2 = [
   {
-    carType: "Sedan",
+    carType: "ROVER Type 1900",
     priceRange: "£20,000 - £325,000",
     carImage:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZQbZgKtXn7COM7rx_Wl-FcDJrCT9cOPpkYw&usqp=CAU",

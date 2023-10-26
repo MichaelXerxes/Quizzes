@@ -9,6 +9,8 @@
     overflow: hidden;
     margin-right: 7px;
     display: flex;
+    box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.048);
+    margin-bottom: 2px;
 }
 .carItemDisplay-image{
     width: 84px;
@@ -24,34 +26,31 @@
     justify-content: flex-start;
 }
 .carItemDisplay-car-type{
-     font-family: 'Satoshi', sans-serif;
-    font-weight: 300;
-    font-size: 9px;
-    line-height: 16px;
-    letter-spacing: -1.4%;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 8px;
+    display: flex;
     color: rgba(3, 14, 49, 0.54);
-    white-space: nowrap;
     overflow: hidden;         
-    margin-left: 0;
-    padding-left: 0;
     text-align: left; 
     width: 84px;
     height: 16px;
     font-weight: 200;
+    align-items: center;
+    justify-content: flex-start;
 }
 .carItemDisplay-price-range{
+    /* font-family: 'Satoshi', sans-serif; */
     width: 84px;
     height: 15px;
     font-weight: 500;
     font-size: 8px;
-    line-height: 15px;
-    letter-spacing: -1.7%;
     color: #000000;
     white-space: nowrap;
     overflow: hidden;         
-    margin-left: 0;
-    padding-left: 0;
     text-align: left; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 .carItemDisplay-issold-div{
     position: absolute;
