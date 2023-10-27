@@ -18,7 +18,7 @@ const CarItemDisplay = ({
   const priceRangeRef = useRef(null);
   const carTypeRef = useRef(null);
   const dynamicContainer = {
-    height: oryginalSize ? "104.87px;" : "auto",
+    height: oryginalSize ? "104px;" : "auto",
   };
   function adjustFontSize(element) {
     let minFontSize = 5;

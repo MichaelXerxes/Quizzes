@@ -6,7 +6,6 @@ import exampleThemeStorage from "@src/shared/storages/exampleThemeStorage";
 import withSuspense from "@src/shared/hoc/withSuspense";
 import TopBarSpey from "../content/components/TopBarSpey/TopBarSpey";
 import DisplayItemTitleBox from "../content/components/DisplayItemTitleBox/DisplayItemTitleBox.";
-import CarItemDisplay from "../content/components/CarItemDisplay/CarItemDisplay";
 import {
   cars,
   cars2,
@@ -19,12 +18,9 @@ const Popup = () => {
     <div className="App">
       <div className="test">
         <TopBarSpey onClose={() => {}} />
-
         <div className="properdivsettings">
           <DisplayItemTitleBox />
-
           <HorizontalScrollableList itemsData={cars} />
-
           <HorizontalScrollableList itemsData={cars2} />
         </div>
       </div>

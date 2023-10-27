@@ -14,8 +14,8 @@ const DisplayItemTitleBox = ({
   oryginalSize = true,
 }: Props): ReactElement => {
   const dynamicContainer = {
-    width: oryginalSize ? "259.58px" : "auto",
-    height: oryginalSize ? "48.37px" : "auto",
+    width: oryginalSize ? "259px" : "auto",
+    height: oryginalSize ? "48px" : "auto",
   };
   return (
     <div className="displayItemTitleBox-container" style={dynamicContainer}>

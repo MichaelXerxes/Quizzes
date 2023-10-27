@@ -8,9 +8,20 @@ const manifest: chrome.runtime.ManifestV3 = {
   name: packageJson.name,
   version: packageJson.version,
   description: packageJson.description,
-  permissions: ["activeTab", "storage", "webNavigation", "<all_urls>", "tabs", "https://apim.christies.com/"],
+  permissions: [
+    "activeTab",
+    "storage",
+    "webNavigation",
+    "<all_urls>",
+    "tabs",
+    "https://apim.christies.com/",
+  ],
   options_page: "src/pages/options/index.html",
-  host_permissions: ["https://*.youtube.com/*", "https://cars.bonhams.com/*", "https://carsonline.bonhams.com/*"],
+  host_permissions: [
+    "https://*.youtube.com/*",
+    "https://cars.bonhams.com/*",
+    "https://carsonline.bonhams.com/*",
+  ],
   background: {
     service_worker: "src/pages/background/index.js",
     type: "module",
