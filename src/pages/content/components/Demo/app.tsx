@@ -5,20 +5,58 @@ export default function App() {
   const [textContent, setTextContent] = useState("");
   const [itemDetails, setItemDetails] = useState([]);
   const [currentURL, setCurrentURL] = useState(window.location.href);
-  const [clickedElement, setClickedElement] = useState(null)
+  const [clickedElement, setClickedElement] = useState(null);
   const [lowerEstimate, setLowerEstimate] = useState("");
   const [upperEstimate, setUpperEstimate] = useState("");
 
-  useEffect(() => {
-    console.log(window.location.href);
-  }, [clickedElement]);
+  const addButton = async () => {
+    console.log("Attempting to add button");
+    const div = document.querySelector(".login-register-button-container");
 
+    console.log("document " + JSON.stringify(document))
+
+    console.log("div " + JSON.stringify(div))
+    if (div) {
+      const existingButton = div.querySelector(".pay-with-spey-btn");
+      if (!existingButton) {
+        console.log("Button not found, adding now");
+        const registerBtn = div.querySelector(".bid-button");
+        if (registerBtn) {
+          const newButton = registerBtn.cloneNode(true);
+          if (newButton) {
+            newButton.textContent = "Pay with Spey";
+            newButton.title = "Pay with Spey";
+            newButton.style.backgroundColor = "black";
+            newButton.setAttribute(
+              "style",
+              "background-color: black; background: black; margin-left: 10px !important;"
+            );
+
+            newButton.href = "https://spey-frontend.vercel.app/";
+            newButton.classList.add("pay-with-spey-btn");
+          }
+          registerBtn.parentNode.insertBefore(
+            newButton,
+            registerBtn.nextSibling
+          );
+
+          console.log("Button added successfully");
+        } else {
+          console.log("Register to bid button not found");
+        }
+      } else {
+        console.log("Button already added");
+      }
+    } else {
+      console.log("Target div not found");
+    }
+  };
 
   useEffect(() => {
-    document.addEventListener('click', function(event) {
+    document.addEventListener("click", function (event) {
       const clickedElement1 = event.target;
-      setTimeout(() => setClickedElement(clickedElement1), 2000)
-      console.log('Clicked element:', clickedElement1);
+      setTimeout(() => setClickedElement(clickedElement1), 2000);
+      console.log("Clicked element:", clickedElement1);
     });
   }, []);
 
@@ -30,32 +68,40 @@ export default function App() {
     setTextContent(element ? element.textContent.trim() : "Element not found");
 
     const lowerEstimateSpan = document.querySelector(
-        ".sc-1x62phi-4.NMRks .sc-6uuz4h-0.jGIyMz:first-child"
+      ".sc-1x62phi-4.NMRks .sc-6uuz4h-0.jGIyMz:first-child"
     );
     const upperEstimateSpan = document.querySelector(
-        ".sc-1x62phi-4.NMRks .sc-6uuz4h-0.jGIyMz:last-child"
+      ".sc-1x62phi-4.NMRks .sc-6uuz4h-0.jGIyMz:last-child"
     );
 
     setLowerEstimate(
-        lowerEstimateSpan
-            ? lowerEstimateSpan.textContent
-            : "Lower estimate not found"
+      lowerEstimateSpan
+        ? lowerEstimateSpan.textContent
+        : "Lower estimate not found"
     );
     setUpperEstimate(
-        upperEstimateSpan
-            ? upperEstimateSpan.textContent
-            : "Upper estimate not found"
+      upperEstimateSpan
+        ? upperEstimateSpan.textContent
+        : "Upper estimate not found"
     );
 
     function handleMessage(message) {
+      console.log(message);
+
       if (message.type === "ITEM_RESPONSE" && message.data) {
         setItemDetails(message.data);
       }
+
+      if (message.type === "SHOW_PAY_BUTTON" && message.data) {
+        setTimeout(() => addButton().then((r) => console.log(r)), 2000);
+      }
+    }
+
+    if (chrome) {
+      chrome.runtime.onMessage.addListener(handleMessage);
     }
 
     if (element && chrome) {
-      chrome.runtime.onMessage.addListener(handleMessage);
-
       chrome.runtime.sendMessage({
         type: "ITEM",
         payload: element.textContent.trim(),
@@ -69,7 +115,6 @@ export default function App() {
       }
     };
   }, [window.location.href, chrome?.tabs, currentURL, chrome, clickedElement]);
-
 
   chrome.tabs?.onUpdated?.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.url) {
