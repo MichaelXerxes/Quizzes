@@ -1,7 +1,7 @@
 {
-  "name": "SpeyScore",
+  "name": "Spey Score",
   "version": "0.0.1",
-  "description": "SpeyScore",
+  "description": "Spey Score is a browser extension that enriches your browsing experience on popular art galleries.",
   "license": "MIT",
   "repository": {
     "type": "git",
