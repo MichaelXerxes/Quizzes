@@ -63,3 +63,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
   }
 });
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (tab.url && tab.url.includes("cars.bonhams.com")) {
+    console.log('cars.bonhams.com');
+  } else {
+    console.log("tab.url " + tab.url);
+  }
+});

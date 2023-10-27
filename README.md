@@ -1,9 +1,22 @@
+1. Run:
+
+   yarn install
+   yarn dev
+
+2. Open in browser - `chrome://extensions`
+3. Check - `Developer mode`
+4. Find and Click - `Load unpacked extension`
+5. Select - `dist` folder
+
+Boilerplate: 
 https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite
 
 APIs
 http://artpi.io/search/
 https://developers.artsy.net/v2/
 
+Example:
+https://cars.bonhams.com/auction/28308/lot/231/1899-clement-panhard-voiture-legere-type-vcp-two-seater-chassis-no-117-engine-no-171/
 
 
 <div align="center">
