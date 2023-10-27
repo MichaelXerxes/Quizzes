@@ -1,0 +1,35 @@
+.topbarspey-container{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    justify-content: center;
+    background-color:#EEF0F6;
+}
+.topbarspey-container-inner{
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+}
+.topbarspey-logo-div{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+  
+}
+.topbarspey-back{
+    cursor: "pointer" ; 
+ 
+}
+.topbarspey-logo{
+    width: 33px;
+     height: 17px;
+     
+}
+.topbarspey-text{
+    font-family: 'Satoshi', sans-serif;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    user-select: none;
+}

@@ -1,0 +1,57 @@
+:root {
+    --itemWidth: 94px;
+}
+.horizontalScrollableList-container{
+    width: calc(3.2 * var(--itemWidth) + 17px);
+    height: 123px;
+    gap: 2px;
+    flex-direction: column;
+    display: flex;
+    overflow: hidden; 
+    margin-top: 3px;
+   
+}
+.horizontalScrollableList-toprow{
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+}
+.horizontalScrollableList-toptext{
+    font-family: 'Satoshi', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: -1.4%;
+    color: #1B1D21;
+    margin-left: 5px;
+    user-select: none;
+}
+.horizontalScrollableList-scroll {
+    display: flex;
+    overflow-x: hidden;  
+    white-space: nowrap;
+    width: calc(3.2 * var(--itemWidth) + 17px);
+}
+.horizontalScrollableList-scroll > .carItemDisplay-container {
+    width: var(--itemWidth); 
+    flex-shrink: 0;
+}
+.horizontalScrollableList-vectors-div{
+    width: 35px;
+    height: 15px;
+    justify-content: space-evenly;
+    gap: 4px;
+    flex-direction: row;
+    display: flex;
+}
+.horizontalScrollableList-onevector-div{
+    width: 15px;
+    height: 15px;
+    justify-content: center;
+    align-items: center;
+}
+.horizontalScrollableList-vector{
+    width: 8px;
+    height: 8px;
+    border: 1px rgba(3, 14, 49, 0.54) ;
+}

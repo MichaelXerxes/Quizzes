@@ -1,7 +1,7 @@
 {
-  "name": "chrome-extension-boilerplate-react-vite",
+  "name": "Spey Score",
   "version": "0.0.1",
-  "description": "chrome extension boilerplate",
+  "description": "Spey Score is a browser extension that enriches your browsing experience on popular art galleries.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,6 +17,12 @@
     "dev": "npm run build:hmr && (run-p wss build:watch)",
     "dev:firefox": "npm run build:hmr && (run-p wss build:firefox:watch)",
     "test": "jest"
+  },
+  "icons": {
+    "16": "SpeyScore16x16.png",
+    "32": "SpeyScore32x32.png",
+    "48": "SpeyScore64x64.png",
+    "128": "SpeyScore128x128.png"
   },
   "type": "module",
   "dependencies": {
