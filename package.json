@@ -21,7 +21,9 @@
   "icons": {
     "16": "SpeyScore16x16.png",
     "32": "SpeyScore32x32.png",
-    "48": "SpeyScore64x64.png",
+    "48": "SpeyScore48x48.png",
+    "64": "SpeyScorex64.png",
+
     "128": "SpeyScore128x128.png"
   },
   "type": "module",
