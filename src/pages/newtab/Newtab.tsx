@@ -41,4 +41,5 @@ const Newtab = (): ReactElement => {
   );
 };
 
-export default withSuspense(Newtab);
+const NewtabWithSuspense = withSuspense(Newtab);
+export default NewtabWithSuspense;

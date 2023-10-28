@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import logo from "@assets/img/logo.svg";
 import "@pages/popup/Popup.css";
 import useStorage from "@src/shared/hooks/useStorage";
@@ -11,7 +11,8 @@ import {
   cars2,
 } from "../content/components/HorizontalScrollableList/mockDataCars";
 import HorizontalScrollableList from "../content/components/HorizontalScrollableList/HorizontalScrollableList";
-const Popup = () => {
+interface PopupProps {}
+const Popup: FC = () => {
   const theme = useStorage(exampleThemeStorage);
 
   return (
@@ -52,4 +53,6 @@ const Popup = () => {
   );
 };
 
-export default withSuspense(Popup);
+const WrappedPopup = withSuspense<PopupProps>(Popup);
+
+export default WrappedPopup;
