@@ -1,12 +1,12 @@
-import { ComponentType, ReactNode, Suspense } from "react";
+import React, { ComponentType, ReactNode, Suspense, ReactElement } from "react";
 
 export default function withSuspense<T extends Record<string, unknown>>(
   Component: ComponentType<T>,
   SuspenseComponent: ReactNode = null
-) {
-  return function WithSuspense(props: T) {
+): ComponentType<T> {
+  return function WithSuspense(props: T): ReactElement {
     return (
-      <Suspense fallback={SuspenseComponent}>
+      <Suspense fallback={SuspenseComponent || <div>Loading...</div>}>
         <Component {...props} />
       </Suspense>
     );

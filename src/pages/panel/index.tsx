@@ -14,7 +14,7 @@ function init(): void {
   }
   attachTwindStyle(appContainer, document);
   const root = createRoot(appContainer);
-  root.render(<Panel />);
+  root.render((<Panel />) as any);
 }
 
 init();

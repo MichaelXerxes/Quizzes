@@ -21,6 +21,6 @@ function init(): void {
   }
   const root = createRoot(appContainer);
   const optionsElement = React.createElement(Options);
-  root.render(optionsElement);
+  root.render(optionsElement as any);
 }
 init();
