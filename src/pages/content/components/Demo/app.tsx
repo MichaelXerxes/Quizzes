@@ -22,7 +22,8 @@ export default function App() {
         console.log("Button not found, adding now");
         const registerBtn = div.querySelector(".bid-button");
         if (registerBtn) {
-          const newButton = registerBtn.cloneNode(true);
+          const clonedNode = registerBtn.cloneNode(true); // line added M.H.
+          const newButton = clonedNode as HTMLAnchorElement; // registerBtn.cloneNode(true);
           if (newButton) {
             newButton.textContent = "Pay with Spey";
             newButton.title = "Pay with Spey";
