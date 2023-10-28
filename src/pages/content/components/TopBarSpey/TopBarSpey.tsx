@@ -12,12 +12,12 @@ const TopBarSpey = ({
   isOryginalSize = true,
 }: Props): ReactElement => {
   const dynamicStyleMainDiv = {
-    width: isOryginalSize ? "342px" : "100%",
-    height: isOryginalSize ? "56px" : "56px",
+    width: isOryginalSize ? "410px" : "100%",
+    height: isOryginalSize ? "62px" : "62px",
   };
   const dynamicStyleInnerDiv = {
-    width: isOryginalSize ? "304px" : "100%",
-    height: isOryginalSize ? "21px" : "100%",
+    width: isOryginalSize ? "370px" : "100%",
+    height: isOryginalSize ? "26px" : "100%",
     marginLeft: isOryginalSize ? "0px" : "20px",
     marginRight: isOryginalSize ? "0px" : "20px",
     marginTop: isOryginalSize ? "0px" : "20px",

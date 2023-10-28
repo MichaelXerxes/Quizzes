@@ -13,9 +13,9 @@ export default function App() {
     console.log("Attempting to add button");
     const div = document.querySelector(".login-register-button-container");
 
-    console.log("document " + JSON.stringify(document))
+    console.log("document " + JSON.stringify(document));
 
-    console.log("div " + JSON.stringify(div))
+    console.log("div " + JSON.stringify(div));
     if (div) {
       const existingButton = div.querySelector(".pay-with-spey-btn");
       if (!existingButton) {
@@ -59,7 +59,6 @@ export default function App() {
       console.log("Clicked element:", clickedElement1);
     });
   }, []);
-
 
   useEffect(() => {
     console.log("content view loaded");
@@ -122,7 +121,7 @@ export default function App() {
     }
   });
 
-  const toastStyle = {
+  const toastStyle: React.CSSProperties = {
     position: "fixed",
     zIndex: "13212",
     top: "10px",
@@ -137,7 +136,7 @@ export default function App() {
     maxHeight: "600px",
   };
 
-  const closeButtonStyle = {
+  const closeButtonStyle: React.CSSProperties = {
     position: "absolute",
     right: "5px",
     top: "5px",

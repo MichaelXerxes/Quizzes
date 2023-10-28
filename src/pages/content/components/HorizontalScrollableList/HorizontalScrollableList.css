@@ -1,9 +1,9 @@
 :root {
-    --itemWidth: 94px;
+    --itemWidth: 116px;
 }
 .horizontalScrollableList-container{
-    width: calc(3.2 * var(--itemWidth) + 17px);
-    height: 123px;
+    width: calc(3.2 * var(--itemWidth) + 26px);
+    height: 150px;
     gap: 2px;
     flex-direction: column;
     display: flex;
@@ -18,7 +18,7 @@
 }
 .horizontalScrollableList-toptext{
     font-family: 'Satoshi', sans-serif;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 500;
     line-height: 15px;
     letter-spacing: -1.4%;
@@ -38,20 +38,22 @@
 }
 .horizontalScrollableList-vectors-div{
     width: 35px;
-    height: 15px;
+    height: 22px;
     justify-content: space-evenly;
     gap: 4px;
     flex-direction: row;
     display: flex;
+    margin-right: 10px;
 }
 .horizontalScrollableList-onevector-div{
-    width: 15px;
-    height: 15px;
+    width: 22px;
+    height:22px;
     justify-content: center;
     align-items: center;
+    user-select: none;
 }
 .horizontalScrollableList-vector{
-    width: 8px;
-    height: 8px;
+    width: 11px;
+    height: 11px;
     border: 1px rgba(3, 14, 49, 0.54) ;
 }
