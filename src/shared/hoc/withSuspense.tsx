@@ -1,4 +1,9 @@
-import React, { ComponentType, ReactNode, Suspense, ReactElement } from "react";
+import React, {
+  ComponentType,
+  ReactNode,
+  Suspense,
+  FunctionComponent,
+} from "react";
 
 // export default function withSuspense<T extends Record<string, unknown>>(
 //   Component: ComponentType<T>,
@@ -12,8 +17,12 @@ import React, { ComponentType, ReactNode, Suspense, ReactElement } from "react";
 //     );
 //   };
 // }
+type JSXElementConstructor<T> = {
+  (props: T): JSX.Element | null;
+};
+
 export default function withSuspense<T>(
-  Component: ComponentType<T>,
+  Component: JSXElementConstructor<T>, // Use the more specific type here
   SuspenseComponent: ReactNode = null
 ): FunctionComponent<T> {
   const WithSuspense: FunctionComponent<T> = (props: T) => {

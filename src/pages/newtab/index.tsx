@@ -14,8 +14,8 @@ function init(): void {
   }
   attachTwindStyle(appContainer, document);
   const root = createRoot(appContainer);
-
-  root.render((<Newtab />) as unknown as React.ReactNode);
+  const optionsElement = React.createElement(Newtab);
+  root.render(optionsElement as any);
 }
 
 init();
