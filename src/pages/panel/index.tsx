@@ -7,7 +7,7 @@ import { attachTwindStyle } from "@src/shared/style/twind";
 
 refreshOnUpdate("pages/panel");
 
-function init() {
+function init(): void {
   const appContainer = document.querySelector("#app-container");
   if (!appContainer) {
     throw new Error("Can not find #app-container");
