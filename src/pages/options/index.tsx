@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { createRoot } from "react-dom/client";
 import Options from "@pages/options/Options";
 import "@pages/options/index.css";
@@ -20,7 +20,7 @@ function init(): void {
     throw new Error("Cannot find #app-container");
   }
   const root = createRoot(appContainer);
-  root.render(<Options />);
+  const optionsElement = React.createElement(Options);
+  root.render(optionsElement);
 }
-
 init();

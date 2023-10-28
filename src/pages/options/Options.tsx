@@ -1,7 +1,10 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import "@pages/options/Options.css";
-
-const Options: React.FC = () => {
+type OptionsProps = {
+  children?: React.ReactNode;
+};
+const Options: FunctionComponent<OptionsProps> = (props) => {
+  // const Options: React.FC = () => {
   return <div className="container text-lime-400">Options</div>;
 };
 

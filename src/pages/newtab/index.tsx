@@ -15,7 +15,7 @@ function init(): void {
   attachTwindStyle(appContainer, document);
   const root = createRoot(appContainer);
 
-  root.render(<Newtab />);
+  root.render((<Newtab />) as any);
 }
 
 init();
