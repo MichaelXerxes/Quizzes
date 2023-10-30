@@ -13,16 +13,17 @@ export default function App() {
     console.log("Attempting to add button");
     const div = document.querySelector(".login-register-button-container");
 
-    console.log("document " + JSON.stringify(document))
+    console.log("document " + JSON.stringify(document));
 
-    console.log("div " + JSON.stringify(div))
+    console.log("div " + JSON.stringify(div));
     if (div) {
       const existingButton = div.querySelector(".pay-with-spey-btn");
       if (!existingButton) {
         console.log("Button not found, adding now");
         const registerBtn = div.querySelector(".bid-button");
         if (registerBtn) {
-          const newButton = registerBtn.cloneNode(true);
+          const clonedNode = registerBtn.cloneNode(true); // lines added M.H.
+          const newButton = clonedNode as HTMLAnchorElement; // registerBtn.cloneNode(true);
           if (newButton) {
             newButton.textContent = "Pay with Spey";
             newButton.title = "Pay with Spey";
@@ -59,7 +60,6 @@ export default function App() {
       console.log("Clicked element:", clickedElement1);
     });
   }, []);
-
 
   useEffect(() => {
     console.log("content view loaded");
@@ -122,7 +122,7 @@ export default function App() {
     }
   });
 
-  const toastStyle = {
+  const toastStyle: React.CSSProperties = {
     position: "fixed",
     zIndex: "13212",
     top: "10px",
@@ -137,7 +137,7 @@ export default function App() {
     maxHeight: "600px",
   };
 
-  const closeButtonStyle = {
+  const closeButtonStyle: React.CSSProperties = {
     position: "absolute",
     right: "5px",
     top: "5px",

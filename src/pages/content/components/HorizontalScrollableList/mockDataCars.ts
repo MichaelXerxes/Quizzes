@@ -1,6 +1,6 @@
 export const cars = [
   {
-    carType: "SEDAN BAREY TYPE YFDGSD",
+    carType: "SEDAN BAREY TYPE GTI",
     priceRange: "£20,000 - £25,000",
     carImage:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZQbZgKtXn7COM7rx_Wl-FcDJrCT9cOPpkYw&usqp=CAU",

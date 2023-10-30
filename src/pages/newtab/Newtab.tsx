@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import logo from "@assets/img/logo.svg";
 import "@pages/newtab/Newtab.css";
 import "@pages/newtab/Newtab.scss";
@@ -6,7 +6,7 @@ import useStorage from "@src/shared/hooks/useStorage";
 import exampleThemeStorage from "@src/shared/storages/exampleThemeStorage";
 import withSuspense from "@src/shared/hoc/withSuspense";
 
-const Newtab = () => {
+const Newtab: FC = () => {
   const theme = useStorage(exampleThemeStorage);
 
   return (
@@ -41,4 +41,5 @@ const Newtab = () => {
   );
 };
 
-export default withSuspense(Newtab);
+const NewtabWithSuspense = withSuspense(Newtab);
+export default NewtabWithSuspense;

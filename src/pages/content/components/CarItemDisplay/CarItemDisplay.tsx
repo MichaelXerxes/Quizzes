@@ -18,10 +18,10 @@ const CarItemDisplay = ({
   const priceRangeRef = useRef(null);
   const carTypeRef = useRef(null);
   const dynamicContainer = {
-    height: oryginalSize ? "104px;" : "auto",
+    height: oryginalSize ? "125px;" : "auto",
   };
   function adjustFontSize(element) {
-    let minFontSize = 5;
+    let minFontSize = 8;
     let maxFontSize = parseFloat(
       window.getComputedStyle(element, null).getPropertyValue("font-size")
     );
@@ -56,7 +56,13 @@ const CarItemDisplay = ({
       ) : (
         <div />
       )}
-      <img src={carImage} className="carItemDisplay-image" alt={carType} />
+      <img
+        src={carImage}
+        className="carItemDisplay-image"
+        alt={carType}
+        onDragStart={(e) => e.preventDefault()}
+        onClick={(e) => e.preventDefault()}
+      />
       <div className="carItemDisplay-info-div">
         <div className="carItemDisplay-car-type" ref={carTypeRef}>
           {carType}
