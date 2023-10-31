@@ -1,9 +1,9 @@
 :root {
-    --itemWidth: 116px;
+    --itemWidth: 125px;
 }
 .horizontalScrollableList-container{
-    width: calc(3.2 * var(--itemWidth) + 26px);
-    height: 150px;
+    width: calc(3.2 * var(--itemWidth) + 21px);
+    height: 160px;
     gap: 2px;
     flex-direction: column;
     display: flex;
@@ -30,20 +30,20 @@
     display: flex;
     overflow-x: hidden;  
     white-space: nowrap;
-    width: calc(3.2 * var(--itemWidth) + 17px);
+    width: calc(3.2 * var(--itemWidth) + 21px);
 }
 .horizontalScrollableList-scroll > .carItemDisplay-container {
     width: var(--itemWidth); 
     flex-shrink: 0;
 }
 .horizontalScrollableList-vectors-div{
-    width: 35px;
+    width: 44px;
     height: 22px;
     justify-content: space-evenly;
     gap: 4px;
     flex-direction: row;
     display: flex;
-    margin-right: 10px;
+    margin-right: 0px;
 }
 .horizontalScrollableList-onevector-div{
     width: 22px;
@@ -55,5 +55,5 @@
 .horizontalScrollableList-vector{
     width: 11px;
     height: 11px;
-    border: 1px rgba(3, 14, 49, 0.54) ;
+
 }

@@ -14,7 +14,7 @@ const HorizontalScrollableList = ({ itemsData }: Props): ReactElement => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [isQuickScroll, setIsQuickScroll] = useState(false);
 
-  const SCROLL_AMOUNT = 100;
+  const SCROLL_AMOUNT = 132;
   const handleLeftClick = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft -= SCROLL_AMOUNT;

@@ -18,7 +18,11 @@ const Popup: FC = () => {
   return (
     <div className="App">
       <div className="test">
-        <TopBarSpey onClose={() => {}} />
+        <TopBarSpey
+          onClose={() => {
+            console.log("Closing");
+          }}
+        />
         <div className="properdivsettings">
           <DisplayItemTitleBox />
           <HorizontalScrollableList itemsData={cars} />
