@@ -13,8 +13,6 @@ const SplideCarCarousel = ({ data }: Props): ReactElement => {
   return (
     <div className="splideCarCarouse-container">
       <Splide
-        as
-        any
         options={{
           type: "slide",
           perPage: 3,
