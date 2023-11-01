@@ -11,7 +11,13 @@ const TopBarSpey = ({ onClose }: Props): ReactElement => {
     <div className="topbarspey-container">
       <div className="topbarspey-container-inner">
         <div className="topbarspey-logo-div">
-          <img src={speyLogo} className="topbarspey-logo" alt="logo" />
+          <img
+            src={speyLogo}
+            className="topbarspey-logo"
+            alt="logo"
+            onDragStart={(e) => e.preventDefault()}
+            onClick={(e) => e.preventDefault()}
+          />
           <div className="topbarspey-text">Spey</div>
         </div>
         <button onClick={onClose}>

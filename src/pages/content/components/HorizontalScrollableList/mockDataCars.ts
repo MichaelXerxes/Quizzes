@@ -12,7 +12,7 @@ export const cars = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTEgxonwJk5IfAUBY9SfsF39sZpQV1jtgwjA&usqp=CAU",
   },
   {
-    carType: "SUV2",
+    carType: "SUV2 LONG CAR TYPE NAME",
     priceRange: "£225,000 - £1,230,000",
     carImage:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA1zYq7gI2nqwX4qdyiHupcPs2M3GNqJsXaA&usqp=CAU",

@@ -21,13 +21,13 @@ const CarItemDisplay = ({
     height: oryginalSize ? "125px;" : "auto",
   };
   function adjustFontSize(element) {
-    let minFontSize = 8;
+    let minFontSize = 7;
     let maxFontSize = parseFloat(
       window.getComputedStyle(element, null).getPropertyValue("font-size")
     );
     let fontSize = maxFontSize;
 
-    while (maxFontSize - minFontSize > 0.3) {
+    while (maxFontSize - minFontSize > 0.5) {
       fontSize = (maxFontSize + minFontSize) / 2;
       element.style.fontSize = fontSize + "px";
 
