@@ -1,17 +1,20 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-sea-green.min.css";
 import "./SplideCarCarousel.css";
 import CarItemDisplay from "../CarItemDisplay/CarItemDisplay";
 
-interface SplideCarCarouselProps {
+interface Props {
   data: any;
 }
 
-const SplideCarCarousel: React.FC<SplideCarCarouselProps> = ({ data }) => {
+// const SplideCarCarousel: React.FC<SplideCarCarouselProps> = ({ data }) => {
+const SplideCarCarousel = ({ data }: Props): ReactElement => {
   return (
     <div className="splideCarCarouse-container">
       <Splide
+        as
+        any
         options={{
           type: "slide",
           perPage: 3,
