@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <title>Popup</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+  
 </head>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Splide('.splide').mount(); 
+  });
+</script>
 
 <body>
 <div id="app-container"></div>

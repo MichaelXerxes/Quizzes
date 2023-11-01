@@ -11,6 +11,7 @@ import {
   cars2,
 } from "../content/components/HorizontalScrollableList/mockDataCars";
 import HorizontalScrollableList from "../content/components/HorizontalScrollableList/HorizontalScrollableList";
+import SplideCarCarousel from "../content/components/SplideCarCarousel/SplideCarCarousel";
 interface PopupProps {}
 const Popup: FC = () => {
   const theme = useStorage(exampleThemeStorage);
@@ -28,6 +29,8 @@ const Popup: FC = () => {
           <HorizontalScrollableList itemsData={cars} />
           <HorizontalScrollableList itemsData={cars2} />
         </div>
+        <SplideCarCarousel data={cars} />
+        <SplideCarCarousel data={cars2} />
       </div>
       {/* <header className="App-header">
       
