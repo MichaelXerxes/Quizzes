@@ -22,5 +22,32 @@
 }
 .tabsMotion-tabsname-div button.active {
     font-weight: bold; 
-    color: #ff0000;  
+    border-bottom:1px solid #020000;  
+}
+.labelBar-container{
+    width: 404px;
+    height: 26px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+.labelBar-text{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: -1.4%;
+}
+.labelBar-viewmore{
+   
+    height: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -1.4%;
+    color: #7F56D9;
+    white-space: nowrap;
+    text-align: right;
 }

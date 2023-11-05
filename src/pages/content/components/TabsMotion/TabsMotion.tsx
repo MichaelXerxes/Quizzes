@@ -2,17 +2,61 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import TabsCarItem from "../TabsCarItem/TabsCarItem";
 import { useSwipeable } from "react-swipeable";
-import { cars } from "../HorizontalScrollableList/mockDataCars";
+import { cars, cars2 } from "../HorizontalScrollableList/mockDataCars";
 import "./TabsMotion.css";
+interface LabelProps {
+  labelText?: string;
+}
+const labelDefaultText = "Similar items for sale";
+const LabelBar: React.FC<LabelProps> = ({ labelText = labelDefaultText }) => {
+  return (
+    <div className="labelBar-container">
+      <div className="labelBar-text">{labelText}</div>
+      <div className="labelBar-viewmore">View more</div>
+    </div>
+  );
+};
 const tabs = [
   {
     label: "Similar items",
     content: (
-      <TabsCarItem
-        carImage={cars[0].carImage}
-        carType={cars[0].carType}
-        carPriceRange={cars[0].priceRange}
-      />
+      <div style={{ marginLeft: 20, marginRight: 20 }}>
+        <LabelBar />
+        <TabsCarItem
+          carImage={cars[0].carImage}
+          carType={cars[0].carType}
+          carPriceRange={cars[0].priceRange}
+        />
+        <TabsCarItem
+          carImage={cars[3].carImage}
+          carType={cars[3].carType}
+          carPriceRange={cars[3].priceRange}
+        />
+        <TabsCarItem
+          carImage={cars[2].carImage}
+          carType={cars[2].carType}
+          carPriceRange={cars[2].priceRange}
+        />
+        <LabelBar />
+        <TabsCarItem
+          carImage={cars2[1].carImage}
+          carType={cars2[1].carType}
+          carPriceRange={cars2[1].priceRange}
+          isSold={true}
+        />
+        <TabsCarItem
+          carImage={cars2[3].carImage}
+          carType={cars2[3].carType}
+          carPriceRange={cars2[3].priceRange}
+          isSold={true}
+        />
+        <TabsCarItem
+          carImage={cars2[4].carImage}
+          carType={cars2[4].carType}
+          carPriceRange={cars2[4].priceRange}
+          isSold={true}
+        />
+      </div>
     ),
   },
   {
