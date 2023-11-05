@@ -37,7 +37,7 @@ const tabs = [
           carType={cars[2].carType}
           carPriceRange={cars[2].priceRange}
         />
-        <LabelBar />
+        <LabelBar labelText="Similar items sold" />
         <TabsCarItem
           carImage={cars2[1].carImage}
           carType={cars2[1].carType}
