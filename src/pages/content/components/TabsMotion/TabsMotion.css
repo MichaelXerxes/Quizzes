@@ -39,6 +39,7 @@
     font-size: 20px;
     line-height: 26px;
     letter-spacing: -1.4%;
+    user-select: none;
 }
 .labelBar-viewmore{
    

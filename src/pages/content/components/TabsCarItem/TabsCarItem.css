@@ -17,6 +17,7 @@
     background-position: center;
     border-radius: 5px 5px 5px 5px;
     overflow: hidden;
+    user-select: none;
    
 }
 
@@ -33,6 +34,7 @@
     color:  #1B1D21;
     height: 36px;
     user-select: none;
+    text-align: left;
 }
 .tabsCarItem-priceRange{
     font-weight: 400;

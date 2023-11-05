@@ -33,7 +33,7 @@ const TabsCarItem: FC<Props> = ({
       </div>
       <div className="tabsCarItem-display-div">
         <div className="tabsCarItem-carType">{carType}</div>
-        <div className="tabsCarItem-priceRange">{carPriceRange}</div>
+        <div className="tabsCarItem-priceRange">Estimate: {carPriceRange}</div>
       </div>
     </div>
   );
