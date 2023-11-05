@@ -1,0 +1,20 @@
+.tabsCarItem-container{
+
+    display: flex;
+    flex-direction: row;
+}
+.tabsCarItem-carimg{
+    width: 98px;
+    height: 72px;
+    background-size: cover;  
+    background-position: center;
+}
+
+
+.tabsCarItem-display-div{
+
+}
+.tabsCarItem-carType{
+
+}
+.tabsCarItem-priceRange{}
