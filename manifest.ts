@@ -5,7 +5,7 @@ import packageJson from "./package.json";
  */
 const manifest: chrome.runtime.ManifestV3 = {
   manifest_version: 3,
-  name: "Spey Score",
+  name: "SpeyScore",
   version: packageJson.version,
   description: packageJson.description,
   permissions: [
@@ -33,10 +33,11 @@ const manifest: chrome.runtime.ManifestV3 = {
   },
   action: {
     default_popup: "src/pages/popup/index.html",
-    default_icon: "icon-34.png",
+    default_icon: "SpeyLogo32x32.png",
   },
   icons: {
-    "128": "icon-128.png",
+    "64": "SpeyLogo64x64.png",
+    "128": "SpeyLogo128x128.png",
   },
   content_scripts: [
     {
@@ -63,6 +64,9 @@ const manifest: chrome.runtime.ManifestV3 = {
         "assets/css/*.css",
         "icon-128.png",
         "icon-34.png",
+        "SpeyLogo32x32.png",
+        "SpeyLogo64x64.png",
+        "SpeyLogo128x128.png",
       ],
       matches: ["*://*/*"],
     },
