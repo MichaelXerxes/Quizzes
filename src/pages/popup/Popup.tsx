@@ -11,6 +11,9 @@ import {
   cars2,
 } from "../content/components/HorizontalScrollableList/mockDataCars";
 import HorizontalScrollableList from "../content/components/HorizontalScrollableList/HorizontalScrollableList";
+import SplideCarCarousel from "../content/components/SplideCarCarousel/SplideCarCarousel";
+import TopBarSpeyImage from "../content/components/TopBarSpeyImage/TopBarSpeyImage";
+import TabsMotion from "../content/components/TabsMotion/TabsMotion";
 interface PopupProps {}
 const Popup: FC = () => {
   const theme = useStorage(exampleThemeStorage);
@@ -18,12 +21,21 @@ const Popup: FC = () => {
   return (
     <div className="App">
       <div className="test">
-        <TopBarSpey onClose={() => {}} />
+        {/* <TopBarSpey
+          onClose={() => {
+            console.log("Closing");
+          }}
+        />
         <div className="properdivsettings">
           <DisplayItemTitleBox />
           <HorizontalScrollableList itemsData={cars} />
           <HorizontalScrollableList itemsData={cars2} />
         </div>
+        <SplideCarCarousel data={cars} />
+        <SplideCarCarousel data={cars2} />
+        <SplideComponent data={cars} /> */}
+        <TopBarSpeyImage />
+        <TabsMotion />
       </div>
       {/* <header className="App-header">
       
