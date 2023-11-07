@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import logo from "@assets/img/logo.svg";
 import "@pages/popup/Popup.css";
 import useStorage from "@src/shared/hooks/useStorage";
@@ -11,18 +11,31 @@ import {
   cars2,
 } from "../content/components/HorizontalScrollableList/mockDataCars";
 import HorizontalScrollableList from "../content/components/HorizontalScrollableList/HorizontalScrollableList";
-const Popup = () => {
+import SplideCarCarousel from "../content/components/SplideCarCarousel/SplideCarCarousel";
+import TopBarSpeyImage from "../content/components/TopBarSpeyImage/TopBarSpeyImage";
+import TabsMotion from "../content/components/TabsMotion/TabsMotion";
+interface PopupProps {}
+const Popup: FC = () => {
   const theme = useStorage(exampleThemeStorage);
 
   return (
     <div className="App">
       <div className="test">
-        <TopBarSpey onClose={() => {}} />
+        {/* <TopBarSpey
+          onClose={() => {
+            console.log("Closing");
+          }}
+        />
         <div className="properdivsettings">
           <DisplayItemTitleBox />
           <HorizontalScrollableList itemsData={cars} />
           <HorizontalScrollableList itemsData={cars2} />
         </div>
+        <SplideCarCarousel data={cars} />
+        <SplideCarCarousel data={cars2} />
+        <SplideComponent data={cars} /> */}
+        <TopBarSpeyImage />
+        <TabsMotion />
       </div>
       {/* <header className="App-header">
       
@@ -52,4 +65,6 @@ const Popup = () => {
   );
 };
 
-export default withSuspense(Popup);
+const WrappedPopup = withSuspense<PopupProps>(Popup);
+
+export default WrappedPopup;

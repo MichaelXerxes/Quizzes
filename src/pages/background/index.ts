@@ -30,20 +30,19 @@ function getResultsFromChristies(keyword, callback) {
   )
     .then((res) => res.json())
     .then((data) => {
-      console.log("data");
-      console.log("data " + JSON.stringify(data));
       if (data?.lots) {
-        console.log("Sending response")
-        chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-          var activeTabId = tabs[0].id;
-          console.log("Active tab ID:", activeTabId);
-          chrome.tabs.sendMessage(activeTabId, {
-            type: "ITEM_RESPONSE",
-            data: data.lots
-          });
-        });
+        chrome.tabs.query(
+          { active: true, currentWindow: true },
+          function (tabs) {
+            const activeTabId = tabs[0].id;
+            chrome.tabs.sendMessage(activeTabId, {
+              type: "ITEM_RESPONSE",
+              data: data.lots,
+            });
+          }
+        );
 
-        callback({ type: "ITEM_RESPONSE", data: data.lots })
+        callback({ type: "ITEM_RESPONSE", data: data.lots });
       }
     })
     .catch((error) => {
@@ -65,9 +64,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (tab.url && tab.url.includes("cars.bonhams.com")) {
-    console.log('cars.bonhams.com');
-  } else {
-    console.log("tab.url " + tab.url);
+  if (tab.url && tab.url.includes("bonhams.com/auction") && changeInfo.status === 'complete') {
+    chrome.tabs.sendMessage(tabId, {
+      type: "SHOW_PAY_BUTTON",
+      data: "cars.bonhams.com",
+    });
   }
 });

@@ -1,33 +1,23 @@
-import React, { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import speyLogo from "../../../../assets/icons/speyLogo.svg";
 import x from "../../../../assets/icons/x.svg";
 import "@pages/content/components/TopBarSpey/TopBarSpey.css";
 interface Props {
   onClose: () => void;
-  isOryginalSize?: boolean;
 }
 
-const TopBarSpey = ({
-  onClose,
-  isOryginalSize = true,
-}: Props): ReactElement => {
-  const dynamicStyleMainDiv = {
-    width: isOryginalSize ? "342px" : "100%",
-    height: isOryginalSize ? "56px" : "56px",
-  };
-  const dynamicStyleInnerDiv = {
-    width: isOryginalSize ? "304px" : "100%",
-    height: isOryginalSize ? "21px" : "100%",
-    marginLeft: isOryginalSize ? "0px" : "20px",
-    marginRight: isOryginalSize ? "0px" : "20px",
-    marginTop: isOryginalSize ? "0px" : "20px",
-    marginBottom: isOryginalSize ? "0px" : "20px",
-  };
+const TopBarSpey = ({ onClose }: Props): ReactElement => {
   return (
-    <div className="topbarspey-container" style={dynamicStyleMainDiv}>
-      <div className="topbarspey-container-inner" style={dynamicStyleInnerDiv}>
+    <div className="topbarspey-container">
+      <div className="topbarspey-container-inner">
         <div className="topbarspey-logo-div">
-          <img src={speyLogo} className="topbarspey-logo" alt="logo" />
+          <img
+            src={speyLogo}
+            className="topbarspey-logo"
+            alt="logo"
+            onDragStart={(e) => e.preventDefault()}
+            onClick={(e) => e.preventDefault()}
+          />
           <div className="topbarspey-text">Spey</div>
         </div>
         <button onClick={onClose}>

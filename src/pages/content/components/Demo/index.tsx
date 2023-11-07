@@ -8,10 +8,12 @@ refreshOnUpdate("pages/content");
 const root = document.createElement("div");
 root.id = "chrome-extension-boilerplate-react-vite-content-view-root";
 
-if(window.location.href.includes('cars.bonhams.com') || window.location.href.includes('carsonline.bonhams.com')){
-    document.body.append(root);
+if (
+  window.location.href.includes("cars.bonhams.com") ||
+  window.location.href.includes("carsonline.bonhams.com")
+) {
+  document.body.append(root);
 }
-
 
 const rootIntoShadow = document.createElement("div");
 rootIntoShadow.id = "shadow-root";
@@ -27,4 +29,4 @@ shadowRoot.appendChild(rootIntoShadow);
  */
 attachTwindStyle(rootIntoShadow, shadowRoot);
 
-createRoot(rootIntoShadow).render(<App />);
+createRoot(rootIntoShadow).render((<App />) as any);

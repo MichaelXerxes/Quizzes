@@ -9,18 +9,23 @@ const manifest: chrome.runtime.ManifestV3 = {
   version: packageJson.version,
   description: packageJson.description,
   permissions: [
+    "https://*.youtube.com/*",
     "activeTab",
     "storage",
     "webNavigation",
-    "<all_urls>",
+    "<all_urls>" as any,
     "tabs",
-    "https://apim.christies.com/",
+    "https://apim.christies.com/" as any,
+    "https://www.bonhams.com/*" as any,
+    "https://cars.bonhams.com/*" as any,
+    "https://carsonline.bonhams.com/*" as any,
   ],
   options_page: "src/pages/options/index.html",
   host_permissions: [
     "https://*.youtube.com/*",
     "https://cars.bonhams.com/*",
     "https://carsonline.bonhams.com/*",
+    "https://www.bonhams.com/*",
   ],
   background: {
     service_worker: "src/pages/background/index.js",
@@ -36,8 +41,17 @@ const manifest: chrome.runtime.ManifestV3 = {
   },
   content_scripts: [
     {
-      matches: ["http://*/*", "https://*/*", "<all_urls>"],
+      matches: [
+        "http://*/*",
+        "https://*/*",
+        "<all_urls>",
+        "https://*.youtube.com/*",
+        "https://cars.bonhams.com/*",
+        "https://carsonline.bonhams.com/*",
+        "https://www.bonhams.com/*",
+      ],
       js: ["src/pages/content/index.js"],
+      run_at: "document_idle",
       // KEY for cache invalidation
       css: ["assets/css/contentStyle<KEY>.chunk.css"],
     },
