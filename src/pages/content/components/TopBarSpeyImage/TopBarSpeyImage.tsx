@@ -3,7 +3,7 @@ import "./TopBarSpeyImage.css";
 import imageCarImg from "../../../../assets/img/imageCar.svg";
 import heart from "../../../../assets/icons/heart.svg";
 import X from "../../../../assets/icons/x.svg";
-import speyWhite from "../../../../assets/icons/speyWhite.svg";
+import SpeyScoreLogo from "../../../../../public/spey/SpeyScoreLogo.svg";
 interface Props {
   imageCar?: string;
   carType?: string;
@@ -23,13 +23,12 @@ const TopBarSpeyImage: FC<Props> = ({
         <div className="topBarSpeyImage-topbar">
           <div className="topBarSpeyImage-speyWhite-div">
             <img
-              src={speyWhite}
+              src={SpeyScoreLogo}
               className="topBarSpeyImage-speyWhite-img"
               alt="imageBackground"
               onDragStart={(e) => e.preventDefault()}
               onClick={(e) => e.preventDefault()}
             />
-            <div className="topBarSpeyImage-speyWhite-text">SpeyScore</div>
           </div>
           <div className="topBarSpeyImage-buttons-div">
             <div className="topBarSpeyImage-button">
