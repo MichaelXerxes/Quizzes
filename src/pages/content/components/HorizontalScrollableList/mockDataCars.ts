@@ -1,12 +1,12 @@
 export const cars = [
   {
-    carType: "SEDAN BAREY TYPE GTI",
+    carType: "1899cClement-Panhard Voiture Legere Typen VCP Two-Seater",
     priceRange: "£20,000 - £25,000",
     carImage:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZQbZgKtXn7COM7rx_Wl-FcDJrCT9cOPpkYw&usqp=CAU",
   },
   {
-    carType: "SUV1",
+    carType: "1899cClement-Panhard Voiture Legere Typen VCP Two-Seater",
     priceRange: "£25,000 - £130,000",
     carImage:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTEgxonwJk5IfAUBY9SfsF39sZpQV1jtgwjA&usqp=CAU",
@@ -18,7 +18,7 @@ export const cars = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA1zYq7gI2nqwX4qdyiHupcPs2M3GNqJsXaA&usqp=CAU",
   },
   {
-    carType: "SUV33",
+    carType: "1899cClement-Panhard Voiture Legere Typen VCP Two-Seater",
     priceRange: "£5,000 - £30,000",
     carImage:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-tYju2FMLj-WjpnvejUuNFwGDX8qcgDOdEA&usqp=CAU",

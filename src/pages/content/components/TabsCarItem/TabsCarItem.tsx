@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { FC, useRef, useEffect } from "react";
 import "./TabsCarItem.css";
+
 interface Props {
   carImage: string;
   carType: string;
@@ -13,6 +14,31 @@ const TabsCarItem: FC<Props> = ({
   carPriceRange,
   isSold = false,
 }): JSX.Element => {
+  const carTypeRef = useRef<HTMLDivElement>(null);
+
+  function adjustFontSize(element) {
+    let minFontSize = 7;
+    let maxFontSize = 14;
+    let fontSize = maxFontSize;
+
+    while (maxFontSize - minFontSize > 1) {
+      fontSize = (maxFontSize + minFontSize) / 2;
+      element.style.fontSize = fontSize + "px";
+
+      if (element.scrollWidth > element.offsetWidth) {
+        maxFontSize = fontSize;
+      } else {
+        minFontSize = fontSize;
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (carTypeRef.current) {
+      adjustFontSize(carTypeRef.current);
+    }
+  }, [carType]);
+
   return (
     <div className="tabsCarItem-container">
       <div className="tabsCarItem-div-img">
@@ -32,7 +58,9 @@ const TabsCarItem: FC<Props> = ({
         />
       </div>
       <div className="tabsCarItem-display-div">
-        <div className="tabsCarItem-carType">{carType}</div>
+        <div className="tabsCarItem-carType" ref={carTypeRef}>
+          {carType}
+        </div>
         <div className="tabsCarItem-priceRange">Estimate: {carPriceRange}</div>
       </div>
     </div>

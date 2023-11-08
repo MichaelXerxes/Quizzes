@@ -1,54 +1,65 @@
-.tabsMotion-tabsname-div{
-  
-    display: flex;
-    justify-content: space-evenly;
+.tabsMotion-tabsname-div {
+  display: flex;
+  justify-content: space-evenly;
 }
 .tabsMotion-tabsname-div button {
-    font-size: 18px;  
-    color: #020000;  
-    background: none;  
-    border: none;  
-    cursor: pointer;  
-    padding: 10px;  
-    transition: background 0.3s;  
+  font-size: 16px;
+  color: rgba(27, 29, 33, 0.8);
+  font-weight: 400;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+
+  transition: background 0.3s;
 }
 
 .tabsMotion-tabsname-div button:hover {
-    background-color: #444;  
+  background-color: #8d8d8d;
 }
 
 .tabsMotion-tabsname-div button:focus {
-    outline: none;  
+  outline: none;
 }
 .tabsMotion-tabsname-div button.active {
-    font-weight: bold; 
-    border-bottom:1px solid #020000;  
+  color: #1b1d21;
+  font-weight: bold;
+  border-bottom: 1px solid #020000;
 }
-.labelBar-container{
-    width: 404px;
-    height: 26px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
+.tabsMotion-breakline {
+  width: 100%;
+  height: 1px;
+  /* border-radius: 1px solid #EEF0F6; */
+  background-color: #eef0f6;
+  /* border-color: #EEF0F6; */
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
-.labelBar-text{
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 26px;
-    letter-spacing: -1.4%;
-    user-select: none;
+.labelBar-container {
+  width: 404px;
+  height: 26px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-.labelBar-viewmore{
-   
-    height: 20px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    letter-spacing: -1.4%;
-    color: #7F56D9;
-    white-space: nowrap;
-    text-align: right;
+.labelBar-text {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: -1.4%;
+  user-select: none;
+}
+.labelBar-viewmore {
+  height: 20px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -1.4%;
+  color: #7f56d9;
+  white-space: nowrap;
+  text-align: right;
+  cursor: pointer;
+  margin-top: 4px;
 }
