@@ -37,7 +37,7 @@ const tabs = [
           carType={cars[2].carType}
           carPriceRange={cars[2].priceRange}
         />
-        <div       className="tabsMotion-breakline" />
+        <div className="tabsMotion-breakline" />
         <LabelBar labelText="Similar items sold" />
         <TabsCarItem
           carImage={cars2[1].carImage}
@@ -46,9 +46,9 @@ const tabs = [
           isSold={true}
         />
         <TabsCarItem
-          carImage={cars2[3].carImage}
-          carType={cars2[3].carType}
-          carPriceRange={cars2[3].priceRange}
+          carImage={cars2[0].carImage}
+          carType={cars2[0].carType}
+          carPriceRange={cars2[0].priceRange}
           isSold={true}
         />
         <TabsCarItem
@@ -57,7 +57,7 @@ const tabs = [
           carPriceRange={cars2[4].priceRange}
           isSold={true}
         />
-         <div className="tabsMotion-breakline" />
+        <div className="tabsMotion-breakline" />
       </div>
     ),
   },
@@ -109,11 +109,9 @@ const TabsMotion: React.FC = () => {
 
   return (
     <div {...handlers}>
-      <div className="tabsMotion-tabsname-div"     >
-
-        
+      <div className="tabsMotion-tabsname-div">
         {tabs.map((tab, index) => (
-                     <button
+          <button
             key={index}
             onClick={() => setSelectedTab(index)}
             className={`${selectedTab === index ? "active" : ""}`}
