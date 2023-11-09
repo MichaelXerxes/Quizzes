@@ -4,6 +4,7 @@ import TabsCarItem from "../TabsCarItem/TabsCarItem";
 import { useSwipeable } from "react-swipeable";
 import { cars, cars2 } from "../HorizontalScrollableList/mockDataCars";
 import "./TabsMotion.css";
+import ScrollCarList from "../ScrollCarList/ScrollCarList";
 interface LabelProps {
   labelText?: string;
 }
@@ -64,11 +65,11 @@ const tabs = [
   {
     label: "Price trends",
     content: (
-      <TabsCarItem
-        carImage={cars[1].carImage}
-        carType={cars[1].carType}
-        carPriceRange={cars[1].priceRange}
-      />
+      <div>
+        <LabelBar />
+        <ScrollCarList cars={cars} />
+        <div className="tabsMotion-breakline" />
+      </div>
     ),
   },
   {
