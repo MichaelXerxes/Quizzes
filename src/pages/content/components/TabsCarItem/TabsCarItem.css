@@ -10,7 +10,8 @@
   position: relative;
   width: 98px;
   height: 72px;
-  box-shadow: 1px 1px 2px var(--shadow);
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.048);
 }
 .tabsCarItem-carimg {
   width: 100%;
