@@ -74,12 +74,16 @@ const tabs = [
           <LabelBar />
         </div>
         <ScrollCarList cars={cars} />
-        <div className="tabsMotion-breakline" />
+        <div style={{ paddingLeft: 30, paddingRight: 30 }}>
+          <div className="tabsMotion-breakline" />
+        </div>
         <div className=" m-7">
           <LabelBar labelText="Similar items sold" />
         </div>
         <ScrollCarList cars={cars2} />
-        <div className="tabsMotion-breakline" />
+        <div style={{ paddingLeft: 30, paddingRight: 30 }}>
+          <div className="tabsMotion-breakline" />
+        </div>
       </div>
     ),
   },
