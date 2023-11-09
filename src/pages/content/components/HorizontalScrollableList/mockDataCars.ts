@@ -3,7 +3,7 @@ export const cars = [
     carType: "1899cClement-Panhard Voiture Legere Typen VCP Two-Seater",
     priceRange: "£20,000 - £25,000",
     carImage:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZQbZgKtXn7COM7rx_Wl-FcDJrCT9cOPpkYw&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQADbzG_aSmT8zGinSxz1j931lNg4NKYTubAw&usqp=CAU",
   },
   {
     carType: "1899cClement-Panhard Voiture Legere Typen VCP Two-Seater",

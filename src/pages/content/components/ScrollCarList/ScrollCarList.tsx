@@ -40,7 +40,7 @@ const ScrollCarList: React.FC<ScrollCarListProps> = ({
             <TabsCarItem
               carImage={car.carImage}
               carType={car.carType}
-              carPriceRange={car.carPriceRange}
+              carPriceRange={car.priceRange}
               isSold={car.isSold}
             />
           </SplideSlide>

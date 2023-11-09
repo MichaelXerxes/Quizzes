@@ -1,12 +1,12 @@
 .scrollCarList-arrows-div {
   flex-direction: row;
 
-  height: 300px;
+  height: 305px;
 }
 
 .scrollCarList-arrow {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   user-select: none;
   display: flex;
   flex-direction: row;
@@ -23,5 +23,6 @@
 }
 
 .scrollCarList-container {
+  height: 310px;
   width: 100%;
 }

@@ -41,12 +41,12 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .labelBar-text {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 26px;
   letter-spacing: -1.4%;
   user-select: none;
@@ -54,7 +54,7 @@
 .labelBar-viewmore {
   height: 20px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20px;
   letter-spacing: -1.4%;
   color: #7f56d9;
@@ -62,4 +62,5 @@
   text-align: right;
   cursor: pointer;
   margin-top: 4px;
+  user-select: none;
 }
