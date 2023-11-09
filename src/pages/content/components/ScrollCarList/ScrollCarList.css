@@ -1,0 +1,28 @@
+.scrollCarList-arrows-div {
+  flex-direction: row;
+
+  height: 305px;
+}
+
+.scrollCarList-arrow {
+  width: 18px;
+  height: 18px;
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.scrollCarList-arrow-left svg,
+.scrollCarList-arrow-right svg {
+  width: 24px;
+  height: 24px;
+  color: black;
+  fill: black;
+  cursor: pointer;
+  user-select: none;
+}
+
+.scrollCarList-container {
+  height: 310px;
+  width: 100%;
+}

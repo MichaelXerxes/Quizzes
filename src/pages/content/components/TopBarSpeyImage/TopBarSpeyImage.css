@@ -1,78 +1,80 @@
-.topBarSpeyImage-container{
-    display: flex;
-    position: relative;
-    width: 452px;
-    height: 294px;
-    border-radius: 12px 12px 0px 0px;
-    background-size: cover;  
-    background-position: center;
+.topBarSpeyImage-container {
+  display: flex;
+  position: relative;
+  width: 452px;
+  height: 294px;
+  border-radius: 12px 12px 0px 0px;
+  background-size: cover;
+  background-position: center;
 }
 
-.topBarSpeyImage-topbar{
-    display: flex;  
-    flex-direction: row;
-    width: 404px;
-    height: 32px;
-    justify-content: space-between;
-    align-items: center;  
-    position: absolute; 
-    top: 16px;  
-    left: 24px;
-    /* right:24px ; */
-    /* transform: translateX(-50%);   */
+.topBarSpeyImage-topbar {
+  display: flex;
+  flex-direction: row;
+  width: 404px;
+  height: 32px;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  /* right:24px ; */
+  /* transform: translateX(-50%);   */
 }
 
-.topBarSpeyImage-speyWhite-div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.topBarSpeyImage-speyWhite-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.topBarSpeyImage-speyWhite-img{
-    width: 122px;
-    height: 35px;
+.topBarSpeyImage-speyWhite-img {
+  width: 122px;
+  height: 35px;
+  user-select: none;
 }
 
-.topBarSpeyImage-speyWhite-text{
-    width: 83px;
-    height: 21px;
-    color: rgb(233, 238, 241);
-    font-weight: 500;
-    font-size: 18px;
+.topBarSpeyImage-speyWhite-text {
+  width: 83px;
+  height: 21px;
+  color: rgb(233, 238, 241);
+  font-weight: 500;
+  font-size: 18px;
 }
 
-.topBarSpeyImage-buttons-div{
-    display: flex;
-    flex-direction: row;
-    width: 76px;
-    justify-content: space-between;
+.topBarSpeyImage-buttons-div {
+  display: flex;
+  flex-direction: row;
+  width: 76px;
+  justify-content: space-between;
 }
 
-.topBarSpeyImage-button{
-    width: 32px;
-    height: 32px;
-    border-radius: 20px 20px 20px 20px;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    background-color: rgb(244, 246, 248);
+.topBarSpeyImage-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 20px 20px 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(244, 246, 248);
 }
 
-.topBarSpeyImage-button-img{
-    width: 16px;
-    height: 16px;
+.topBarSpeyImage-button-img {
+  width: 16px;
+  height: 16px;
+  user-select: none;
+  cursor: pointer;
 }
-.topBarSpeyImage-cartype-text{
-    position: absolute;  
-    top:230px;
-    left: 24px;  
-    font-size: 18px;
-    font-weight: 400;
-    color: white;
-    max-width: 90%;  
-    line-height: 24px;  
-    word-wrap: break-word;
-    
-  
-    text-align: left;
+.topBarSpeyImage-cartype-text {
+  position: absolute;
+  top: 230px;
+  left: 24px;
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  max-width: 90%;
+  line-height: 24px;
+  word-wrap: break-word;
+
+  text-align: left;
 }
