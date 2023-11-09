@@ -1,3 +1,5 @@
+@import "../../consts/colors/colors.css";
+
 .topBarSpeyImage-container {
   display: flex;
   position: relative;
@@ -37,7 +39,7 @@
 .topBarSpeyImage-speyWhite-text {
   width: 83px;
   height: 21px;
-  color: rgb(233, 238, 241);
+  color: var(--white);
   font-weight: 500;
   font-size: 18px;
 }
@@ -56,7 +58,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(244, 246, 248);
+  background-color: var(--white);
 }
 
 .topBarSpeyImage-button-img {
@@ -71,7 +73,7 @@
   left: 24px;
   font-size: 18px;
   font-weight: 400;
-  color: white;
+  color: var(--white);
   max-width: 90%;
   line-height: 24px;
   word-wrap: break-word;

@@ -1,0 +1,13 @@
+:root {
+  --primary: rgb(152, 99, 8);
+  --secondary: rgb(25, 149, 220);
+  --dark: "#020000";
+  --white: rgb(233, 238, 241);
+  --whiteStrong: rgb(255, 255, 255);
+  --darkBlue: rgba(27, 29, 33, 0.8);
+  --darklessBlue: rgba(3, 14, 49, 0.54);
+  --grey: #8d8d8d;
+  --violet: #7f56d9;
+  --shadow: rgba(0, 0, 0, 0.048);
+  --red: #ff5656;
+}

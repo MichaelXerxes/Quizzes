@@ -1,3 +1,4 @@
+@import "../../consts/colors/colors.css";
 .tabsCarItem-container {
   display: flex;
 
@@ -9,7 +10,7 @@
   position: relative;
   width: 98px;
   height: 72px;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.048);
+  box-shadow: 1px 1px 2px var(--shadow);
 }
 .tabsCarItem-carimg {
   width: 100%;
@@ -36,7 +37,7 @@
 
   line-height: 18px;
   letter-spacing: -1.1%;
-  color: #1b1d21;
+  color: var(--darkBlue);
 
   user-select: none;
   text-align: left;
@@ -46,7 +47,7 @@
   font-size: 12px;
   line-height: 16px;
   letter-spacing: -0.6%;
-  color: rgba(3, 14, 49, 0.54);
+  color: var(--darklessBlue);
   text-align: center;
   user-select: none;
   margin-top: 5px;
@@ -60,16 +61,16 @@
   border-radius: 5px;
   padding: 3px 6px 3px 6px;
   gap: 4px;
-  background-color: #ff5656;
+  background-color: var(--red);
   justify-content: center;
   align-items: center;
 }
 .tabsCarItem-issold-text {
   font-family: "Satoshi", sans-serif;
-
-  font-size: 9px;
-  line-height: 11px;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
   letter-spacing: -1.4%;
-  color: #ffffff;
+  color: #fff;
   user-select: none;
 }
