@@ -66,8 +66,15 @@ const tabs = [
     label: "Price trends",
     content: (
       <div>
-        <LabelBar />
+        <div style={{ marginLeft: 30 }}>
+          <LabelBar />
+        </div>
         <ScrollCarList cars={cars} />
+        <div className="tabsMotion-breakline" />
+        <div className=" m-7">
+          <LabelBar labelText="Similar items sold" />
+        </div>
+        <ScrollCarList cars={cars2} />
         <div className="tabsMotion-breakline" />
       </div>
     ),

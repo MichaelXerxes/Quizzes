@@ -10,7 +10,7 @@ const config: Config = {
   },
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/assets/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/pages/content/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/shared/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",

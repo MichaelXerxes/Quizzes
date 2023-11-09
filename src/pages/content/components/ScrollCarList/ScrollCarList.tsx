@@ -12,7 +12,7 @@ const ScrollCarList: React.FC<ScrollCarListProps> = ({
   cars,
 }): ReactElement => {
   return (
-    <div className="scrollCarList-container  ">
+    <div className="scrollCarList-container ">
       <Splide
         options={{
           type: "slide",
@@ -20,17 +20,18 @@ const ScrollCarList: React.FC<ScrollCarListProps> = ({
           perMove: 1,
           pagination: false,
           padding: 0,
-
+          loop: true,
           direction: "ttb",
-          height: "20rem",
-          focus: "center",
-          autoHeight: true,
+          rewind: false,
+          height: "250px",
+          // focus: "center",
+          //autoHeight: true,
           classes: {
             arrows:
-              "splide__arrows absolute top-0 left-2 flex-row transform -translate-y-1/2",
-            arrow: "splide__arrow bg-gray-500 p-2 rounded-full border ",
-            prev: "splide__arrow--prev left-2",
-            next: "splide__arrow--next right-2",
+              "splide__arrows scrollCarList-arrows-div flex-row absolute top-0 right-20",
+            arrow: "splide__arrow scrollCarList-arrow",
+            prev: "splide__arrow--prev scrollCarList-arrow-left",
+            next: "splide__arrow--next scrollCarList-arrow-right",
           },
         }}
       >
