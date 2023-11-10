@@ -17,7 +17,7 @@ const TopBarSpeyImage: FC<Props> = ({
   return (
     <section>
       <div
-        className="topBarSpeyImage-container"
+        className="topBarSpeyImage-container "
         style={{ backgroundImage: `url(${imageCar})` }}
       >
         <div className="topBarSpeyImage-topbar">
