@@ -27,15 +27,15 @@ const LineChart: React.FC<LineChartProps> = ({ labels, datasets }) => {
             labels: labels,
             datasets: [
               ...datasets, // Include existing datasets
-              // {
-              //   label: "Horizontal Line",
-              //   data: Array(labels.length).fill(9),
-              //   backgroundColor: "rgba(0, 0, 0, 0)", // Transparent background
-              //   borderColor: "blue",
-              //   type: "line",
-              //   fill: false,
-              //   borderDash: [5, 5], // Set borderDash for a dashed line
-              // },
+              {
+                label: "Horizontal Line",
+                data: Array(labels.length).fill(9),
+                backgroundColor: "rgba(0, 0, 0, 0)", // Transparent background
+                borderColor: "blue",
+                type: "line",
+                fill: false,
+                borderDash: [5, 5], // Set borderDash for a dashed line
+              },
             ],
           },
           options: {

@@ -38,13 +38,13 @@ const LineChartExample: React.FC = () => {
   const options = {
     responsive: true,
     plugins: {
-      legend: {
-        position: "top",
-      },
-      title: {
-        display: true,
-        text: "Chart.js Line Chart",
-      },
+      //   legend: {
+      //     position: "top",
+      //   },
+      //   title: {
+      //     display: true,
+      //     text: "Chart.js Line Chart",
+      //   },
     },
   };
 

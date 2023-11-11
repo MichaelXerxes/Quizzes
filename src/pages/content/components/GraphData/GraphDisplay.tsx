@@ -22,7 +22,7 @@ const GraphDisplay: React.FC = () => {
   const datasets: DataSets[] = [
     {
       label: "Dataset 1",
-      data: [65, 59, 80, 81, 56, 55, 40],
+      data: [52, 59, 54, 81, 56, 55, 40],
       backgroundColor: "red",
       borderColor: "rgba(75,192,192,1)",
       type: "line",
