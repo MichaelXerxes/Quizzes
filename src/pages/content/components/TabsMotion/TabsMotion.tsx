@@ -6,6 +6,9 @@ import { cars, cars2 } from "../HorizontalScrollableList/mockDataCars";
 import "./TabsMotion.css";
 import ScrollCarList from "../ScrollCarList/ScrollCarList";
 import GraphData from "../GraphData/GraphData";
+import Footer from "../Footer/Footer";
+import GraphDisplay from "../GraphData/GraphDisplay";
+import LineChartExample from "../GraphData/LineChartExample";
 interface LabelProps {
   labelText?: string;
 }
@@ -29,7 +32,14 @@ const tabs = [
   {
     label: "Similar items",
     content: (
-      <div style={{ marginLeft: 20, marginRight: 20, paddingTop: 20 }}>
+      <div
+        style={{
+          marginLeft: 20,
+          marginRight: 20,
+          paddingTop: 20,
+          position: "relative",
+        }}
+      >
         <LabelBar />
         <div style={{ marginTop: 20 }}>
           <TabsCarItem
@@ -71,13 +81,14 @@ const tabs = [
           />
         </div>
         <div className="tabsMotion-breakline" />
+        <Footer />
       </div>
     ),
   },
   {
     label: "Price trends",
     content: (
-      <div style={{ paddingTop: 20 }}>
+      <div style={{ paddingTop: 20, position: "relative" }}>
         <div style={{ marginLeft: 30 }}>
           <LabelBar />
         </div>
@@ -85,38 +96,43 @@ const tabs = [
         <div style={{ paddingLeft: 30, paddingRight: 30 }}>
           <div className="tabsMotion-breakline" />
         </div>
-        <div className=" m-7">
+        <div style={{ marginLeft: 30 }}>
           <LabelBar labelText="Similar items sold" />
         </div>
         <ScrollCarList cars={cars2} />
         <div style={{ paddingLeft: 30, paddingRight: 30 }}>
           <div className="tabsMotion-breakline" />
         </div>
-        <div style={{ width: 300, height: 300 }}>
-          <h1>Data Graph Example</h1>
-          <GraphData data={graphData} />
-        </div>
+        <Footer />
       </div>
     ),
   },
   {
     label: "Comments",
     content: (
-      <TabsCarItem
-        carImage={cars[0].carImage}
-        carType={cars[0].carType}
-        carPriceRange={cars[0].priceRange}
-      />
+      <div>
+        <div style={{ width: 300, height: 300 }}>
+          <h1>Data Graph Example</h1>
+          <GraphData data={graphData} />
+        </div>
+        <Footer />
+      </div>
     ),
   },
   {
     label: "Notes",
     content: (
-      <TabsCarItem
-        carImage={cars[0].carImage}
-        carType={cars[0].carType}
-        carPriceRange={cars[0].priceRange}
-      />
+      <div>
+        <TabsCarItem
+          carImage={cars[0].carImage}
+          carType={cars[0].carType}
+          carPriceRange={cars[0].priceRange}
+        />
+        <div>Graph here??</div>
+        <GraphDisplay />
+        <LineChartExample />
+        <Footer />
+      </div>
     ),
   },
 ];

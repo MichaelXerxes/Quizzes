@@ -5,7 +5,7 @@ const Footer: FC = () => {
     <div
       style={{
         display: "flex",
-        position: "absolute",
+        // position: "absolute",
         bottom: 0,
         width: "100%",
         justifyContent: "center",
@@ -13,7 +13,7 @@ const Footer: FC = () => {
         flexDirection: "row",
         borderTop: 1,
         borderTopColor: "#EEF0F6",
-
+        marginTop: 30,
         borderTopStyle: "solid",
         paddingTop: 20,
         paddingBottom: 20,
