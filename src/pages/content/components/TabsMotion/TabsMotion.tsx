@@ -5,6 +5,7 @@ import { useSwipeable } from "react-swipeable";
 import { cars, cars2 } from "../HorizontalScrollableList/mockDataCars";
 import "./TabsMotion.css";
 import ScrollCarList from "../ScrollCarList/ScrollCarList";
+import GraphData from "../GraphData/GraphData";
 interface LabelProps {
   labelText?: string;
 }
@@ -17,6 +18,13 @@ const LabelBar: React.FC<LabelProps> = ({ labelText = labelDefaultText }) => {
     </div>
   );
 };
+const graphData = [
+  { x: 0, y: 8 },
+  { x: 1, y: 8 },
+  { x: 2, y: 7 },
+  { x: 3, y: 7 },
+  { x: 4, y: 8 },
+];
 const tabs = [
   {
     label: "Similar items",
@@ -83,6 +91,10 @@ const tabs = [
         <ScrollCarList cars={cars2} />
         <div style={{ paddingLeft: 30, paddingRight: 30 }}>
           <div className="tabsMotion-breakline" />
+        </div>
+        <div style={{ width: 300, height: 300 }}>
+          <h1>Data Graph Example</h1>
+          <GraphData data={graphData} />
         </div>
       </div>
     ),

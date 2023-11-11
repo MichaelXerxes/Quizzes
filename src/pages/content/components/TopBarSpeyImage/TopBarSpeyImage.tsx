@@ -1,6 +1,6 @@
 import { FC } from "react";
 import "./TopBarSpeyImage.css";
-import imageCarImg from "../../../../assets/img/imageCar.svg";
+import imageCarImg from "../../../../assets/img/tabImageCar.webp";
 import heart from "../../../../assets/icons/heart.svg";
 import X from "../../../../assets/icons/x.svg";
 import SpeyScoreLogo from "../../../../../public/spey/SpeyScoreLogo.svg";
