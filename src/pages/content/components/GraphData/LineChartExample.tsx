@@ -35,7 +35,7 @@ const data = {
 };
 
 const LineChartExample: React.FC = () => {
-  const options: Chart.ChartOptions = {
+  const options = {
     responsive: true,
     plugins: {
       legend: {
