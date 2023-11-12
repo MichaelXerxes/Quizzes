@@ -18,11 +18,7 @@ interface GraphProps {
 const GraphData: React.FC<GraphProps> = ({ data }) => {
   const maxY = 350; //Math.max(...data.map((point) => point.y));
 
-  const baseline = [
-    { x: 0, y: 0 },
-    { x: data[data.length - 1].x, y: maxY },
-  ];
-
+  const baseline = [{ x: 0, y: 0 }, data[0]];
   return (
     <div>
       <XYPlot width={400} height={400}>
@@ -30,10 +26,18 @@ const GraphData: React.FC<GraphProps> = ({ data }) => {
         <HorizontalGridLines />
         <XAxis />
         <YAxis />
-        <LineSeries data={baseline} color="transparent" />
-        <LineSeries data={data} />
-        <AreaSeries data={data} color="red" />
-        <MarkSeries data={data} fill="yellow" stroke="none" />
+        <AreaSeries
+          data={[...baseline, ...data]}
+          color="#F3EEFB"
+          //   opacity={0.7}
+        />
+        {/* <LineSeries
+          data={data}
+          color="#7F56D9"
+          opacity={0.7}
+          style={{ overflow: "hidden" }}
+        /> */}
+        {/* <MarkSeries data={data} fill="#7F56D9" stroke="none" /> */}
       </XYPlot>
       <DiscreteColorLegend
         orientation="horizontal"

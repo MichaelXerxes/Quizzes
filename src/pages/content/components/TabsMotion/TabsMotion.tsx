@@ -116,8 +116,11 @@ const tabs = [
     label: "Comments",
     content: (
       <div>
-        <div style={{ width: 300, height: 300 }}>
-          <h1>Data Graph Example</h1>
+        <div style={{ width: 400, height: 400 }}>
+          <div style={{ marginLeft: 30 }}>
+            <div style={{ fontSize: 14, color: "grey" }}>Current Value: </div>
+            <div style={{ fontSize: 18, fontWeight: "bold" }}>250,000£</div>
+          </div>
           <GraphData data={graphData} />
         </div>
       </div>
@@ -127,12 +130,6 @@ const tabs = [
     label: "Notes",
     content: (
       <div>
-        <TabsCarItem
-          carImage={cars[0].carImage}
-          carType={cars[0].carType}
-          carPriceRange={cars[0].priceRange}
-        />
-        <div>Graph here??</div>
         <GraphDisplay />
         <LineChartExample />
       </div>

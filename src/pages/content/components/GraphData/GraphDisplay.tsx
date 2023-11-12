@@ -1,4 +1,3 @@
-// src/App.tsx
 import React from "react";
 import LineChart from "./LineChart";
 interface DataSets {
@@ -6,7 +5,7 @@ interface DataSets {
   data: number[];
   backgroundColor?: string;
   borderColor: string;
-  type: "line"; // Specify the type as "line"
+  type: "line";
   fill?: boolean;
 }
 const GraphDisplay: React.FC = () => {
