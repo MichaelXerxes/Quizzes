@@ -1,4 +1,3 @@
-// src/components/LineChart.tsx
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
@@ -9,8 +8,9 @@ export interface LineChartProps {
     data: number[];
     backgroundColor?: string;
     borderColor: string;
-    type: "line"; // Specify the type as "line"
+    type: "line";
     fill?: boolean;
+    pointRadius?: number;
   }[];
 }
 
@@ -26,32 +26,55 @@ const LineChart: React.FC<LineChartProps> = ({ labels, datasets }) => {
           data: {
             labels: labels,
             datasets: [
-              ...datasets, // Include existing datasets
+              //  ...datasets,
               {
                 label: "Horizontal Line",
                 data: Array(labels.length).fill(9),
-                backgroundColor: "rgba(0, 0, 0, 0)", // Transparent background
+                backgroundColor: "rgba(0, 0, 0, 0)",
                 borderColor: "blue",
                 type: "line",
                 fill: false,
-                borderDash: [5, 5], // Set borderDash for a dashed line
+                borderDash: [5, 5],
+              },
+              {
+                label: "Dataset 1",
+                data: [
+                  220, 222, 224, 226, 228, 231, 234, 236, 242, 245, 248, 250,
+                  290, 280, 274, 270,
+                ],
+                backgroundColor: "red",
+                borderColor: "rgba(75,192,192,1)",
+                type: "line",
+                fill: false,
+                borderDash: [5, 5],
+                pointRadius: 5,
               },
             ],
           },
           options: {
             responsive: true,
-            // scales: {
-            //   x: {
-            //     type: "linear",
-            //     position: "bottom",
-            //     min: 0, // Adjust the min value as needed
-            //     max: 20,
-            //   },
-            //   y: {
-            //     min: 0,
-            //     max: 10,
-            //   },
-            // },
+            scales: {
+              x: {
+                //type: "linear",
+                // position: "bottom",
+                min: 0,
+                max: 20,
+                // ticks: {
+                //   stepSize: 5,
+                //   //sampleSize: 5,
+                // },
+              },
+              y: {
+                min: 0,
+                max: 350,
+              },
+            },
+
+            elements: {
+              line: {
+                fill: true,
+              },
+            },
           },
         });
       }

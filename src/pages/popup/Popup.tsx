@@ -16,7 +16,7 @@ const Popup: FC = () => {
       <div className="popup-content">
         <TopBarSpeyImage />
         <TabsMotion />
-        {/* <Footer /> */}
+        <Footer />
       </div>
       {/* <header className="App-header">
       

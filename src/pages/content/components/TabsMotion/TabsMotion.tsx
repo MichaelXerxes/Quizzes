@@ -6,7 +6,6 @@ import { cars, cars2 } from "../HorizontalScrollableList/mockDataCars";
 import "./TabsMotion.css";
 import ScrollCarList from "../ScrollCarList/ScrollCarList";
 import GraphData from "../GraphData/GraphData";
-import Footer from "../Footer/Footer";
 import GraphDisplay from "../GraphData/GraphDisplay";
 import LineChartExample from "../GraphData/LineChartExample";
 interface LabelProps {
@@ -22,11 +21,19 @@ const LabelBar: React.FC<LabelProps> = ({ labelText = labelDefaultText }) => {
   );
 };
 const graphData = [
-  { x: 0, y: 8 },
-  { x: 1, y: 8 },
-  { x: 2, y: 7 },
-  { x: 3, y: 7 },
-  { x: 4, y: 8 },
+  { x: 0, y: 220 },
+  { x: 10, y: 220 },
+  { x: 15, y: 220 },
+  { x: 20, y: 230 },
+  { x: 25, y: 234 },
+  { x: 30, y: 241 },
+  { x: 35, y: 251 },
+  { x: 40, y: 256 },
+  { x: 45, y: 250 },
+  { x: 50, y: 262 },
+  { x: 55, y: 272 },
+  { x: 60, y: 264 },
+  { x: 65, y: 258 },
 ];
 const tabs = [
   {
@@ -81,7 +88,6 @@ const tabs = [
           />
         </div>
         <div className="tabsMotion-breakline" />
-        <Footer />
       </div>
     ),
   },
@@ -103,7 +109,6 @@ const tabs = [
         <div style={{ paddingLeft: 30, paddingRight: 30 }}>
           <div className="tabsMotion-breakline" />
         </div>
-        <Footer />
       </div>
     ),
   },
@@ -115,7 +120,6 @@ const tabs = [
           <h1>Data Graph Example</h1>
           <GraphData data={graphData} />
         </div>
-        <Footer />
       </div>
     ),
   },
@@ -131,7 +135,6 @@ const tabs = [
         <div>Graph here??</div>
         <GraphDisplay />
         <LineChartExample />
-        <Footer />
       </div>
     ),
   },
