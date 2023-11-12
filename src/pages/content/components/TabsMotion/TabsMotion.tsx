@@ -115,12 +115,36 @@ const tabs = [
   {
     label: "Comments",
     content: (
-      <div>
-        <div style={{ width: 400, height: 400 }}>
-          <div style={{ marginLeft: 30 }}>
-            <div style={{ fontSize: 14, color: "grey" }}>Current Value: </div>
-            <div style={{ fontSize: 18, fontWeight: "bold" }}>250,000£</div>
+      <div style={{ justifyContent: "flex-start", marginTop: 20 }}>
+        <div
+          style={{
+            marginLeft: 30,
+
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div style={{ fontSize: 18, color: "#000", marginBottom: 15 }}>
+            Price trends
           </div>
+          <div style={{ fontSize: 14, color: "grey" }}>Current Value: </div>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <div style={{ fontSize: 22, fontWeight: "600", marginTop: 5 }}>
+              £250,000
+            </div>
+            <div
+              style={{
+                color: "#16B26A",
+                marginTop: 15,
+                marginLeft: 10,
+                fontSize: 12,
+              }}
+            >
+              {"9.2% (via last month)"}
+            </div>
+          </div>
+        </div>
+        <div style={{ width: 400, height: 400 }}>
           <GraphData data={graphData} />
         </div>
       </div>
