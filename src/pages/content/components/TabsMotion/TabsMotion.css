@@ -1,21 +1,45 @@
+@import "../../consts/colors/colors.css";
 .tabsMotion-tabsname-div {
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
+  margin-left: 30px;
+  margin-right: 20px;
 }
 .tabsMotion-tabsname-div button {
   font-size: 16px;
-  color: rgba(27, 29, 33, 0.8);
+  color: var(--grey);
   font-weight: 400;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 10px;
 
+  /* width: 25%; */
   transition: background 0.3s;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  justify-content: center;
+  /* text-align: left; */
 }
 
+.tabsMotion-tabsname-div button:nth-child(1) {
+  width: 105px;
+}
+
+.tabsMotion-tabsname-div button:nth-child(2) {
+  width: 98px;
+}
+
+.tabsMotion-tabsname-div button:nth-child(3) {
+  width: 92px;
+}
+
+.tabsMotion-tabsname-div button:nth-child(4) {
+  width: 70px;
+}
 .tabsMotion-tabsname-div button:hover {
-  background-color: #8d8d8d;
+  background-color: var(--grey);
+  color: var(--white);
 }
 
 .tabsMotion-tabsname-div button:focus {
@@ -23,14 +47,19 @@
 }
 .tabsMotion-tabsname-div button.active {
   color: #1b1d21;
-  font-weight: bold;
-  border-bottom: 1px solid #020000;
+  font-weight: 500;
+  border-bottom: 1px solid #000;
+}
+.tabsMotion-tabsname-div button.active:hover {
+  color: #dbd2d8;
+  /* font-weight: bold; */
+  /* border-bottom: 1px solid #000; */
 }
 .tabsMotion-breakline {
   width: 100%;
   height: 1px;
   /* border-radius: 1px solid #EEF0F6; */
-  background-color: #eef0f6;
+  background-color: var(--white);
   /* border-color: #EEF0F6; */
   margin-top: 15px;
   margin-bottom: 15px;
@@ -57,7 +86,7 @@
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -1.4%;
-  color: #7f56d9;
+  color: var(--violet);
   white-space: nowrap;
   text-align: right;
   cursor: pointer;

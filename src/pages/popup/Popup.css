@@ -4,9 +4,7 @@
   bottom: 0px;
   left: 0px;
   right: 0px;
-  text-align: center;
-  height: 100%;
-  /* padding: 10px; */
+  height: 1200;
   background-color: #ebedf3;
 }
 
@@ -30,12 +28,11 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.test{
- 
+.popup-content {
   background-color: rgb(250, 250, 250);
- 
+  position: relative;
 }
-.properdivsettings{
+.properdivsettings {
   padding-left: 30px;
 }
 .App-link {

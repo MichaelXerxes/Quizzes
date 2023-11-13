@@ -4,38 +4,19 @@ import "@pages/popup/Popup.css";
 import useStorage from "@src/shared/hooks/useStorage";
 import exampleThemeStorage from "@src/shared/storages/exampleThemeStorage";
 import withSuspense from "@src/shared/hoc/withSuspense";
-import TopBarSpey from "../content/components/TopBarSpey/TopBarSpey";
-import DisplayItemTitleBox from "../content/components/DisplayItemTitleBox/DisplayItemTitleBox.";
-import {
-  cars,
-  cars2,
-} from "../content/components/HorizontalScrollableList/mockDataCars";
-import HorizontalScrollableList from "../content/components/HorizontalScrollableList/HorizontalScrollableList";
-import SplideCarCarousel from "../content/components/SplideCarCarousel/SplideCarCarousel";
 import TopBarSpeyImage from "../content/components/TopBarSpeyImage/TopBarSpeyImage";
 import TabsMotion from "../content/components/TabsMotion/TabsMotion";
+import Footer from "../content/components/Footer/Footer";
 interface PopupProps {}
 const Popup: FC = () => {
   const theme = useStorage(exampleThemeStorage);
 
   return (
     <div className="App">
-      <div className="test">
-        {/* <TopBarSpey
-          onClose={() => {
-            console.log("Closing");
-          }}
-        />
-        <div className="properdivsettings">
-          <DisplayItemTitleBox />
-          <HorizontalScrollableList itemsData={cars} />
-          <HorizontalScrollableList itemsData={cars2} />
-        </div>
-        <SplideCarCarousel data={cars} />
-        <SplideCarCarousel data={cars2} />
-        <SplideComponent data={cars} /> */}
+      <div className="popup-content">
         <TopBarSpeyImage />
         <TabsMotion />
+        <Footer />
       </div>
       {/* <header className="App-header">
       
