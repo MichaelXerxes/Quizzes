@@ -1,154 +1,25 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import TabsCarItem from "../TabsCarItem/TabsCarItem";
 import { useSwipeable } from "react-swipeable";
-import { cars, cars2 } from "../HorizontalScrollableList/mockDataCars";
 import "./TabsMotion.css";
-import ScrollCarList from "../ScrollCarList/ScrollCarList";
-import GraphData from "../GraphData/GraphData";
 import GraphDisplay from "../GraphData/GraphDisplay";
 import LineChartExample from "../GraphData/LineChartExample";
-interface LabelProps {
-  labelText?: string;
-}
-const labelDefaultText = "Similar items for sale";
-const LabelBar: React.FC<LabelProps> = ({ labelText = labelDefaultText }) => {
-  return (
-    <div className="labelBar-container">
-      <div className="labelBar-text">{labelText}</div>
-      <div className="labelBar-viewmore">View more</div>
-    </div>
-  );
-};
-const graphData = [
-  { x: 0, y: 220 },
-  { x: 10, y: 220 },
-  { x: 15, y: 220 },
-  { x: 20, y: 230 },
-  { x: 25, y: 234 },
-  { x: 30, y: 241 },
-  { x: 35, y: 251 },
-  { x: 40, y: 256 },
-  { x: 45, y: 250 },
-  { x: 50, y: 262 },
-  { x: 55, y: 272 },
-  { x: 60, y: 264 },
-  { x: 65, y: 258 },
-];
+import PriceTrends from "../TabsContent/PriceTrends/PriceTrends";
+import SimilarItems from "../TabsContent/SimilarItems/SimilarItems";
+import SimilarItemsScrollList from "../TabsContent/SimilarItems/SumilarItemsScrollList";
+
 const tabs = [
   {
     label: "Similar items",
-    content: (
-      <div
-        style={{
-          marginLeft: 20,
-          marginRight: 20,
-          paddingTop: 20,
-          position: "relative",
-        }}
-      >
-        <LabelBar />
-        <div style={{ marginTop: 20 }}>
-          <TabsCarItem
-            carImage={cars[0].carImage}
-            carType={cars[0].carType}
-            carPriceRange={cars[0].priceRange}
-          />
-          <TabsCarItem
-            carImage={cars[3].carImage}
-            carType={cars[3].carType}
-            carPriceRange={cars[3].priceRange}
-          />
-          <TabsCarItem
-            carImage={cars[2].carImage}
-            carType={cars[2].carType}
-            carPriceRange={cars[2].priceRange}
-          />
-        </div>
-        <div className="tabsMotion-breakline" />
-        <LabelBar labelText="Similar items sold" />
-        <div style={{ marginTop: 20 }}>
-          <TabsCarItem
-            carImage={cars2[1].carImage}
-            carType={cars2[1].carType}
-            carPriceRange={cars2[1].priceRange}
-            isSold={true}
-          />
-          <TabsCarItem
-            carImage={cars2[0].carImage}
-            carType={cars2[0].carType}
-            carPriceRange={cars2[0].priceRange}
-            isSold={true}
-          />
-          <TabsCarItem
-            carImage={cars2[4].carImage}
-            carType={cars2[4].carType}
-            carPriceRange={cars2[4].priceRange}
-            isSold={true}
-          />
-        </div>
-        <div className="tabsMotion-breakline" />
-      </div>
-    ),
+    content: <SimilarItems />,
   },
   {
     label: "Price trends",
-    content: (
-      <div style={{ paddingTop: 20, position: "relative" }}>
-        <div style={{ marginLeft: 30 }}>
-          <LabelBar />
-        </div>
-        <ScrollCarList cars={cars} />
-        <div style={{ paddingLeft: 30, paddingRight: 30 }}>
-          <div className="tabsMotion-breakline" />
-        </div>
-        <div style={{ marginLeft: 30 }}>
-          <LabelBar labelText="Similar items sold" />
-        </div>
-        <ScrollCarList cars={cars2} />
-        <div style={{ paddingLeft: 30, paddingRight: 30 }}>
-          <div className="tabsMotion-breakline" />
-        </div>
-      </div>
-    ),
+    content: <SimilarItemsScrollList />,
   },
   {
     label: "Comments",
-    content: (
-      <div style={{ justifyContent: "flex-start", marginTop: 20 }}>
-        <div
-          style={{
-            marginLeft: 30,
-
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <div style={{ fontSize: 18, color: "#000", marginBottom: 15 }}>
-            Price trends
-          </div>
-          <div style={{ fontSize: 14, color: "grey" }}>Current Value: </div>
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <div style={{ fontSize: 22, fontWeight: "600", marginTop: 5 }}>
-              £250,000
-            </div>
-            <div
-              style={{
-                color: "#16B26A",
-                marginTop: 15,
-                marginLeft: 10,
-                fontSize: 12,
-              }}
-            >
-              {"9.2% (via last month)"}
-            </div>
-          </div>
-        </div>
-        <div style={{ width: 400, height: 400 }}>
-          <GraphData data={graphData} />
-        </div>
-      </div>
-    ),
+    content: <PriceTrends />,
   },
   {
     label: "Notes",

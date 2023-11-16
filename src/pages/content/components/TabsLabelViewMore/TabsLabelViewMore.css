@@ -1,0 +1,29 @@
+.tabsLabelViewMore-container {
+  width: 404px;
+  height: 26px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.tabsLabelViewMore-text {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -1.4%;
+  user-select: none;
+}
+.tabsLabelViewMore-viewmore {
+  height: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -1.4%;
+  color: var(--violet);
+  white-space: nowrap;
+  text-align: right;
+  cursor: pointer;
+  margin-top: 4px;
+  user-select: none;
+}
