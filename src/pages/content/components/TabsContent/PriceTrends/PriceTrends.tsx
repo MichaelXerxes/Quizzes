@@ -15,6 +15,7 @@ const graphData = [
   { x: 55, y: 272 },
   { x: 60, y: 264 },
   { x: 65, y: 258 },
+  { x: 65, y: 258 },
 ];
 interface Props {}
 const PriceTrends: React.FC<Props> = ({}) => {
