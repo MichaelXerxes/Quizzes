@@ -12,7 +12,7 @@
   background: none;
   border: none;
   cursor: pointer;
-
+  user-select: none;
   /* width: 25%; */
   transition: background 0.3s;
   white-space: nowrap;
