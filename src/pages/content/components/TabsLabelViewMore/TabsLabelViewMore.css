@@ -1,11 +1,12 @@
 .tabsLabelViewMore-container {
-  width: 404px;
+  width: "100%";
   height: 26px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding-right: 30px;
 }
 .tabsLabelViewMore-text {
   font-weight: 500;

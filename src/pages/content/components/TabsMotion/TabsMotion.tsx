@@ -19,7 +19,7 @@ const tabs = [
   },
   {
     label: "Comments",
-    content: <PriceTrends />,
+    content: <Comments />,
   },
   {
     label: "Notes",
@@ -28,7 +28,8 @@ const tabs = [
       //   <GraphDisplay />
       //   <LineChartExample />
       // </div>
-      <Comments />
+
+      <PriceTrends />
     ),
   },
 ];
