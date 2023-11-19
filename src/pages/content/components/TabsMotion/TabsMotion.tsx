@@ -7,7 +7,7 @@ import LineChartExample from "../GraphData/LineChartExample";
 import PriceTrends from "../TabsContent/PriceTrends/PriceTrends";
 import SimilarItems from "../TabsContent/SimilarItems/SimilarItems";
 import SimilarItemsScrollList from "../TabsContent/SimilarItems/SumilarItemsScrollList";
-
+import Comments from "../TabsContent/Comments/Comments";
 const tabs = [
   {
     label: "Similar items",
@@ -24,10 +24,11 @@ const tabs = [
   {
     label: "Notes",
     content: (
-      <div>
-        <GraphDisplay />
-        <LineChartExample />
-      </div>
+      // <div>
+      //   <GraphDisplay />
+      //   <LineChartExample />
+      // </div>
+      <Comments />
     ),
   },
 ];
