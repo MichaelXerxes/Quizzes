@@ -6,7 +6,7 @@ import GraphDisplay from "../GraphData/GraphDisplay";
 import LineChartExample from "../GraphData/LineChartExample";
 import PriceTrends from "../TabsContent/PriceTrends/PriceTrends";
 import SimilarItems from "../TabsContent/SimilarItems/SimilarItems";
-import SimilarItemsScrollList from "../TabsContent/SimilarItems/SumilarItemsScrollList";
+import SimilarItemsScrollList from "../TabsContent/SimilarItems/SimilarItemsScrollList";
 import Comments from "../TabsContent/Comments/Comments";
 const tabs = [
   {

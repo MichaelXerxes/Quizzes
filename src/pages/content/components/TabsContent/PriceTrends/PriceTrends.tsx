@@ -1,6 +1,7 @@
 import React from "react";
 import GraphData from "../../GraphData/GraphData";
 import Example from "../../GraphData/GraphExample";
+import { processApiData } from "@root/src/shared/utils/handleAPIGraphData";
 const graphData = [
   { x: 0, y: 220 },
   { x: 10, y: 220 },
@@ -16,9 +17,18 @@ const graphData = [
   { x: 60, y: 264 },
   { x: 65, y: 258 },
   { x: 65, y: 258 },
+  { x: 68, y: 256 },
+  { x: 69, y: 150 },
+  { x: 71, y: 162 },
+  { x: 72, y: 72 },
+  { x: 74, y: 64 },
+  { x: 80, y: 58 },
+  { x: 90, y: 8 },
 ];
 interface Props {}
 const PriceTrends: React.FC<Props> = ({}) => {
+  const startDate = new Date("May 23 2017");
+  const chartData = processApiData(graphData, startDate);
   return (
     <div style={{ justifyContent: "flex-start", marginTop: 20 }}>
       <div
@@ -50,9 +60,9 @@ const PriceTrends: React.FC<Props> = ({}) => {
         </div>
       </div>
       <div style={{ width: 400, height: 400 }}>
-        <GraphData data={graphData} />
+        <GraphData data={chartData} />
       </div>
-      <Example />
+      {/* <Example /> */}
     </div>
   );
 };

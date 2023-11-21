@@ -10,40 +10,47 @@ import {
   AreaSeries,
   DiscreteColorLegend,
 } from "react-vis";
+import { format } from "date-fns";
+const timestamp = new Date("May 23 2017").getTime();
+const ONE_DAY = 86400000;
 
 interface GraphProps {
-  data: { x: number; y: number }[];
+  data: { x0: number; x: number; y: number }[];
+  yDomainStart?: number;
+  yDomainEnd?: number;
 }
 
-const GraphData: React.FC<GraphProps> = ({ data }) => {
-  const maxY = 350; //Math.max(...data.map((point) => point.y));
+const GraphData: React.FC<GraphProps> = ({
+  data,
+  yDomainStart = 0,
+  yDomainEnd = 400,
+}) => {
+  const maxX = data.reduce((max, p) => (p.x > max ? p.x : max), data[0].x);
+  const tickFormatFunction = (value: number, index: number) => {
+    const date = new Date(value);
 
-  const baseline = [{ x: 0, y: 0 }, data[0]];
+    //return `${date.getMonth() + 1}/${date.getDate()}`;
+    const labelInterval = Math.ceil(data.length / 5);
+    return index % labelInterval === 0 ? format(new Date(value), "d MMM") : "";
+  };
   return (
-    <div>
-      <XYPlot width={400} height={400}>
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis />
-        <YAxis />
-        <AreaSeries
-          data={[...baseline, ...data]}
-          color="#F3EEFB"
-          //   opacity={0.7}
-        />
-        {/* <LineSeries
-          data={data}
-          color="#7F56D9"
-          opacity={0.7}
-          style={{ overflow: "hidden" }}
-        /> */}
-        {/* <MarkSeries data={data} fill="#7F56D9" stroke="none" /> */}
-      </XYPlot>
-      <DiscreteColorLegend
-        orientation="horizontal"
-        items={[{ title: "Data" }]}
+    <XYPlot
+      width={400}
+      height={350}
+      xDomain={[timestamp - 2 * ONE_DAY, maxX]}
+      yDomain={[yDomainStart, yDomainEnd]}
+      xType="time"
+    >
+      <VerticalGridLines />
+      <HorizontalGridLines />
+      <XAxis tickFormat={tickFormatFunction} />
+      <YAxis />
+      <AreaSeries
+        data={data}
+        color="#F3EEFB"
+        //   opacity={0.7}
       />
-    </div>
+    </XYPlot>
   );
 };
 
